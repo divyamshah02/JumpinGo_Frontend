@@ -7,15 +7,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil:opsz,wght@10..72,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
     <!-- Simplified navbar to match design with Register link, Login button, and hamburger menu -->
-    <header class="header">
+    <header class="header pt-0">
         <div class="container-fluid px-4">
-            <nav class="navbar navbar-expand-lg">
+            <nav class="navbar navbar-expand-lg py-0">
                 <a class="navbar-brand" href="#">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Brand%20Guidelines%20JG_page-0007%202-iYTWLsNODcHEFdSlwXOo4y1XIlDjwH.png" alt="JUMPIN GO" class="logo">
+                    <img src="logo.png" alt="JUMPIN GO" class="logo">
                 </a>
                 <div class="ms-auto d-flex align-items-center gap-3">
                     <a href="#" class="nav-link-register">Register</a>
@@ -35,83 +38,96 @@
     <section class="hero-section" id="home">
         <!-- Added larger floating stars positioned as per design -->
         <div class="floating-stars">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Brand%20Guidelines%20JG_page-0007%203-OhxbA3Y6W9awIpHlfcOGI79oXqKcke.png" alt="star" class="star star-1">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Brand%20Guidelines%20JG_page-0007%203-OhxbA3Y6W9awIpHlfcOGI79oXqKcke.png" alt="star" class="star star-2">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Brand%20Guidelines%20JG_page-0007%203-OhxbA3Y6W9awIpHlfcOGI79oXqKcke.png" alt="star" class="star star-3">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Brand%20Guidelines%20JG_page-0007%203-OhxbA3Y6W9awIpHlfcOGI79oXqKcke.png" alt="star" class="star star-4">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Brand%20Guidelines%20JG_page-0007%203-OhxbA3Y6W9awIpHlfcOGI79oXqKcke.png" alt="star" class="star star-5">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Brand%20Guidelines%20JG_page-0007%203-OhxbA3Y6W9awIpHlfcOGI79oXqKcke.png" alt="star" class="star star-6">
+            <img src="small_logo.png" alt="star" class="star star-1">
+            <img src="small_logo.png" alt="star" class="star star-2">
+            <img src="small_logo.png" alt="star" class="star star-3">
+            <img src="small_logo.png" alt="star" class="star star-4">
+            <img src="small_logo.png" alt="star" class="star star-5">
+            <img src="small_logo.png" alt="star" class="star star-6">
         </div>
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    LOREM IPSUM SIT DOLOR<br>
-                    AMET LOREM IPSUM <span class="highlight">DOLOR</span><br>
-                    SIT AMET
+                    India’s First-Ever<br><span class="highlight">Jump Park Festival</span> is Here!<br>
+                    <!-- AMET LOREM IPSUM <span class="highlight">DOLOR</span><br>
+                    SIT AMET -->
                 </h1>
                 <p class="hero-subtitle">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>
+                     Dive into a world where fun knows no gravity.<br>
+                    Bounce, flip, fly, and feel the thrill like never before  at India’s biggest celebration of motion and madness.<br>
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
                 </p>
                 <!-- Updated button text and styling -->
-                <button class="btn-hero">DOLOR!!</button>
+                <button class="btn-hero">Let’s Bounce!</button>
             </div>
         </div>
 
         <!-- Updated image gallery to show cropped/overflow effect -->
         <div class="image-gallery-container">
-            <div class="image-gallery">
-                <!-- First row: balloons, ferris wheel, carousel, balloons, ferris wheel (cropped) -->
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-timo-47995-2219318.png-qNEIuZG33dl3SpGYIaT1HbLxYITp63.jpeg" alt="Colorful Balloons" class="gallery-img">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-scottwebb-136412.png-yfZa3U50iC09kLmkz4MfuVc5jhNLGi.jpeg" alt="Ferris Wheel" class="gallery-img">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-timo-47995-2219318.png-qNEIuZG33dl3SpGYIaT1HbLxYITp63.jpeg" alt="Carousel Horses" class="gallery-img">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-scottwebb-136412.png-yfZa3U50iC09kLmkz4MfuVc5jhNLGi.jpeg" alt="Colorful Balloons" class="gallery-img">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-timo-47995-2219318.png-qNEIuZG33dl3SpGYIaT1HbLxYITp63.jpeg" alt="Ferris Wheel" class="gallery-img">
-                
-                <!-- Second row: ferris wheel, carousel, balloons, ferris wheel (cropped) -->
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-scottwebb-136412.png-yfZa3U50iC09kLmkz4MfuVc5jhNLGi.jpeg" alt="Ferris Wheel" class="gallery-img">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-timo-47995-2219318.png-qNEIuZG33dl3SpGYIaT1HbLxYITp63.jpeg" alt="Carousel Horses" class="gallery-img">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-scottwebb-136412.png-yfZa3U50iC09kLmkz4MfuVc5jhNLGi.jpeg" alt="Colorful Balloons" class="gallery-img">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-timo-47995-2219318.png-qNEIuZG33dl3SpGYIaT1HbLxYITp63.jpeg" alt="Ferris Wheel" class="gallery-img">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-scottwebb-136412.png-yfZa3U50iC09kLmkz4MfuVc5jhNLGi.jpeg" alt="Ferris Wheel" class="gallery-img">
+            <!-- Added two separate rows that slide in opposite directions -->
+            <div class="image-gallery-row row-1">
+                <img src="pexels-timo-47995-2219318.png.jpeg" alt="Colorful Balloons" class="gallery-img">
+                <img src="pexels-scottwebb-136412.png.jpeg" alt="Ferris Wheel" class="gallery-img">
+                <img src="pexels-timo-47995-2219318.png.jpeg" alt="Carousel Horses" class="gallery-img">
+                <img src="pexels-scottwebb-136412.png.jpeg" alt="Colorful Balloons" class="gallery-img">
+                <img src="pexels-timo-47995-2219318.png.jpeg" alt="Ferris Wheel" class="gallery-img">
+                <!-- Duplicate for seamless loop -->
+                <img src="pexels-timo-47995-2219318.png.jpeg" alt="Colorful Balloons" class="gallery-img">
+                <img src="pexels-scottwebb-136412.png.jpeg" alt="Ferris Wheel" class="gallery-img">
+                <img src="pexels-timo-47995-2219318.png.jpeg" alt="Carousel Horses" class="gallery-img">
+            </div>
+            
+            <div class="image-gallery-row row-2">
+                <img src="pexels-scottwebb-136412.png.jpeg" alt="Ferris Wheel" class="gallery-img">
+                <img src="pexels-timo-47995-2219318.png.jpeg" alt="Carousel Horses" class="gallery-img">
+                <img src="pexels-scottwebb-136412.png.jpeg" alt="Colorful Balloons" class="gallery-img">
+                <img src="pexels-timo-47995-2219318.png.jpeg" alt="Ferris Wheel" class="gallery-img">
+                <img src="pexels-scottwebb-136412.png.jpeg" alt="Ferris Wheel" class="gallery-img">
+                <!-- Duplicate for seamless loop -->
+                <img src="pexels-scottwebb-136412.png.jpeg" alt="Ferris Wheel" class="gallery-img">
+                <img src="pexels-timo-47995-2219318.png.jpeg" alt="Carousel Horses" class="gallery-img">
+                <img src="pexels-scottwebb-136412.png.jpeg" alt="Colorful Balloons" class="gallery-img">
+            </div>
+        </div>
+
+        <!-- Updated diagonal cross bands with proper styling -->
+        <div class="diagonal-cross-container">
+            <!-- Wider bands with yellow borders and yellow text -->
+            <div class="diagonal-band band-1">
+                <div class="band-text-wrapper">
+                    <span class="band-text">Be part of the Jump Revolution! Our next festival drops soon, bigger, bouncier, and wilder than ever! -</span>
+                    <span class="band-text">Be part of the Jump Revolution! Our next festival drops soon, bigger, bouncier, and wilder than ever!</span>
+                    <!-- <span class="band-text">OR AMET LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET </span> -->
+                </div>
+            </div>
+            <div class="diagonal-band band-2">
+                <div class="band-text-wrapper">
+                    <span class="band-text"> Be part of the Jump Revolution! Ready to Jump In? The Countdown Has Begun! -</span>
+                    <span class="band-text"> Be part of the Jump Revolution! Ready to Jump In? The Countdown Has Begun!</span>
+                    <!-- <span class="band-text">OR AMET LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET </span> -->
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- Updated diagonal cross bands with yellow text -->
-    <div class="diagonal-cross-container">
-        <div class="diagonal-band band-1">
-            <div class="band-text-wrapper">
-                <span class="band-text">LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET </span>
-                <span class="band-text">LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET </span>
-            </div>
-        </div>
-        <div class="diagonal-band band-2">
-            <div class="band-text-wrapper">
-                <span class="band-text">LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET </span>
-                <span class="band-text">LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET </span>
-            </div>
-        </div>
-    </div>
 
     <!-- Catalogue Section -->
     <section class="catalogue-section">
         <!-- Added yellow stars on the left side -->
         <div class="catalogue-stars">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Brand%20Guidelines%20JG_page-0007%203-OhxbA3Y6W9awIpHlfcOGI79oXqKcke.png" alt="star" class="cat-star cat-star-1">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Brand%20Guidelines%20JG_page-0007%203-OhxbA3Y6W9awIpHlfcOGI79oXqKcke.png" alt="star" class="cat-star cat-star-2">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Brand%20Guidelines%20JG_page-0007%203-OhxbA3Y6W9awIpHlfcOGI79oXqKcke.png" alt="star" class="cat-star cat-star-3">
+            <img src="small_logo.png" alt="star" class="cat-star cat-star-1">
+            <img src="small_logo.png" alt="star" class="cat-star cat-star-2">
+            <img src="small_logo.png" alt="star" class="cat-star cat-star-3">
         </div>
         <div class="container">
-            <h2 class="section-title">CATALOGUE<br>DOWNLOAD</h2>
+            <h2 class="section-title">Download Event<br>Catalogue</h2>
             
             <!-- Updated catalogue images to be tilted -->
             <div class="catalogue-images">
                 <div class="catalogue-item catalogue-item-1">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-scottwebb-136412.png-yfZa3U50iC09kLmkz4MfuVc5jhNLGi.jpeg" alt="Catalogue 1">
+                    <img src="pexels-scottwebb-136412.png.jpeg" alt="Catalogue 1">
                 </div>
                 <div class="catalogue-item catalogue-item-2">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-timo-47995-2219318.png-qNEIuZG33dl3SpGYIaT1HbLxYITp63.jpeg" alt="Catalogue 2">
+                    <img src="pexels-timo-47995-2219318.png.jpeg" alt="Catalogue 2">
                 </div>
             </div>
             
@@ -123,15 +139,15 @@
     <!-- Updated section background to pink/magenta and restructured category tabs -->
     <section class="products-section">
         <div class="container">
-            <h2 class="section-title-white">LOREM IPSUM SIT DOLOR</h2>
-            <p class="section-subtitle-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>sed do eiusmod tempor incididunt ut labore et</p>
+            <h2 class="section-title-white">Pick Your Jump Zone</h2>
+            <p class="section-subtitle-white">Every jumper has their vibe,<br>choose your kind of thrill!</p>
             
             <div class="category-tabs-wrapper">
-                <div class="category-tabs">
-                    <button class="category-tab active" data-category="cat-1">Cat - 1</button>
-                    <button class="category-tab" data-category="cat-2">Cat - 2</button>
-                    <button class="category-tab" data-category="cat-3">Cat - 3</button>
-                    <button class="category-tab" data-category="cat-4">Cat - 4</button>
+                <div class="category-tabs w-100">
+                    <button class="category-tab active w-100" data-category="cat-1">The Bounce Arena</button>
+                    <button class="category-tab w-100" data-category="cat-2">The Glow Pit</button>
+                    <button class="category-tab w-100" data-category="cat-3">Adrenaline Track</button>
+                    <button class="category-tab w-100" data-category="cat-4">Junior Jumps</button>
                 </div>
             </div>
 
@@ -274,30 +290,30 @@
     <!-- Features Section -->
     <section class="features-section">
         <div class="container">
-            <h2 class="section-title-red">LOREM IPSUM SIT DOLOR AMET</h2>
-            <p class="section-subtitle-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore magna aliqua ut</p>
+            <h2 class="section-title-red">Why Everyone’s Talking About Jump Fest!</h2>
+            <!-- <p class="section-subtitle-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore magna aliqua ut</p> -->
             
             <div class="features-content">
                 <div class="feature-image">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-timo-47995-2219318.png-qNEIuZG33dl3SpGYIaT1HbLxYITp63.jpeg" alt="Carousel Horses">
+                    <img src="pexels-timo-47995-2219318.png.jpeg" alt="Carousel Horses">
                 </div>
                 <div class="feature-list">
                     <div class="feature-item">
                         <div class="feature-icon red">
-                            <i class="fas fa-headset"></i>
+                            <i class="fas fa-headphones"></i>
                         </div>
                         <div class="feature-text">
-                            <h3>Customer Support</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
+                            <h3>Unlimited Fun</h3>
+                            <p>From sunrise to sunset, the energy never dips</p>
                         </div>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon red">
-                            <i class="fas fa-tag"></i>
+                            <i class="fas fa-money-bill"></i>
                         </div>
                         <div class="feature-text">
-                            <h3>Best Prices</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
+                            <h3>Pocket-Friendly Passes</h3>
+                            <p>Affordable packages for individuals and groups.</p>
                         </div>
                     </div>
                     <div class="feature-item">
@@ -305,8 +321,8 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div class="feature-text">
-                            <h3>Many Location</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
+                            <h3>Across Many Cities</h3>
+                            <p>Jump Park Festival is coming to a city near you!</p>
                         </div>
                     </div>
                 </div>
@@ -314,10 +330,10 @@
 
             <div class="large-images">
                 <div class="large-image">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-timo-47995-2219318.png-qNEIuZG33dl3SpGYIaT1HbLxYITp63.jpeg" alt="Colorful Balloons">
+                    <img src="pexels-timo-47995-2219318.png.jpeg" alt="Colorful Balloons">
                 </div>
                 <div class="large-image">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-scottwebb-136412.png-yfZa3U50iC09kLmkz4MfuVc5jhNLGi.jpeg" alt="Night Carnival">
+                    <img src="pexels-scottwebb-136412.png.jpeg" alt="Night Carnival">
                 </div>
             </div>
         </div>
@@ -326,8 +342,8 @@
     <!-- Testimonials Section -->
     <section class="testimonials-section">
         <div class="container">
-            <h2 class="section-title-white">LOREM IPSUM SIT DOLOR AMET</h2>
-            <p class="section-subtitle-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore magna aliqua ut</p>
+            <h2 class="section-title-white">What Our Jumpmates Are Saying</h2>
+            <p class="section-subtitle-white">Real stories. Real energy. Real jumps.<br>Hear from the ones who took the leap before you!</p>
             
             <div class="testimonials-grid">
                 <div class="testimonial-card">
@@ -336,7 +352,7 @@
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="testimonial-info">
-                            <h3>Jajan Robert</h3>
+                            <h3>Aanya M</h3>
                             <div class="testimonial-rating">
                                 <span>4.5</span>
                                 <div class="stars">
@@ -349,7 +365,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="testimonial-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                    <p class="testimonial-text">Best festival experience ever! Felt like flying!</p>
                 </div>
 
                 <div class="testimonial-card">
@@ -358,7 +374,7 @@
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="testimonial-info">
-                            <h3>Jajan Robert</h3>
+                            <h3>Rohan P</h3>
                             <div class="testimonial-rating">
                                 <span>4.5</span>
                                 <div class="stars">
@@ -371,7 +387,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="testimonial-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                    <p class="testimonial-text">Loved the energy and vibe. Can’t wait for next year!</p>
                 </div>
 
                 <div class="testimonial-card">
@@ -411,8 +427,10 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Brand%20Guidelines%20JG_page-0007%202-iYTWLsNODcHEFdSlwXOo4y1XIlDjwH.png" alt="JUMPIN GO" class="footer-logo">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                    <img src="logo.png" alt="JUMPIN GO" class="footer-logo">
+                    <p>Let’s Be Ultimate Buddies!</p>
+                    <p>Stay in the loop for upcoming events, early bird offers, and behind-the-scenes fun.
+                        Follow us, tag us, and keep bouncing with the JumpFam!</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
