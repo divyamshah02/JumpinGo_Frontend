@@ -755,17 +755,31 @@ body {
 
 .product-image {
   background: #e8e9eb;
-  height: 180px;
+  height: 230px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
   margin-bottom: 15px;
+  overflow: hidden; /* Added to prevent image overflow */
 }
 
 .product-placeholder {
   font-size: 50px;
   color: #b8b9bb;
+  width: 100%; /* Added to fill container */
+  height: 100%; /* Added to fill container */
+  display: flex; /* Added for proper centering */
+  align-items: center; /* Added for proper centering */
+  justify-content: center; /* Added for proper centering */
+}
+
+/* Added styling for images inside product cards */
+.product-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .product-footer {
@@ -773,6 +787,7 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
 
 .product-price {
   font-size: 18px;
