@@ -707,7 +707,7 @@ body {
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 25px;
   margin-bottom: 50px;
   padding: 0 20px;
@@ -755,7 +755,7 @@ body {
 
 .product-image {
   background: #e8e9eb;
-  height: 230px;
+  /* height: 250px; */
   display: flex;
   align-items: center;
   justify-content: center;

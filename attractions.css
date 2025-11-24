@@ -1,0 +1,187 @@
+/* Attractions Hero Section */
+.attractions-hero {
+  background: white;
+  padding: 80px 0 60px;
+  text-align: center;
+}
+
+.attractions-title-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.title-star {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  opacity: 0.9;
+}
+
+.attractions-title {
+  font-family: "Big Shoulders Stencil", sans-serif;
+  font-size: 80px;
+  font-weight: 900;
+  color: #003d5b;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Diagonal Banner */
+.diagonal-banner {
+  background: linear-gradient(90deg, #c2185b 0%, #d81b60 100%);
+  padding: 25px 0;
+  overflow: hidden;
+  position: relative;
+  border-top: 3px solid #eddb13;
+  border-bottom: 3px solid #eddb13;
+}
+
+.banner-text-scroll {
+  display: flex;
+  white-space: nowrap;
+  animation: scrollText 25s linear infinite;
+}
+
+.banner-text-scroll span {
+  font-family: "Winky Rough", cursive;
+  font-size: 28px;
+  font-weight: 700;
+  font-style: italic;
+  color: #eddb13;
+  padding-right: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.33%);
+  }
+}
+
+/* Attraction Detail Section */
+.attraction-detail {
+  background: white;
+  padding: 80px 0;
+}
+
+.attraction-heading {
+  font-family: "Big Shoulders Stencil", sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  color: #003d5b;
+  text-align: center;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.attraction-description {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+}
+
+/* Dual Images */
+.attraction-images-dual {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  padding: 0 20px;
+}
+
+.attraction-image-card {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  aspect-ratio: 3 / 4;
+}
+
+.attraction-image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Full Width Image */
+.attraction-image-full {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.attraction-image-full img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 600px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .attractions-title {
+    font-size: 50px;
+  }
+
+  .title-star {
+    width: 120px;
+    height: 120px;
+  }
+
+  .banner-text-scroll span {
+    font-size: 20px;
+  }
+
+  .attraction-heading {
+    font-size: 36px;
+  }
+
+  .attraction-description {
+    font-size: 14px;
+  }
+
+  .attraction-images-dual {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .attractions-title {
+    font-size: 40px;
+  }
+
+  .title-star {
+    width: 100px;
+    height: 100px;
+  }
+
+  .attraction-heading {
+    font-size: 28px;
+  }
+
+  .banner-text-scroll span {
+    font-size: 16px;
+  }
+}
