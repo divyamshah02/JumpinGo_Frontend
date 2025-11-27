@@ -84,6 +84,34 @@ document.addEventListener("DOMContentLoaded", () => {
     card.style.transition = "opacity 0.5s ease, transform 0.5s ease"
     observer.observe(card)
   })
+
+  window.addEventListener("scroll", () => {
+    const heroSection = document.querySelector(".hero-section")
+    if (!heroSection) return
+
+    const heroRect = heroSection.getBoundingClientRect()
+    const heroTop = heroRect.top
+    const heroBottom = heroRect.bottom
+
+    // Only apply parallax when hero section is in view
+    if (heroBottom > 0 && heroTop < window.innerHeight) {
+      const scrollPosition = window.pageYOffset
+      const stars = document.querySelectorAll(".floating-stars .star")
+
+      stars.forEach((star, index) => {
+        // Different parallax speeds for different stars
+        const speed = 0.05 + index * 0.02
+        const yPos = -(scrollPosition * speed)
+
+        // Keep stars within the hero section
+        if (heroTop <= 0) {
+          star.style.transform = `translateY(${yPos}px)`
+        } else {
+          star.style.transform = "translateY(0)"
+        }
+      })
+    }
+  })
 })
 
 // Load more products functionality
