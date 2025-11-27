@@ -87,29 +87,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", () => {
     const heroSection = document.querySelector(".hero-section")
-    if (!heroSection) return
+    const catalogueSection = document.querySelector(".catalogue-section")
 
-    const heroRect = heroSection.getBoundingClientRect()
-    const heroTop = heroRect.top
-    const heroBottom = heroRect.bottom
+    // Hero stars parallax
+    if (heroSection) {
+      const heroRect = heroSection.getBoundingClientRect()
+      const heroTop = heroRect.top
+      const heroBottom = heroRect.bottom
 
-    // Only apply parallax when hero section is in view
-    if (heroBottom > 0 && heroTop < window.innerHeight) {
-      const scrollPosition = window.pageYOffset
-      const stars = document.querySelectorAll(".floating-stars .star")
+      // Only apply parallax when hero section is in view
+      if (heroBottom > 0 && heroTop < window.innerHeight) {
+        const scrollPosition = window.pageYOffset
+        const stars = document.querySelectorAll(".floating-stars .star")
 
-      stars.forEach((star, index) => {
-        // Different parallax speeds for different stars
-        const speed = 0.05 + index * 0.02
-        const yPos = -(scrollPosition * speed)
+        stars.forEach((star, index) => {
+          // Different parallax speeds for different stars
+          const speed = 0.05 + index * 0.02
+          const yPos = -(scrollPosition * speed)
 
-        // Keep stars within the hero section
-        if (heroTop <= 0) {
-          star.style.transform = `translateY(${yPos}px)`
-        } else {
-          star.style.transform = "translateY(0)"
+          // Keep stars within the hero section
+          if (heroTop <= 0) {
+            star.style.transform = `translateY(${yPos}px)`
+          } else {
+            star.style.transform = "translateY(0)"
+          }
+        })
+      }
+    }
+
+    // Catalogue images parallax - faster movement
+    if (catalogueSection) {
+      const catalogueRect = catalogueSection.getBoundingClientRect()
+      const catalogueTop = catalogueRect.top
+      const catalogueBottom = catalogueRect.bottom
+      const windowHeight = window.innerHeight
+
+      // Apply parallax when catalogue section is in view
+      if (catalogueBottom > 0 && catalogueTop < windowHeight) {
+        const scrollProgress = (windowHeight - catalogueTop) / (windowHeight + catalogueRect.height)
+        const leftImage = document.querySelector(".catalogue-item-1")
+        const rightImage = document.querySelector(".catalogue-item-2")
+
+        if (leftImage && rightImage) {
+          // Faster parallax speed (0.15 compared to stars' 0.05-0.15)
+          const leftSpeed = 0.15
+          const rightSpeed = 0.18
+
+          // Calculate vertical movement based on scroll progress
+          const leftY = (scrollProgress - 0.5) * 100 * leftSpeed
+          const rightY = (scrollProgress - 0.5) * 100 * rightSpeed
+
+          // Apply transforms maintaining the original rotation
+          leftImage.style.transform = `translateY(${leftY}px)`
+          rightImage.style.transform = `translateY(${-rightY}px)`
         }
-      })
+      }
     }
   })
 })

@@ -1,7 +1,9 @@
+/* Updated all fonts to use Winky Rough for headings and Raleway for body text */
+
 /* Attractions Hero Section */
 .attractions-hero {
   background: white;
-  padding: 80px 0 60px;
+  padding: 150px 0;
   text-align: center;
 }
 
@@ -12,8 +14,8 @@
 
 .title-star {
   position: absolute;
-  width: 180px;
-  height: 180px;
+  width: 400px;
+  height: 350px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -22,10 +24,10 @@
 }
 
 .attractions-title {
-  font-family: "Big Shoulders Stencil", sans-serif;
-  font-size: 80px;
-  font-weight: 900;
-  color: #003d5b;
+  font-family: "Winky Rough", cursive;
+  font-size: 112px;
+  font-weight: 800;
+  color: #023047;
   margin: 0;
   position: relative;
   z-index: 2;
@@ -35,23 +37,26 @@
 
 /* Diagonal Banner */
 .diagonal-banner {
-  background: linear-gradient(90deg, #c2185b 0%, #d81b60 100%);
+  background: linear-gradient(90deg, #bd3257 0%, #bd3257 100%);
   padding: 25px 0;
   overflow: hidden;
   position: relative;
-  border-top: 3px solid #eddb13;
-  border-bottom: 3px solid #eddb13;
+  border-top: 2px solid #eddb13;
+  border-bottom: 2px solid #eddb13;
+  margin: -10px 0;
+  width: 105%;
+  margin-left: -2.5%;
 }
 
 .banner-text-scroll {
   display: flex;
   white-space: nowrap;
-  animation: scrollText 25s linear infinite;
+  animation: scrollText 30s linear infinite;
 }
 
 .banner-text-scroll span {
   font-family: "Winky Rough", cursive;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 700;
   font-style: italic;
   color: #eddb13;
@@ -76,40 +81,42 @@
 }
 
 .attraction-heading {
-  font-family: "Big Shoulders Stencil", sans-serif;
+  font-family: "Winky Rough", cursive;
   font-size: 48px;
   font-weight: 800;
-  color: #003d5b;
+  color: #023047;
   text-align: center;
   margin-bottom: 25px;
   text-transform: uppercase;
 }
 
 .attraction-description {
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  line-height: 1.8;
-  color: #333;
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 150%;
+  color: #023047;
   text-align: center;
   max-width: 900px;
   margin: 0 auto 60px;
   padding: 0 20px;
 }
 
+/* Updated image card styling with proper rounded corners and shadows */
 /* Dual Images */
 .attraction-images-dual {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto 40px;
   padding: 0 20px;
 }
 
 .attraction-image-card {
-  border-radius: 20px;
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   aspect-ratio: 3 / 4;
 }
 
@@ -120,14 +127,18 @@
   display: block;
 }
 
+.single-image-centered {
+  visibility: hidden;
+}
+
 /* Full Width Image */
 .attraction-image-full {
   width: 100%;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: none;
 }
 
 .attraction-image-full img {
@@ -135,26 +146,162 @@
   height: auto;
   display: block;
   object-fit: cover;
-  max-height: 600px;
+  max-height: 500px;
+}
+
+/* Bottom Banner Section */
+.bottom-banner-section {
+  background: #bd3257;
+  position: relative;
+  padding-bottom: 80px;
+}
+
+.bottom-diagonal-banner {
+  background: linear-gradient(90deg, #bd3257 0%, #bd3257 100%);
+  padding: 25px 0;
+  overflow: hidden;
+  position: relative;
+  border-top: 4px solid #eddb13;
+  border-bottom: 4px solid #eddb13;
+  transform: rotate(-2deg);
+  margin: -10px 0 60px;
+  width: 105%;
+  margin-left: -2.5%;
+}
+
+.banner-text-scroll-bottom {
+  display: flex;
+  white-space: nowrap;
+  animation: scrollText 30s linear infinite;
+}
+
+.banner-text-scroll-bottom span {
+  font-family: "Winky Rough", cursive;
+  font-size: 32px;
+  font-weight: 700;
+  font-style: italic;
+  color: #eddb13;
+  padding-right: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Info Cards Section */
+.info-cards-section {
+  background: #bd3257;
+  padding: 40px 0 80px;
+}
+
+.info-section-title {
+  font-family: "Winky Rough", cursive;
+  font-size: 56px;
+  font-weight: 800;
+  color: white;
+  text-align: center;
+  margin-bottom: 60px;
+  text-transform: uppercase;
+}
+
+.info-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.info-card {
+  background: rgba(189, 50, 87, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+}
+
+.info-card-icon {
+  width: 80px;
+  height: 80px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+}
+
+.info-card-icon i {
+  font-size: 36px;
+  color: #bd3257;
+}
+
+.info-card-title {
+  font-family: "Winky Rough", cursive;
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.info-card-description {
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.info-card-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  color: #bd3257;
+  transition: transform 0.3s ease;
+}
+
+.info-card-link:hover {
+  transform: scale(1.1);
+}
+
+.info-card-link i {
+  font-size: 18px;
 }
 
 /* Responsive Design */
+@media (max-width: 992px) {
+  .info-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
+
 @media (max-width: 768px) {
   .attractions-title {
-    font-size: 50px;
+    font-size: 60px;
   }
 
   .title-star {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
   }
 
-  .banner-text-scroll span {
-    font-size: 20px;
+  .banner-text-scroll span,
+  .banner-text-scroll-bottom span {
+    font-size: 24px;
   }
 
   .attraction-heading {
-    font-size: 36px;
+    font-size: 42px;
   }
 
   .attraction-description {
@@ -165,23 +312,36 @@
     grid-template-columns: 1fr;
     gap: 20px;
   }
+
+  .info-section-title {
+    font-size: 42px;
+  }
+
+  .info-card-title {
+    font-size: 24px;
+  }
 }
 
 @media (max-width: 480px) {
   .attractions-title {
-    font-size: 40px;
+    font-size: 45px;
   }
 
   .title-star {
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
   }
 
   .attraction-heading {
-    font-size: 28px;
+    font-size: 32px;
   }
 
-  .banner-text-scroll span {
-    font-size: 16px;
+  .banner-text-scroll span,
+  .banner-text-scroll-bottom span {
+    font-size: 18px;
+  }
+
+  .info-section-title {
+    font-size: 32px;
   }
 }

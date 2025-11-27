@@ -586,6 +586,7 @@ body {
   color: white;
   position: relative;
   z-index: 1;
+  overflow: hidden; /* Added overflow hidden to contain parallax elements */
 }
 
 .catalogue-stars {
@@ -657,6 +658,9 @@ body {
 
 .catalogue-item {
   position: relative;
+  /* Added transition for smooth parallax movement */
+  transition: transform 0.1s ease-out;
+  will-change: transform;
 }
 
 /* Reduced shadow on catalogue images */
@@ -668,6 +672,8 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   transform: rotate(-12deg);
   transition: transform 0.3s;
+  top: 20%;
+  left: 20%;
 }
 
 .catalogue-item-1 img:hover {
