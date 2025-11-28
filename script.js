@@ -125,21 +125,22 @@ document.addEventListener("DOMContentLoaded", () => {
       // Apply parallax when catalogue section is in view
       if (catalogueBottom > 0 && catalogueTop < windowHeight) {
         const scrollProgress = (windowHeight - catalogueTop) / (windowHeight + catalogueRect.height)
-        const leftImage = document.querySelector(".catalogue-item-1")
-        const rightImage = document.querySelector(".catalogue-item-2")
+        const leftImage = document.querySelector(".catalogue-item-left")
+        const rightImage = document.querySelector(".catalogue-item-right")
 
         if (leftImage && rightImage) {
-          // Faster parallax speed (0.15 compared to stars' 0.05-0.15)
-          const leftSpeed = 0.15
-          const rightSpeed = 0.18
+          // Parallax speeds - images move upward as you scroll down
+          const leftSpeed = 220
+          const rightSpeed = 300
 
-          // Calculate vertical movement based on scroll progress
-          const leftY = (scrollProgress - 0.5) * 100 * leftSpeed
-          const rightY = (scrollProgress - 0.5) * 100 * rightSpeed
+          // Calculate vertical movement - negative to move up
+          const leftY = -(scrollProgress * leftSpeed - 40)
+          const rightY = -(scrollProgress * rightSpeed - 50)
+          console.log("Left Y:", leftY, "Right Y:", rightY)
 
           // Apply transforms maintaining the original rotation
-          leftImage.style.transform = `translateY(${leftY}px)`
-          rightImage.style.transform = `translateY(${-rightY}px)`
+          leftImage.style.transform = `rotate(19deg) translateY(${leftY}px)`
+          rightImage.style.transform = `rotate(-21deg) translateY(${rightY}px)`
         }
       }
     }
