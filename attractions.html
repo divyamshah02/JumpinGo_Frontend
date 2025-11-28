@@ -17,12 +17,13 @@
     <header class="header pt-0">
         <div class="container-fluid px-4">
             <nav class="navbar navbar-expand-lg py-0">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="#">
                     <img src="logo.png" alt="JUMPIN GO" class="logo">
                 </a>
                 <div class="ms-auto d-flex align-items-center gap-3">
-                    <a href="#" class="nav-link-register">Register</a>
-                    <button class="btn-login">Login</button>
+                    <!-- <a href="#" class="nav-link-register">Register</a> -->
+                    <!-- Updated Login button with classic 3D shadow effect -->
+                    <button class="btn-login">Book A Ticket</button>
                     <button class="hamburger-menu" type="button">
                         <span></span>
                         <span></span>
@@ -134,44 +135,98 @@
         <div class="info-cards-section">
             <div class="container">
                 <h2 class="info-section-title">LOREM IPSUM SIT DOLOR AMET</h2>
-                <div class="info-cards-grid">
-                    <div class="info-card">
-                        <div class="info-card-icon">
-                            <i class="fas fa-headset"></i>
+                <p class="info-section-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut lab</p>
+                
+                <!-- Converted grid to carousel structure with wrapper and slide container -->
+                <div class="carousel-wrapper">
+                    <div class="info-cards-carousel">
+                        <div class="info-card">
+                            <div class="card-header">
+                                <div class="user-info">
+                                    <div class="user-avatar"></div>
+                                    <div class="user-details">
+                                        <h3 class="user-name">Viezh Robert</h3>
+                                        <p class="user-location">ABC</p>
+                                    </div>
+                                </div>
+                                <div class="rating">4.5</div>
+                            </div>
+                            <p class="info-card-description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut lab
+                            </p>
                         </div>
-                        <h3 class="info-card-title">Lorem ipsum</h3>
-                        <p class="info-card-description">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit diam maximus tellus nibh gravida nisl pretium viverra.
-                        </p>
-                        <a href="#" class="info-card-link">
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
+
+                        <div class="info-card">
+                            <div class="card-header">
+                                <div class="user-info">
+                                    <div class="user-avatar"></div>
+                                    <div class="user-details">
+                                        <h3 class="user-name">Viezh Robert</h3>
+                                        <p class="user-location">ABC</p>
+                                    </div>
+                                </div>
+                                <div class="rating">4.5</div>
+                            </div>
+                            <p class="info-card-description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut lab
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="card-header">
+                                <div class="user-info">
+                                    <div class="user-avatar"></div>
+                                    <div class="user-details">
+                                        <h3 class="user-name">Viezh Robert</h3>
+                                        <p class="user-location">ABC</p>
+                                    </div>
+                                </div>
+                                <div class="rating">4.5</div>
+                            </div>
+                            <p class="info-card-description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut lab
+                            </p>
+                        </div>
+
+                        <!-- Added more cards for carousel demonstration -->
+                        <div class="info-card">
+                            <div class="card-header">
+                                <div class="user-info">
+                                    <div class="user-avatar"></div>
+                                    <div class="user-details">
+                                        <h3 class="user-name">John Doe</h3>
+                                        <p class="user-location">XYZ</p>
+                                    </div>
+                                </div>
+                                <div class="rating">4.8</div>
+                            </div>
+                            <p class="info-card-description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut lab
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="card-header">
+                                <div class="user-info">
+                                    <div class="user-avatar"></div>
+                                    <div class="user-details">
+                                        <h3 class="user-name">Jane Smith</h3>
+                                        <p class="user-location">DEF</p>
+                                    </div>
+                                </div>
+                                <div class="rating">4.7</div>
+                            </div>
+                            <p class="info-card-description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut lab
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="info-card">
-                        <div class="info-card-icon">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <h3 class="info-card-title">Lorem ipsum</h3>
-                        <p class="info-card-description">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit diam maximus tellus nibh gravida nisl pretium viverra.
-                        </p>
-                        <a href="#" class="info-card-link">
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-
-                    <div class="info-card">
-                        <div class="info-card-icon">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <h3 class="info-card-title">Lorem ipsum</h3>
-                        <p class="info-card-description">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit diam maximus tellus nibh gravida nisl pretium viverra.
-                        </p>
-                        <a href="#" class="info-card-link">
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
+                    <!-- Added navigation dots for carousel -->
+                    <div class="carousel-navigation">
+                        <button class="nav-dot active" data-slide="0"></button>
+                        <button class="nav-dot" data-slide="1"></button>
+                        <button class="nav-dot" data-slide="2"></button>
                     </div>
                 </div>
             </div>
@@ -183,8 +238,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <img src="/placeholder.svg?height=60&width=180" alt="JUMPIN GO" class="footer-logo">
-                    <p>Let's Be Ultimate Buddies!</p>
+                    <img src="logo.png" alt="JUMPIN GO" class="footer-logo">
+                    <p>Let’s Be Ultimate Buddies!</p>
                     <p>Stay in the loop for upcoming events, early bird offers, and behind-the-scenes fun.
                         Follow us, tag us, and keep bouncing with the JumpFam!</p>
                     <div class="social-icons">
@@ -224,9 +279,9 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy;2025 Company Name. All rights reserved</p>
-                <div class="footer-links-bottom">
-                    <a href="privacy_policy.html">Privacy & Policy</a>
+                <p>© JumpinGo. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy & Policy</a>
                     <a href="#">Terms & Condition</a>
                 </div>
             </div>
@@ -235,5 +290,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+    <!-- Added carousel script -->
+    <script src="attractions-carousel.js"></script>
 </body>
 </html>

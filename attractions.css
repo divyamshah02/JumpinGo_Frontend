@@ -151,7 +151,7 @@
 
 /* Bottom Banner Section */
 .bottom-banner-section {
-  background: #bd3257;
+  background: #6d0e27;
   position: relative;
   padding-bottom: 80px;
 }
@@ -161,9 +161,8 @@
   padding: 25px 0;
   overflow: hidden;
   position: relative;
-  border-top: 4px solid #eddb13;
-  border-bottom: 4px solid #eddb13;
-  transform: rotate(-2deg);
+  border-top: 2px solid #eddb13;
+  border-bottom: 2px solid #eddb13;
   margin: -10px 0 60px;
   width: 105%;
   margin-left: -2.5%;
@@ -188,100 +187,174 @@
 
 /* Info Cards Section */
 .info-cards-section {
-  background: #bd3257;
-  padding: 40px 0 80px;
+  background: #6d0e27;
+  padding: 80px 0 100px;
 }
 
 .info-section-title {
   font-family: "Winky Rough", cursive;
   font-size: 56px;
-  font-weight: 800;
+  font-weight: 700;
   color: white;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.info-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  max-width: 1200px;
+.info-section-subtitle {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: white;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+  opacity: 0.95;
+}
+
+/* Updated grid to carousel wrapper with overflow hidden */
+.carousel-wrapper {
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+.info-cards-carousel {
+  display: flex;
+  gap: 40px;
+  transition: transform 0.5s ease-in-out;
+  padding-bottom: 20px;
 }
 
 .info-card {
-  background: rgba(189, 50, 87, 0.6);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
-  padding: 40px 30px;
-  text-align: center;
+  background: #8e0b0f;
+  border: none;
+  border-radius: 16px;
+  padding: 35px 30px;
   position: relative;
   transition: transform 0.3s ease;
+  box-shadow: 12px 12px 0 0 #ff644b;
+  flex: 0 0 calc(33.333% - 27px); /* Show 3 cards at once */
+  min-width: calc(33.333% - 27px);
 }
 
-.info-card:hover {
-  transform: translateY(-5px);
+/* Removing pseudo-elements as box-shadow works better */
+.info-card::after,
+.info-card::before {
+  display: none;
 }
 
-.info-card-icon {
-  width: 80px;
-  height: 80px;
-  background: white;
-  border-radius: 50%;
+.card-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 0 auto 25px;
+  justify-content: space-between;
+  margin-bottom: 25px;
 }
 
-.info-card-icon i {
-  font-size: 36px;
-  color: #bd3257;
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
-.info-card-title {
-  font-family: "Winky Rough", cursive;
-  font-size: 28px;
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.user-name {
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
   font-weight: 700;
   color: white;
-  margin-bottom: 15px;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.user-location {
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.rating {
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
 }
 
 .info-card-description {
   font-family: "Raleway", sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
   color: white;
-  margin-bottom: 20px;
+  margin: 0;
 }
 
+.info-card-icon,
+.info-card-title,
 .info-card-link {
-  display: inline-flex;
-  align-items: center;
+  display: none;
+}
+
+/* Added carousel navigation dots styling */
+.carousel-navigation {
+  display: flex;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: white;
+  gap: 12px;
+  margin-top: 50px;
+}
+
+.nav-dot {
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  color: #bd3257;
-  transition: transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
 }
 
-.info-card-link:hover {
-  transform: scale(1.1);
+.nav-dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
 }
 
-.info-card-link i {
-  font-size: 18px;
+.nav-dot.active {
+  background: white;
+  width: 40px;
+  border-radius: 8px;
 }
 
 /* Responsive Design */
 @media (max-width: 992px) {
-  .info-cards-grid {
-    grid-template-columns: 1fr;
-    gap: 25px;
+  .info-card {
+    flex: 0 0 calc(50% - 20px); /* Show 2 cards on tablet */
+    min-width: calc(50% - 20px);
+  }
+
+  .info-section-title {
+    font-size: 48px;
   }
 }
 
@@ -297,7 +370,7 @@
 
   .banner-text-scroll span,
   .banner-text-scroll-bottom span {
-    font-size: 24px;
+    font-size: 32px;
   }
 
   .attraction-heading {
@@ -319,6 +392,10 @@
 
   .info-card-title {
     font-size: 24px;
+  }
+  .info-card {
+    flex: 0 0 100%; /* Show 1 card on mobile */
+    min-width: 100%;
   }
 }
 
