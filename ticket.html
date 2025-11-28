@@ -10,19 +10,20 @@
     <link rel="stylesheet" href="ticket.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil:opsz,wght@10..72,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
     <header class="header pt-0">
         <div class="container-fluid px-4">
             <nav class="navbar navbar-expand-lg py-0">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="#">
                     <img src="logo.png" alt="JUMPIN GO" class="logo">
                 </a>
                 <div class="ms-auto d-flex align-items-center gap-3">
-                    <a href="#" class="nav-link-register">Register</a>
-                    <button class="btn-login">Login</button>
+                    <!-- <a href="#" class="nav-link-register">Register</a> -->
+                    <!-- Updated Login button with classic 3D shadow effect -->
+                    <button class="btn-login">Book A Ticket</button>
                     <button class="hamburger-menu" type="button">
                         <span></span>
                         <span></span>
@@ -35,28 +36,50 @@
 
     <!-- Ticket Details Section -->
     <section class="ticket-details-section">
-        <div class="container">
+        <div class="me-0 me-md-5">
             <!-- Breadcrumb -->
-            <nav class="breadcrumb-nav">
-                <a href="index.html">Home</a>
-                <span>/</span>
-                <a href="#">Tickets</a>
-                <span>/</span>
-                <span>Sky Swing</span>
-            </nav>
-
             <div class="ticket-content">
-                <!-- Left side - Image -->
+                <!-- Added e-commerce style image gallery with main image and thumbnails -->
                 <div class="ticket-image-container">
-                    <img src="Attractions-04.jpg" alt="Sky Swing Ride" class="ticket-main-image">
+                    <!-- Main Image Display -->
+                    <div class="main-image-wrapper">
+                        <img src="Attractions-04.jpg" alt="Sky Swing Ride" class="ticket-main-image" id="mainImage">
+                    </div>
+                    
+                    <!-- Thumbnail Gallery -->
+                    <div class="thumbnail-gallery">
+                        <div class="thumbnail-item active" data-image="Attractions-04.jpg">
+                            <img src="Attractions-04.jpg" alt="Thumbnail 1">
+                        </div>
+                        <div class="thumbnail-item" data-image="Attractions-04.jpg">
+                            <img src="Attractions-04.jpg" alt="Thumbnail 2">
+                        </div>
+                        <div class="thumbnail-item" data-image="Attractions-04.jpg">
+                            <img src="Attractions-04.jpg" alt="Thumbnail 3">
+                        </div>
+                        <div class="thumbnail-item" data-image="Attractions-04.jpg">
+                            <img src="Attractions-04.jpg" alt="Thumbnail 4">
+                        </div>
+                        <div class="thumbnail-item" data-image="Attractions-04.jpg">
+                            <img src="Attractions-04.jpg" alt="Thumbnail 5">
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Right side - Details -->
                 <div class="ticket-details">
-                    <h1 class="ticket-title">Sky Swing</h1>
+                     <nav class="breadcrumb-nav">
+                        <a href="index.html">Home</a>
+                        <span>/</span>
+                        <a href="#">Tickets</a>
+                        <span>/</span>
+                        <span>Ticket 1</span>
+                    </nav>
+
+                    <h1 class="ticket-title">Ticket One</h1>
                     
                     <p class="ticket-description">
-                        Experience the ultimate thrill at JumpinGo! Soar high on our Sky Swing, enjoy gravity-defying fun on trampolines, and test your limits on exciting obstacle courses. Perfect for families, friends, and adrenaline seekers. With state-of-the-art safety, vibrant atmosphere, and endless entertainment, JumpinGo promises unforgettable memories. Book your ticket now and leap into adventure!
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     </p>
 
                     <div class="ticket-price">
@@ -79,13 +102,7 @@
                                 <i class="fas fa-plus"></i>
                             </button>
                             <div class="accordion-content">
-                                <ul>
-                                    <li><strong>Height Requirement:</strong> Minimum 4 feet</li>
-                                    <li><strong>Age Limit:</strong> 8 years and above</li>
-                                    <li><strong>Duration:</strong> 5 minutes per ride</li>
-                                    <li><strong>Capacity:</strong> 24 riders simultaneously</li>
-                                    <li><strong>Safety:</strong> Full body harness and secure locking system</li>
-                                </ul>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             </div>
                         </div>
 
@@ -95,13 +112,23 @@
                                 <i class="fas fa-plus"></i>
                             </button>
                             <div class="accordion-content">
-                                <p>The Sky Swing is our signature attraction that lifts you 100 feet in the air while spinning at exhilarating speeds. Feel the wind rush past as you swing out over the park, creating memories that will last a lifetime. This ride combines the classic swing carousel with modern thrills, perfect for both adventure seekers and those looking for scenic views of JumpinGo park.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-button collapsed">
+                                <span>Related</span>
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Changed from clickable button to static "Buy Offline" display -->
-                    <div class="buy-offline-label">Buy Offline</div>
+                    <!-- Changed button text to "Book Now" -->
+                    <button class="btn-book-now">Book Now</button>
                 </div>
             </div>
         </div>
@@ -110,7 +137,7 @@
     <!-- Gallery Section -->
     <section class="gallery-section">
         <div class="container">
-            <h2 class="gallery-title">Gallery Of Sky Swing</h2>
+            <h2 class="gallery-title">Gallery Of Ticket One</h2>
             
             <div class="gallery-grid">
                 <!-- Large top image -->
@@ -120,22 +147,132 @@
                 
                 <!-- Four smaller images in 2x2 grid -->
                 <div class="gallery-item gallery-small">
-                    <img src="Attractions-09.jpg" alt="Sky Swing Gallery 2">
+                    <img src="Attractions-01.jpg" alt="Gallery 2">
                 </div>
                 <div class="gallery-item gallery-small">
-                    <img src="Attractions-11.jpg" alt="Sky Swing Gallery 3">
+                    <img src="Attractions-03.jpg" alt="Gallery 3">
                 </div>
                 <div class="gallery-item gallery-small">
-                    <img src="Attractions-08.jpg" alt="Sky Swing Gallery 4">
+                    <img src="Home page images-18.jpg" alt="Gallery 4">
                 </div>
                 <div class="gallery-item gallery-small">
-                    <img src="Attractions-06.jpg" alt="Sky Swing Gallery 5">
+                    <img src="Home page images-02.jpg" alt="Gallery 5">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+        <!-- Bottom Banner Section -->
+    <section class="bottom-banner-section">
+        <div class="bottom-diagonal-banner">
+            <div class="banner-text-scroll-bottom">
+                <span>LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET - </span>
+                <span>LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET - </span>
+                <span>LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET LOREM IPSUM SIT DOLOR AMET - </span>
+            </div>
+        </div>
+
+        <div class="info-cards-section">
+            <div class="container">
+                <h2 class="info-section-title">LOREM IPSUM SIT DOLOR AMET</h2>
+                <p class="info-section-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut lab</p>
+                
+                <!-- Converted grid to carousel structure with wrapper and slide container -->
+                <div class="carousel-wrapper">
+                    <div class="info-cards-carousel">
+                        <div class="info-card">
+                            <div class="card-header">
+                                <div class="user-info">
+                                    <div class="user-avatar"></div>
+                                    <div class="user-details">
+                                        <h3 class="user-name">Viezh Robert</h3>
+                                        <p class="user-location">ABC</p>
+                                    </div>
+                                </div>
+                                <div class="rating">4.5</div>
+                            </div>
+                            <p class="info-card-description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut lab
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="card-header">
+                                <div class="user-info">
+                                    <div class="user-avatar"></div>
+                                    <div class="user-details">
+                                        <h3 class="user-name">Viezh Robert</h3>
+                                        <p class="user-location">ABC</p>
+                                    </div>
+                                </div>
+                                <div class="rating">4.5</div>
+                            </div>
+                            <p class="info-card-description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut lab
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="card-header">
+                                <div class="user-info">
+                                    <div class="user-avatar"></div>
+                                    <div class="user-details">
+                                        <h3 class="user-name">Viezh Robert</h3>
+                                        <p class="user-location">ABC</p>
+                                    </div>
+                                </div>
+                                <div class="rating">4.5</div>
+                            </div>
+                            <p class="info-card-description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut lab
+                            </p>
+                        </div>
+
+                        <!-- Added more cards for carousel demonstration -->
+                        <div class="info-card">
+                            <div class="card-header">
+                                <div class="user-info">
+                                    <div class="user-avatar"></div>
+                                    <div class="user-details">
+                                        <h3 class="user-name">John Doe</h3>
+                                        <p class="user-location">XYZ</p>
+                                    </div>
+                                </div>
+                                <div class="rating">4.8</div>
+                            </div>
+                            <p class="info-card-description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut lab
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="card-header">
+                                <div class="user-info">
+                                    <div class="user-avatar"></div>
+                                    <div class="user-details">
+                                        <h3 class="user-name">Jane Smith</h3>
+                                        <p class="user-location">DEF</p>
+                                    </div>
+                                </div>
+                                <div class="rating">4.7</div>
+                            </div>
+                            <p class="info-card-description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut lab
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Added navigation dots for carousel -->
+                    <div class="carousel-navigation">
+                        <button class="nav-dot active" data-slide="0"></button>
+                        <button class="nav-dot" data-slide="1"></button>
+                        <button class="nav-dot" data-slide="2"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">

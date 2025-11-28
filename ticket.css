@@ -11,17 +11,18 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 30px;
-  font-size: 14px;
+  font-size: 12px;
+  font-family: "Raleway", sans-serif;
 }
 
 .breadcrumb-nav a {
-  color: var(--dark-gray);
+  color: #023047;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .breadcrumb-nav a:hover {
-  color: var(--blue);
+  color: #29abe2;
 }
 
 .breadcrumb-nav span {
@@ -29,32 +30,88 @@
 }
 
 .breadcrumb-nav span:last-child {
-  color: var(--dark-gray);
+  color: #023047;
   font-weight: 600;
 }
 
 /* Ticket Content Layout */
 .ticket-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.25fr 1fr;
   gap: 60px;
   align-items: start;
 }
 
-/* Left side - Image */
+/* New e-commerce style image gallery structure */
+/* Left side - Image Gallery */
 .ticket-image-container {
   position: sticky;
   top: 100px;
+  /* Setting max height to match right content section height */
+  display: flex;
+  flex-direction: column;
+  max-height: fit-content;
+}
+
+/* Main Image Display */
+.main-image-wrapper {
+  width: 100%;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background: #f5f5f5;
+  /* Adjusted aspect ratio and added max-height to align with right content */
+  max-height: calc(100vh - 300px);
+  border: 2px solid #e0e0e0;
 }
 
 .ticket-main-image {
   width: 100%;
-  height: auto;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(41, 171, 226, 0.3);
-  border: 3px solid var(--blue);
+  height: 100%;
+  /* Changed from cover to contain to fit within bounds properly */
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.main-image-wrapper:hover .ticket-main-image {
+  transform: scale(1.05);
+}
+
+/* Thumbnail Gallery */
+.thumbnail-gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.thumbnail-item {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #e0e0e0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #f5f5f5;
+}
+
+.thumbnail-item:hover {
+  border-color: #29abe2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(41, 171, 226, 0.3);
+}
+
+.thumbnail-item.active {
+  border-color: #29abe2;
+  border-width: 3px;
+  box-shadow: 0 2px 8px rgba(41, 171, 226, 0.4);
+}
+
+.thumbnail-item img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  aspect-ratio: 4 / 3;
+  display: block;
 }
 
 /* Right side - Details */
@@ -63,8 +120,8 @@
 }
 
 .ticket-title {
-  font-size: 42px;
-  font-weight: 900;
+  font-size: 48px;
+  font-weight: 800;
   color: #003d5c;
   margin-bottom: 20px;
   font-family: "Winky Rough", sans-serif;
@@ -72,11 +129,12 @@
 }
 
 .ticket-description {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.8;
-  color: #666;
+  color: #023047;
+  font-weight: 400;
   margin-bottom: 25px;
-  text-align: justify;
+  font-family: "Raleway", sans-serif;
 }
 
 /* Price */
@@ -90,12 +148,14 @@
 .price-amount {
   font-size: 32px;
   font-weight: 900;
-  color: var(--dark-gray);
+  color: #023047;
+  font-family: "Raleway", sans-serif;
 }
 
 .price-per {
   font-size: 16px;
   color: #999;
+  font-family: "Raleway", sans-serif;
 }
 
 /* Quantity Selector */
@@ -106,41 +166,41 @@
   margin-bottom: 30px;
   width: fit-content;
   border: 2px solid #e0e0e0;
-  border-radius: 8px;
+  border-radius: 50px;
   overflow: hidden;
+  background: white;
 }
 
 .qty-btn {
-  background: #f5f5f5;
+  background: white;
   border: none;
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 20px;
   font-weight: 700;
-  color: var(--dark-gray);
+  color: #023047;
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .qty-btn:hover {
-  background: var(--blue);
+  background: #29abe2;
   color: white;
 }
 
 .qty-input {
-  width: 60px;
-  height: 45px;
+  width: 70px;
+  height: 50px;
   border: none;
-  border-left: 2px solid #e0e0e0;
-  border-right: 2px solid #e0e0e0;
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
-  color: var(--dark-gray);
+  color: #023047;
   outline: none;
+  font-family: "Raleway", sans-serif;
 }
 
 .qty-input::-webkit-outer-spin-button,
@@ -169,13 +229,14 @@
   cursor: pointer;
   font-size: 16px;
   font-weight: 700;
-  color: var(--dark-gray);
+  color: #023047;
   text-align: left;
   transition: all 0.3s;
+  font-family: "Raleway", sans-serif;
 }
 
 .accordion-button:hover {
-  color: var(--blue);
+  color: #29abe2;
 }
 
 .accordion-button i {
@@ -206,21 +267,23 @@
 
 .accordion-content ul li {
   padding: 8px 0;
-  color: #666;
+  color: #023047;
   font-size: 14px;
   line-height: 1.6;
+  font-family: "Raleway", sans-serif;
 }
 
 .accordion-content p {
-  color: #666;
+  color: #023047;
   font-size: 14px;
   line-height: 1.8;
   margin: 0;
+  font-family: "Raleway", sans-serif;
 }
 
-/* Replaced clickable button with non-clickable label */
-.buy-offline-label {
-  background: var(--red);
+/* Updated button to "Book Now" with proper styling */
+.btn-book-now {
+  background: #bd3257;
   color: white;
   border: none;
   padding: 16px 0;
@@ -229,8 +292,16 @@
   font-weight: 700;
   font-size: 16px;
   text-transform: capitalize;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(235, 33, 39, 0.3);
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(189, 50, 87, 0.3);
+  font-family: "Raleway", sans-serif;
+}
+
+.btn-book-now:hover {
+  background: #a02847;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(189, 50, 87, 0.4);
 }
 
 /* Gallery Section */
@@ -309,6 +380,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .thumbnail-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 576px) {
   .ticket-title {
     font-size: 28px;
@@ -324,5 +401,284 @@
 
   .gallery-small img {
     height: 200px;
+  }
+
+  .thumbnail-gallery {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+}
+
+/* Bottom Banner Section */
+.bottom-banner-section {
+  background: #6d0e27;
+  position: relative;
+  padding-bottom: 80px;
+}
+
+.bottom-diagonal-banner {
+  background: linear-gradient(90deg, #bd3257 0%, #bd3257 100%);
+  padding: 25px 0;
+  overflow: hidden;
+  position: relative;
+  border-top: 2px solid #eddb13;
+  border-bottom: 2px solid #eddb13;
+  margin: -10px 0 60px;
+  width: 105%;
+  margin-left: -2.5%;
+}
+
+.banner-text-scroll-bottom {
+  display: flex;
+  white-space: nowrap;
+  animation: scrollText 30s linear infinite;
+}
+
+.banner-text-scroll-bottom span {
+  font-family: "Winky Rough", cursive;
+  font-size: 32px;
+  font-weight: 700;
+  font-style: italic;
+  color: #eddb13;
+  padding-right: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Info Cards Section */
+.info-cards-section {
+  background: #6d0e27;
+  padding: 80px 0 100px;
+}
+
+.info-section-title {
+  font-family: "Winky Rough", cursive;
+  font-size: 56px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-section-subtitle {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: white;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+  opacity: 0.95;
+}
+
+/* Updated grid to carousel wrapper with overflow hidden */
+.carousel-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+.info-cards-carousel {
+  display: flex;
+  gap: 40px;
+  transition: transform 0.5s ease-in-out;
+  padding-bottom: 20px;
+}
+
+.info-card {
+  background: #8e0b0f;
+  border: none;
+  border-radius: 16px;
+  padding: 35px 30px;
+  position: relative;
+  transition: transform 0.3s ease;
+  box-shadow: 12px 12px 0 0 #ff644b;
+  flex: 0 0 calc(33.333% - 27px); /* Show 3 cards at once */
+  min-width: calc(33.333% - 27px);
+}
+
+/* Removing pseudo-elements as box-shadow works better */
+.info-card::after,
+.info-card::before {
+  display: none;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.user-name {
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.user-location {
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.rating {
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+
+.info-card-description {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: white;
+  margin: 0;
+}
+
+.info-card-icon,
+.info-card-title,
+.info-card-link {
+  display: none;
+}
+
+/* Added carousel navigation dots styling */
+.carousel-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 50px;
+}
+
+.nav-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.nav-dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
+}
+
+.nav-dot.active {
+  background: white;
+  width: 40px;
+  border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .info-card {
+    flex: 0 0 calc(50% - 20px); /* Show 2 cards on tablet */
+    min-width: calc(50% - 20px);
+  }
+
+  .info-section-title {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .attractions-title {
+    font-size: 60px;
+  }
+
+  .title-star {
+    width: 140px;
+    height: 140px;
+  }
+
+  .banner-text-scroll span,
+  .banner-text-scroll-bottom span {
+    font-size: 32px;
+  }
+
+  .attraction-heading {
+    font-size: 42px;
+  }
+
+  .attraction-description {
+    font-size: 14px;
+  }
+
+  .attraction-images-dual {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .info-section-title {
+    font-size: 42px;
+  }
+
+  .info-card-title {
+    font-size: 24px;
+  }
+  .info-card {
+    flex: 0 0 100%; /* Show 1 card on mobile */
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .attractions-title {
+    font-size: 45px;
+  }
+
+  .title-star {
+    width: 110px;
+    height: 110px;
+  }
+
+  .attraction-heading {
+    font-size: 32px;
+  }
+
+  .banner-text-scroll span,
+  .banner-text-scroll-bottom span {
+    font-size: 18px;
+  }
+
+  .info-section-title {
+    font-size: 32px;
   }
 }
