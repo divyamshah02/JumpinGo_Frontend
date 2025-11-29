@@ -422,3 +422,8 @@
     font-size: 32px;
   }
 }
+
+.footer {
+  background: #6d0e27;
+  color: white;
+}
