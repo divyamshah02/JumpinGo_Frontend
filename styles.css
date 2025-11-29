@@ -1263,19 +1263,19 @@ body {
 
 /* Dark green cards matching reference design */
 .testimonial-card {
-  background: rgba(13, 62, 37, 0.85);
-  backdrop-filter: blur(10px);
+  background: rgba(6, 91, 46, 1);
+  /* backdrop-filter: blur(10px); */
   border-radius: 10px;
   padding: 30px 25px;
-  border: 2px solid rgba(13, 62, 37, 0.6);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  /* border: 2px solid rgba(44, 130, 85, 1); */
+  box-shadow: 12px 15px 0 rgba(44, 130, 85, 1);
   transition: transform 0.3s;
   min-height: 200px;
 }
 
 .testimonial-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+  /* box-shadow: 7px 9px 0 rgba(44, 130, 85, 1); */
 }
 
 /* Updated header layout to match reference - horizontal layout */
@@ -1383,7 +1383,7 @@ body {
   height: 45px;
   border-radius: 50%;
   background: transparent;
-  border: 2px solid white;
+  border: 2px solid transparent;
   color: white;
   cursor: pointer;
   display: flex;
@@ -1415,7 +1415,7 @@ body {
 }
 
 .footer-logo {
-  height: 50px;
+  height: 5rem;
   margin-bottom: 20px;
 }
 
@@ -1463,6 +1463,7 @@ body {
 
 .footer-column ul {
   list-style: none;
+  padding-left: 0;
 }
 
 .footer-column ul li {
