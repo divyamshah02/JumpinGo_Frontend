@@ -110,7 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
           // Calculate vertical movement - negative to move up
           const leftY = -(scrollProgress * leftSpeed - 40)
           const rightY = -(scrollProgress * rightSpeed - 50)
-          console.log("Left Y:", leftY, "Right Y:", rightY)
 
           // Apply transforms maintaining the original rotation
           leftImage.style.transform = `rotate(19deg) translateY(${leftY}px)`

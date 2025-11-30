@@ -429,7 +429,7 @@
 }
 
 .banner-text-scroll-bottom {
-  display: flex;
+  /* display: flex; */
   white-space: nowrap;
   animation: scrollText 30s linear infinite;
 }
