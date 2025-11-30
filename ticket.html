@@ -16,19 +16,43 @@
     <!-- Header -->
     <header class="header pt-0">
         <div class="container-fluid px-4">
-            <nav class="navbar navbar-expand-lg py-0">
-                <a class="navbar-brand" href="#">
+            <nav class="navbar py-0">
+                <a class="navbar-brand" href="index.html">
                     <img src="logo.png" alt="JUMPIN GO" class="logo">
                 </a>
                 <div class="ms-auto d-flex align-items-center gap-3">
-                    <!-- <a href="#" class="nav-link-register">Register</a> -->
-                    <!-- Updated Login button with classic 3D shadow effect -->
-                    <button class="btn-login">Book A Ticket</button>
-                    <button class="hamburger-menu" type="button">
+                    <!-- Book A Ticket button hidden only on mobile (below 576px) -->
+                    <button class="btn-login d-none d-sm-block" onclick="window.location = 'ticket.html'">Book A Ticket</button>
+                    <!-- Bootstrap hamburger toggler now visible on all screen sizes -->
+                    <button class="hamburger-menu" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span></span>
                         <span></span>
                         <span></span>
                     </button>
+                </div>
+                <!-- Collapsible menu -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about_us.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="attractions.html">Attractions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ticket.html">Ticket</a>
+                        </li>
+                        <!-- Book A Ticket button shown only on mobile (below 576px) -->
+                        <li class="nav-item d-sm-none">
+                            <a class="nav-link btn-login text-center mt-2" href="ticket.html">Book A Ticket</a>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         </div>
