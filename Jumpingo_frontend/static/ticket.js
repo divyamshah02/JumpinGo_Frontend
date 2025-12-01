@@ -65,6 +65,30 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
+  const bookingForm = document.getElementById("bookingForm")
+
+  if (bookingForm) {
+    bookingForm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const name = document.getElementById("bookingName").value
+      const number = document.getElementById("bookingNumber").value
+      const tickets = document.getElementById("bookingTickets").value
+      const date = document.getElementById("bookingDate").value
+      const dateText =
+        document.getElementById("bookingDate").options[document.getElementById("bookingDate").selectedIndex].text
+
+      alert(`Booking Registered!\n\nOut team will reach out to you shortly\n\nName: ${name}\nNumber: ${number}\nTickets: ${tickets}\nDate: ${dateText}`)
+
+      // Close the modal
+      const modal = document.querySelector("#bookingModal").M.Modal.getInstance()
+      modal.close()
+
+      // Reset form
+      bookingForm.reset()
+    })
+  }
+
   // Book Now button functionality
   const bookNowBtn = document.querySelector(".btn-book-now")
 
@@ -76,8 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-
-   const carousel = document.querySelector(".info-cards-carousel")
+  const carousel = document.querySelector(".info-cards-carousel")
   const dots = document.querySelectorAll(".nav-dot")
   const cards = document.querySelectorAll(".info-card")
 

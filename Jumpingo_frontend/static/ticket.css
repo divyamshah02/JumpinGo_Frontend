@@ -304,6 +304,123 @@
   box-shadow: 0 6px 20px rgba(189, 50, 87, 0.4);
 }
 
+/* Added booking modal styles matching contact form */
+/* Booking Modal Styles */
+.booking-modal-content {
+  background: white;
+  border-radius: 30px;
+  border: none;
+  padding: 20px;
+}
+
+.booking-modal-content .modal-header {
+  padding: 10px 10px 0;
+}
+
+.booking-modal-content .btn-close-white {
+  opacity: 1;
+  filter: brightness(1);
+}
+
+.booking-modal-content .modal-body {
+  padding: 30px 40px 40px;
+}
+
+.booking-form-title {
+  font-family: "Winky Rough", cursive;
+  font-size: 36px;
+  color: #023047;
+  text-align: center;
+  margin-bottom: 35px;
+  font-weight: 700;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.booking-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.booking-form-group label {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #023047;
+}
+
+.booking-form-group input,
+.booking-form-group select {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px 15px;
+  color: #023047;
+  font-size: 15px;
+  font-family: "Raleway", sans-serif;
+}
+
+.booking-form-group input::placeholder {
+  color: #999;
+}
+
+.booking-form-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23023047' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 40px;
+}
+
+.booking-form-group select option {
+  background: white;
+  color: #023047;
+  padding: 10px;
+}
+
+.booking-submit-btn {
+  background: #bd3257;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 15px;
+  font-family: "Winky Rough", cursive;
+  transition: all 0.3s;
+}
+
+.booking-submit-btn:hover {
+  transform: translateY(2px);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments for modal */
+@media (max-width: 576px) {
+  .booking-modal-content .modal-body {
+    padding: 20px 20px 30px;
+  }
+
+  .booking-form-title {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+
+  .booking-form {
+    gap: 20px;
+  }
+}
+
 /* Gallery Section */
 .gallery-section {
   background: #fafafa;
@@ -429,7 +546,6 @@
 }
 
 .banner-text-scroll-bottom {
-  /* display: flex; */
   white-space: nowrap;
   animation: scrollText 30s linear infinite;
 }

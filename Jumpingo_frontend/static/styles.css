@@ -1218,12 +1218,12 @@ body {
   cursor: pointer;
   transition: all 0.3s;
   text-transform: capitalize;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 4px 0 rgba(237, 219, 19, 1);
 }
 
 .btn-banner:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 0 rgba(237, 219, 19, 1);
 }
 
 /* Testimonials Section */

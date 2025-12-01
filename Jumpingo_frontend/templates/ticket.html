@@ -111,13 +111,6 @@
                         <span class="price-per">Per person</span>
                     </div>
 
-                    <!-- Quantity Selector -->
-                    <!-- <div class="quantity-selector">
-                        <button class="qty-btn qty-minus">-</button>
-                        <input type="number" class="qty-input" value="1" min="1">
-                        <button class="qty-btn qty-plus">+</button>
-                    </div> -->
-
                     <!-- Accordion Sections -->
                     <div class="ticket-accordion">
                         <div class="accordion-item">
@@ -164,12 +157,60 @@
                         </div>
                     </div>
 
-                    <!-- Changed button text to "Book Now" -->
-                    <button class="btn-book-now">Book Now</button>
+                    <!-- Updated button to trigger modal instead of alert -->
+                    <button class="btn-book-now" data-bs-toggle="modal" data-bs-target="#bookingModal">Book Now</button>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Added Bootstrap Modal for booking form -->
+    <!-- Booking Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content booking-modal-content">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h2 class="booking-form-title">Book Your Ticket</h2>
+                    <form class="booking-form" id="bookingForm">
+                        <div class="booking-form-group">
+                            <label for="bookingName">Name</label>
+                            <input type="text" id="bookingName" placeholder="John Smith" required>
+                        </div>
+                        <div class="booking-form-group">
+                            <label for="bookingNumber">Number</label>
+                            <input type="tel" id="bookingNumber" placeholder="+91-1234567890" required maxlength="10">
+                        </div>
+                        <div class="booking-form-group">
+                            <label for="bookingTickets">Number of Tickets Required</label>
+                            <input type="number" id="bookingTickets" placeholder="1" min="1" required>
+                        </div>
+                        <div class="booking-form-group">
+                            <label for="bookingDate">Date</label>
+                            <select id="bookingDate" required>
+                                <option value="">Select a date</option>
+                                <option value="2025-12-25">25th December 2025 (5pm - 11pm)</option>
+                                <option value="2025-12-26">26th December 2025 (5pm - 11pm)</option>
+                                <option value="2025-12-27">27th December 2025 (5pm - 11pm)</option>
+                                <option value="2025-12-28">28th December 2025 (5pm - 11pm)</option>
+                                <option value="2025-12-29">29th December 2025 (5pm - 11pm)</option>
+                                <option value="2025-12-30">30th December 2025 (5pm - 11pm)</option>
+                                <option value="2025-12-31">31st December 2025 (5pm - 11pm)</option>
+                                <option value="2026-01-01">1st January 2026 (5pm - 11pm)</option>
+                                <option value="2026-01-02">2nd January 2026 (5pm - 11pm)</option>
+                                <option value="2026-01-03">3rd January 2026 (5pm - 11pm)</option>
+                                <option value="2026-01-04">4th January 2026 (5pm - 11pm)</option>
+                                <option value="2026-01-05">5th January 2026 (5pm - 11pm)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="booking-submit-btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Gallery Section -->
     <section class="gallery-section">
@@ -199,7 +240,7 @@
         </div>
     </section>
 
-        <!-- Bottom Banner Section -->
+    <!-- Bottom Banner Section -->
     <section class="bottom-banner-section">
         <div class="bottom-diagonal-banner">
             <div class="banner-text-scroll-bottom text-center">
@@ -209,21 +250,17 @@
 
         <div class="info-cards-section">
             <div class="container">
-                <!-- Updated testimonials heading and description from {% url 'home' %} -->
                 <h2 class="info-section-title">What Our Jumpmates Are Saying</h2>
                 <p class="info-section-subtitle">Real stories. Real energy. Real jumps. <br>Hear from the ones who took the leap before you!</p>
                 
-                <!-- Converted grid to carousel structure with wrapper and slide container -->
                 <div class="carousel-wrapper">
                     <div class="info-cards-carousel">
-                        <!-- Updated testimonial cards with content from {% url 'home' %} -->
                         <div class="info-card">
                             <div class="card-header">
                                 <div class="user-info">
                                     <div class="user-avatar"></div>
                                     <div class="user-details">
                                         <h3 class="user-name">Rujvi Shah</h3>
-                                        <!-- <p class="user-location">ABC</p> -->
                                     </div>
                                 </div>
                                 <div class="rating">4.5</div>
@@ -239,7 +276,6 @@
                                     <div class="user-avatar"></div>
                                     <div class="user-details">
                                         <h3 class="user-name">Vijay Patel</h3>
-                                        <!-- <p class="user-location">ABC</p> -->
                                     </div>
                                 </div>
                                 <div class="rating">4.0</div>
@@ -265,14 +301,12 @@
                             </p>
                         </div>
 
-                        <!-- Added more cards for carousel demonstration -->
                         <div class="info-card">
                             <div class="card-header">
                                 <div class="user-info">
                                     <div class="user-avatar"></div>
                                     <div class="user-details">
                                         <h3 class="user-name">Rujvi Shah</h3>
-                                        <!-- <p class="user-location">ABC</p> -->
                                     </div>
                                 </div>
                                 <div class="rating">4.5</div>
@@ -288,7 +322,6 @@
                                     <div class="user-avatar"></div>
                                     <div class="user-details">
                                         <h3 class="user-name">Vijay Patel</h3>
-                                        <!-- <p class="user-location">ABC</p> -->
                                     </div>
                                 </div>
                                 <div class="rating">4.0</div>
@@ -299,7 +332,6 @@
                         </div>
                     </div>
 
-                    <!-- Added navigation dots for carousel -->
                     <div class="carousel-navigation">
                         <button class="nav-dot active" data-slide="0"></button>
                         <button class="nav-dot" data-slide="1"></button>
@@ -316,7 +348,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <img src="/static/logo.png" alt="JUMPIN GO" class="footer-logo">
-                    <p>Let’s Be Ultimate Buddies!</p>
+                    <p>Let's Be Ultimate Buddies!</p>
                     <p>Stay in the loop for upcoming events, early bird offers, and behind-the-scenes fun.
                         Follow us, tag us, and keep bouncing with the JumpFam!</p>
                     <div class="social-icons">
@@ -326,7 +358,6 @@
                     </div>
                 </div>
                 <div class="footer-links">
-                    <!-- Updated first column with proper page links -->
                     <div class="footer-column">
                         <h4>Quick Links</h4>
                         <ul>
@@ -337,7 +368,6 @@
                             <li><a href="{% url 'ticket' %}">Ticket</a></li>
                         </ul>
                     </div>
-                    <!-- Changed Community to Get in touch with all links pointing to contact page -->
                     <div class="footer-column">
                         <h4>Get in touch</h4>
                         <ul>
@@ -347,7 +377,6 @@
                             <li><a href="{% url 'contact' %}">We're hiring</a></li>
                         </ul>
                     </div>
-                    <!-- Updated Socials to keep only Instagram, Facebook, LinkedIn -->
                     <div class="footer-column">
                         <h4>Socials</h4>
                         <ul>
