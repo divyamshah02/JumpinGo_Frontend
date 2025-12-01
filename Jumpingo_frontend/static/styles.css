@@ -1180,7 +1180,7 @@ body {
 }
 
 .red-banner {
-  background-image: url("images/JM_Bannerf-04.jpg");
+  background-image: url("images/JM_Bannerf-04.webp");
   background-color: var(--red);
 }
 
@@ -1229,7 +1229,7 @@ body {
 /* Testimonials Section */
 /* Updated testimonials section with proper background image handling and pixel-perfect styling */
 .testimonials-section {
-  background-image: url("images/JM_Bannerf-03.jpg");
+  background-image: url("images/JM_Bannerf-03.webp");
   background-size: cover;
   /* background-position: center center; */
   background-repeat: no-repeat;

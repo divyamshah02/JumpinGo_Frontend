@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Jumpin Go</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/static/contact.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header pt-0">
+        <div class="container-fluid px-4">
+            <nav class="navbar py-0">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <img src="/static/logo.png" alt="JUMPIN GO" class="logo">
+                </a>
+                <div class="ms-auto d-flex align-items-center gap-3">
+                    <!-- Book A Ticket button hidden only on mobile (below 576px) -->
+                    <button class="btn-login d-none d-sm-block" onclick="window.location = `{% url 'ticket' %}`">Book A Ticket</button>
+                    <!-- Bootstrap hamburger toggler now visible on all screen sizes -->
+                    <button class="hamburger-menu" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <!-- Collapsible menu -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'attractions' %}">Attractions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'ticket' %}">Ticket</a>
+                        </li>
+                        <!-- Book A Ticket button shown only on mobile (below 576px) -->
+                        <li class="nav-item d-sm-none">
+                            <a class="nav-link btn-login text-center mt-2" href="{% url 'ticket' %}">Book A Ticket</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="contact-hero-section">
+        <h1 class="contact-hero-title">GET IN<br>TOUCH</h1>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="form-section">
+        <div class="form-container">
+            <h2 class="form-title">Fill up the form</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="John Smith" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="number">Number</label>
+                    <input type="tel" id="number" placeholder="+91-1234567890" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="6" placeholder="Your Message..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="info-container">
+            <div class="info-card">
+                <div class="info-icon location-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                </div>
+                <h3 class="info-title">Come Visit Us</h3>
+                <p class="info-text">Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices. Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices.</p>
+                <p class="info-text">Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices.</p>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="info-card">
+                <div class="info-icon contact-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+                <h3 class="info-title">Contact Us</h3>
+                <p class="info-text">Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices. Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices.</p>
+                <p class="info-text">Aliquam erat volutpat. Integer malesuada turpis id fringilla suscipit. Maecenas ultrices.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <h2 class="testimonials-title">What Our Jumpmates Are Saying</h2>
+            <p class="testimonials-subtitle">Real stories. Real energy. Real jumps. <br>Hear from the ones who took the leap before you!</p>
+            
+            <div class="testimonials-carousel">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"></div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Rujvi Shah</h4>
+                            <!-- <p class="testimonial-location">ABC</p> -->
+                        </div>
+                        <div class="testimonial-rating">4.5</div>
+                    </div>
+                    <p class="testimonial-text">Super smooth experience from entry to exit. Kids were safe, engaged, and happily tired by the end of the day – exactly what we wanted from the event</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"></div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Vijay Patel</h4>
+                            <!-- <p class="testimonial-location">ABC</p> -->
+                        </div>
+                        <div class="testimonial-rating">4.0</div>
+                    </div>
+                    <p class="testimonial-text">JUMPINGO completely surprised our group in Ahmedabad – the giant slides and obstacle runs felt like a mini adventure park. The constant bouncing, racing, and friendly challenges gave everyone a solid adrenaline rush and a full‑body workout in the best way.</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"></div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Harsh</h4>
+                            <p class="testimonial-location">ABC</p>
+                        </div>
+                        <div class="testimonial-rating">4.5</div>
+                    </div>
+                    <p class="testimonial-text">JUMPINGO turned our regular gathering into an insane high‑energy session. Sprinting through inflatables, timing our runs, and competing with friends had us shouting, laughing, and sweating like we were on an adventure trail, not just at an event ground.</p>
+                </div>
+            </div>
+            
+            <div class="carousel-controls">
+                <div class="carousel-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <div class="carousel-arrows">
+                    <button class="arrow-btn prev">←</button>
+                    <button class="arrow-btn next">→</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="mx-2 mx-md-5">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="/static/logo.png" alt="JUMPIN GO" class="footer-logo">
+                    <p>Let's Be Ultimate Buddies!</p>
+                    <p>Stay in the loop for upcoming events, early bird offers, and behind-the-scenes fun.
+                        Follow us, tag us, and keep bouncing with the JumpFam!</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61581200615232"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/jumpingoofficial/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/jumpingo/"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'about' %}">About Us</a></li>
+                            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                            <li><a href="{% url 'attractions' %}">Attractions</a></li>
+                            <li><a href="{% url 'ticket' %}">Ticket</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Get in touch</h4>
+                        <ul>
+                            <li><a href="{% url 'contact' %}">Contact us</a></li>
+                            <li><a href="{% url 'contact' %}">Volunteers</a></li>
+                            <li><a href="{% url 'contact' %}">Food Vendors</a></li>
+                            <li><a href="{% url 'contact' %}">We're hiring</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Socials</h4>
+                        <ul>
+                            <li><a href="https://www.instagram.com/jumpingoofficial/">Instagram</a></li>
+                            <li><a href="https://www.facebook.com/profile.php?id=61581200615232">Facebook</a></li>
+                            <li><a href="https://www.linkedin.com/company/jumpingo/">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© JumpinGo. All rights reserved.<br><a href="https://www.virtuelance.com/" class="text-white" style="text-decoration: none;">Develped by VIRTUELANCE</a></p>
+                <div class="footer-bottom-links">
+                    <a href="{% url 'privacy_policy' %}">Privacy & Policy</a>
+                    <a href="{% url 'privacy_policy' %}">Terms & Condition</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/contact.js"></script>
+</body>
+</html>
