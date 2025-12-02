@@ -559,18 +559,19 @@ body {
   animation: slideRight 30s linear infinite;
 }
 
+/* Updated animations for seamless infinite loop */
 @keyframes slideLeft {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-400px * 5 - 15px * 5));
   }
 }
 
 @keyframes slideRight {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-400px * 5 - 15px * 5));
   }
   100% {
     transform: translateX(0);
