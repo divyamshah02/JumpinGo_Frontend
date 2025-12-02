@@ -712,8 +712,8 @@ body {
 .catalogue-content {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 80px;
+  justify-content: space-between; /* Changed from center to space-between for equal distribution */
+  gap: 40px; /* Reduced gap for better balance */
   position: relative;
   margin-top: 60px;
 }
@@ -722,7 +722,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 0 0 auto; /* Changed to auto width to center button naturally */
+  justify-content: center;
   z-index: 10;
+  min-width: 200px; /* Added minimum width for button container */
 }
 
 .btn-catalogue-download {
@@ -740,6 +743,8 @@ body {
   /* box-shadow: 0 6px 0 #a52020, 0 8px 20px rgba(0, 0, 0, 0.3); */
   box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
   position: relative;
+  display: block; /* Added from updates */
+  margin: 0 auto; /* Added from updates */
 }
 
 .btn-catalogue-download:hover {
@@ -756,6 +761,7 @@ body {
   position: relative;
   transition: transform 0.05s ease-out;
   will-change: transform;
+  flex: 1; /* Added flex property to make side items take equal space */
 }
 
 .catalogue-item-left {
@@ -859,12 +865,7 @@ body {
   margin-top: 40px;
 }
 
-.catalogue-item {
-  position: relative;
-  /* Added transition for smooth parallax movement */
-  transition: transform 0.1s ease-out;
-  will-change: transform;
-}
+/* The `.catalogue-item` rule was already updated above for flex: 1 */
 
 /* Reduced shadow on catalogue images */
 .catalogue-item-1 img {
@@ -1253,25 +1254,32 @@ body {
   position: relative;
 }
 
+.testimonials-carousel-container {
+  overflow: hidden;
+  width: 100%;
+}
+
 /* Updated testimonials grid layout */
 .testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 30px;
   margin-bottom: 50px;
   margin-top: 60px;
+  transition: transform 0.5s ease;
 }
 
 /* Dark green cards matching reference design */
+/* Updated testimonial card sizing to show 3 cards at once */
 .testimonial-card {
   background: rgba(6, 91, 46, 1);
-  /* backdrop-filter: blur(10px); */
   border-radius: 10px;
   padding: 30px 25px;
-  /* border: 2px solid rgba(44, 130, 85, 1); */
   box-shadow: 12px 15px 0 rgba(44, 130, 85, 1);
   transition: transform 0.3s;
   min-height: 200px;
+  flex: 0 0 calc(33.333% - 20px);
+  min-width: calc(33.333% - 20px);
+  flex-shrink: 0;
 }
 
 .testimonial-card:hover {
@@ -1521,10 +1529,10 @@ body {
     grid-template-columns: 1fr;
   }
 
-  /* Responsive adjustments for testimonial section */
-  .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+  /* Responsive adjustments for testimonial carousel */
+  /* The original .testimonials-grid media query is removed as it's now flex-based and handled by card min-width */
+  .testimonial-card {
+    min-width: calc((100% - 20px) / 2);
   }
 
   .large-images {
@@ -1598,10 +1606,11 @@ body {
     background-position: center;
   }
 
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    margin-bottom: 40px;
+  /* The original .testimonials-grid media query is removed as it's now flex-based and handled by card min-width */
+
+  /* Single card view on mobile */
+  .testimonial-card {
+    min-width: 100%;
   }
 
   .testimonial-card {
