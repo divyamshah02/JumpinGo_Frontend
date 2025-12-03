@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/static/styles.css">
     <link rel="stylesheet" href="/static/about_us.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
 </head>
 <body>
     <!-- Header -->
@@ -142,27 +144,31 @@
     <section class="timeline-section">
         <div class="">
             <div class="timeline">
-                <div class="timeline-item">
+
+                <!-- ITEM 1 -->
+                <div class="timeline-item wow animate__animated animate__revealDown" data-wow-offset="80" data-wow-delay="0.1s">
                     <div class="timeline-image">
                         <img src="/static/Attractions-09.webp" alt="Attraction">
                     </div>
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>How it started</h3>
-                        <p>JUMPIN GO began with a simple idea: give kids a safe place to go crazy with energy without screens and gadgets. The founders combined their experience in events and family entertainment to design a park that feels like a mega-fun festival, but is easy to access all year round. </p>
+                        <p>JUMPIN GO began with a simple idea: give kids a safe place to go crazy with energy without screens and gadgets...</p>
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <!-- ITEM 2 -->
+                <div class="timeline-item wow animate__animated animate__revealDown" data-wow-offset="80" data-wow-delay="0.15s">
                     <div class="timeline-image">
                         <img src="/static/Home page images-14.webp" alt="Kids playing">
                     </div>
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>Where we are today</h3>
-                        <p>Today, JUMPINGO stands as the biggest inflatable carnival in Ahmedabad — and one of the largest bouncing house experiences in India. Designed for all age groups from 5 to 55, it brings an unforgettable blend of fun, thrill, and adventure under one massive arena.</p>
+                        <p>Today, JUMPINGO stands as the biggest inflatable carnival in Ahmedabad...</p>
                     </div>
-                </div>               
+                </div>
+
             </div>
         </div>
     </section>
@@ -333,5 +339,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/static/about_us.js"></script>
+    <script src="/static/star_animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+    new WOW().init();
+    </script>
+
+
 </body>
 </html>

@@ -26,11 +26,3 @@ nextBtn.addEventListener("click", () => {
   const newIndex = currentSlide === dots.length - 1 ? 0 : currentSlide + 1
   updateCarousel(newIndex)
 })
-
-// Form submission
-const form = document.querySelector(".contact-form")
-form.addEventListener("submit", (e) => {
-  e.preventDefault()
-  alert("Form submitted successfully!")
-  form.reset()
-})

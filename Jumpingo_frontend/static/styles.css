@@ -1516,6 +1516,42 @@ body {
   opacity: 1;
 }
 
+/* Adding styles for star cursor particles */
+.cursor-star-particle {
+  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+  animation: twinkle 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)) brightness(1);
+  }
+  100% {
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 1)) drop-shadow(0 0 15px rgba(255, 215, 0, 0.7)) brightness(1.3);
+  }
+}
+
+.custom-cursor-glow {
+  mix-blend-mode: screen;
+}
+
+/* Hide default cursor for a more immersive experience (optional) */
+/* body {
+  cursor: none;
+} */
+
+/* Keep cursor normal on interactive elements */
+a,
+button,
+input,
+textarea,
+select,
+.hamburger-menu,
+.category-tab,
+.wishlist-icon {
+  cursor: pointer !important;
+}
+
 /* Responsive */
 @media (max-width: 992px) {
   .diagonal-cross-container {

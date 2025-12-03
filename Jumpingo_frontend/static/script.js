@@ -205,13 +205,5 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   })
-})
 
-// Load more products functionality
-document.querySelector(".btn-load-more")?.addEventListener("click", function () {
-  this.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Loading...'
-
-  setTimeout(() => {
-    this.innerHTML = "Load More"
-  }, 1000)
 })
