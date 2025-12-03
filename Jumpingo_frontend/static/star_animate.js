@@ -1,37 +1,37 @@
-  class StarParticle {
+class StarParticle {
     constructor(x, y) {
-      this.x = x
-      this.y = y
-      this.size = Math.random() * 20 + 10 // Random size between 10-30px
-      this.speedX = (Math.random() - 0.5) * 8 // Random horizontal velocity
-      this.speedY = (Math.random() - 0.5) * 8 // Random vertical velocity
-      this.life = 1 // Opacity from 0 to 1
-      this.decay = Math.random() * 0.02 + 0.01 // How fast it fades
-      this.rotation = Math.random() * 360 // Initial rotation
-      this.rotationSpeed = (Math.random() - 0.5) * 20 // Rotation speed
-      this.orbitAngle = Math.random() * Math.PI * 2 // For orbital motion
-      this.orbitSpeed = (Math.random() - 0.5) * 0.3 // How fast it orbits
-      this.orbitRadius = Math.random() * 50 + 20 // Orbit radius
-      this.targetX = x + Math.cos(this.orbitAngle) * this.orbitRadius
-      this.targetY = y + Math.sin(this.orbitAngle) * this.orbitRadius
-      this.element = this.createElement()
+        this.x = x
+        this.y = y
+        this.size = Math.random() * 20 + 10 // Random size between 10-30px
+        this.speedX = (Math.random() - 0.5) * 8 // Random horizontal velocity
+        this.speedY = (Math.random() - 0.5) * 8 // Random vertical velocity
+        this.life = 1 // Opacity from 0 to 1
+        this.decay = Math.random() * 0.02 + 0.01 // How fast it fades
+        this.rotation = Math.random() * 360 // Initial rotation
+        this.rotationSpeed = (Math.random() - 0.5) * 20 // Rotation speed
+        this.orbitAngle = Math.random() * Math.PI * 2 // For orbital motion
+        this.orbitSpeed = (Math.random() - 0.5) * 0.3 // How fast it orbits
+        this.orbitRadius = Math.random() * 50 + 20 // Orbit radius
+        this.targetX = x + Math.cos(this.orbitAngle) * this.orbitRadius
+        this.targetY = y + Math.sin(this.orbitAngle) * this.orbitRadius
+        this.element = this.createElement()
     }
 
-    createElement() {      
-      const star = document.createElement("img")
-      const logos = [
-        "/static/red_small_logo.png",
-        "/static/blue_small_logo.png",
-        "/static/green_small_logo.png",
-        "/static/small_logo.png"
-      ];
+    createElement() {
+        const star = document.createElement("img")
+        const logos = [
+            "/static/red_small_logo.png",
+            "/static/blue_small_logo.png",
+            "/static/green_small_logo.png",
+            "/static/small_logo.png"
+        ];
 
-      const randomLogo = logos[Math.floor(Math.random() * logos.length)];
+        const randomLogo = logos[Math.floor(Math.random() * logos.length)];
 
-      star.src = randomLogo;
-      // star.src = "/static/small_logo.png"
-      star.className = "cursor-star-particle"
-      star.style.cssText = `
+        star.src = randomLogo;
+        // star.src = "/static/small_logo.png"
+        star.className = "cursor-star-particle"
+        star.style.cssText = `
         position: fixed;
         pointer-events: none;
         z-index: 9999;
@@ -43,55 +43,55 @@
         opacity: ${this.life};
         transition: none;
       `
-      document.body.appendChild(star)
-      return star
+        document.body.appendChild(star)
+        return star
     }
 
     update() {
-      // Update orbital motion
-      this.orbitAngle += this.orbitSpeed
-      this.targetX += this.speedX
-      this.targetY += this.speedY
+        // Update orbital motion
+        this.orbitAngle += this.orbitSpeed
+        this.targetX += this.speedX
+        this.targetY += this.speedY
 
-      // Move towards target with easing
-      this.x += (this.targetX - this.x) * 0.1 + Math.cos(this.orbitAngle) * 2
-      this.y += (this.targetY - this.y) * 0.1 + Math.sin(this.orbitAngle) * 2
+        // Move towards target with easing
+        this.x += (this.targetX - this.x) * 0.1 + Math.cos(this.orbitAngle) * 2
+        this.y += (this.targetY - this.y) * 0.1 + Math.sin(this.orbitAngle) * 2
 
-      // Update rotation
-      this.rotation += this.rotationSpeed
+        // Update rotation
+        this.rotation += this.rotationSpeed
 
-      // Fade out
-      this.life -= this.decay
+        // Fade out
+        this.life -= this.decay
 
-      // Apply gravity-like effect
-      this.speedY += 0.2
+        // Apply gravity-like effect
+        this.speedY += 0.2
 
-      // Update element
-      this.element.style.left = this.x + "px"
-      this.element.style.top = this.y + "px"
-      this.element.style.transform = `rotate(${this.rotation}deg) scale(${this.life})`
-      this.element.style.opacity = this.life
+        // Update element
+        this.element.style.left = this.x + "px"
+        this.element.style.top = this.y + "px"
+        this.element.style.transform = `rotate(${this.rotation}deg) scale(${this.life})`
+        this.element.style.opacity = this.life
 
-      return this.life > 0
+        return this.life > 0
     }
 
     remove() {
-      this.element.remove()
+        this.element.remove()
     }
-  }
+}
 
-  // Star particle system
-  const starParticles = []
-  let lastSpawnTime = 0
-  const spawnInterval = 30 // Spawn every 30ms when moving
+// Star particle system
+const starParticles = []
+let lastSpawnTime = 0
+const spawnInterval = 30 // Spawn every 30ms when moving
 
-  // Track mouse movement
-  let mouseX = 0
-  let mouseY = 0
-  let lastMouseX = 0
-  let lastMouseY = 0
+// Track mouse movement
+let mouseX = 0
+let mouseY = 0
+let lastMouseX = 0
+let lastMouseY = 0
 
-  document.addEventListener("mousemove", (e) => {
+document.addEventListener("mousemove", (e) => {
     mouseX = e.clientX
     mouseY = e.clientY
 
@@ -100,38 +100,38 @@
 
     // Spawn more particles when moving fast
     if (now - lastSpawnTime > spawnInterval && mouseSpeed > 2) {
-      const particleCount = Math.min(Math.floor(mouseSpeed / 10) + 1, 5)
+        const particleCount = Math.min(Math.floor(mouseSpeed / 10) + 1, 5)
 
-      for (let i = 0; i < particleCount; i++) {
-        // Add some randomness to spawn position for a more organic feel
-        const offsetX = (Math.random() - 0.5) * 30
-        const offsetY = (Math.random() - 0.5) * 30
-        starParticles.push(new StarParticle(mouseX + offsetX, mouseY + offsetY))
-      }
-      lastSpawnTime = now
+        for (let i = 0; i < particleCount; i++) {
+            // Add some randomness to spawn position for a more organic feel
+            const offsetX = (Math.random() - 0.5) * 30
+            const offsetY = (Math.random() - 0.5) * 30
+            starParticles.push(new StarParticle(mouseX + offsetX, mouseY + offsetY))
+        }
+        lastSpawnTime = now
     }
 
     lastMouseX = mouseX
     lastMouseY = mouseY
-  })
+})
 
-  // Animation loop for particles
-  function animateStars() {
+// Animation loop for particles
+function animateStars() {
     for (let i = starParticles.length - 1; i >= 0; i--) {
-      if (!starParticles[i].update()) {
-        starParticles[i].remove()
-        starParticles.splice(i, 1)
-      }
+        if (!starParticles[i].update()) {
+            starParticles[i].remove()
+            starParticles.splice(i, 1)
+        }
     }
     requestAnimationFrame(animateStars)
-  }
+}
 
-  animateStars()
+animateStars()
 
-  // Add a subtle glow cursor effect
-  const customCursor = document.createElement("div")
-  customCursor.className = "custom-cursor-glow"
-  customCursor.style.cssText = `
+// Add a subtle glow cursor effect
+const customCursor = document.createElement("div")
+customCursor.className = "custom-cursor-glow"
+customCursor.style.cssText = `
     position: fixed;
     width: 40px;
     height: 40px;
@@ -142,29 +142,78 @@
     transform: translate(-50%, -50%);
     transition: width 0.2s, height 0.2s;
   `
-  document.body.appendChild(customCursor)
+document.body.appendChild(customCursor)
 
-  document.addEventListener("mousemove", (e) => {
+document.addEventListener("mousemove", (e) => {
     customCursor.style.left = e.clientX + "px"
     customCursor.style.top = e.clientY + "px"
-  })
+})
 
-  // Pulse effect on click
-  document.addEventListener("mousedown", () => {
+// Pulse effect on click
+document.addEventListener("mousedown", () => {
     customCursor.style.width = "60px"
     customCursor.style.height = "60px"
 
     // Create explosion of stars on click
     for (let i = 0; i < 15; i++) {
-      const angle = (Math.PI * 2 * i) / 15
-      const star = new StarParticle(mouseX, mouseY)
-      star.speedX = Math.cos(angle) * 10
-      star.speedY = Math.sin(angle) * 10
-      starParticles.push(star)
+        const angle = (Math.PI * 2 * i) / 15
+        const star = new StarParticle(mouseX, mouseY)
+        star.speedX = Math.cos(angle) * 10
+        star.speedY = Math.sin(angle) * 10
+        starParticles.push(star)
     }
-  })
+})
 
-  document.addEventListener("mouseup", () => {
+document.addEventListener("mouseup", () => {
     customCursor.style.width = "40px"
     customCursor.style.height = "40px"
-  })
+})
+
+
+function toggle_loader() {
+    let existingLoader = document.getElementById('dynamic-page-loader');
+
+    if (existingLoader) {
+        // If loader exists, remove it
+        existingLoader.remove();
+    } else {
+        // Create loader container
+        const loader = document.createElement('div');
+        loader.id = 'dynamic-page-loader';
+        loader.style.position = 'fixed';
+        loader.style.top = 0;
+        loader.style.left = 0;
+        loader.style.width = '100%';
+        loader.style.height = '100%';
+        loader.style.background = 'rgba(255, 255, 255, 0.7)';
+        loader.style.display = 'flex';
+        loader.style.justifyContent = 'center';
+        loader.style.alignItems = 'center';
+        loader.style.zIndex = 9999;
+
+        // Create spinner
+        const spinner = document.createElement('div');
+        spinner.style.width = '3rem';
+        spinner.style.height = '3rem';
+        spinner.style.border = '6px solid #ccc';
+        spinner.style.borderTop = '6px solid #1e40af';
+        spinner.style.borderRadius = '50%';
+        spinner.style.animation = 'spin 1s linear infinite';
+
+        // Inject keyframe animation (once)
+        if (!document.getElementById('loader-spin-style')) {
+            const style = document.createElement('style');
+            style.id = 'loader-spin-style';
+            style.innerHTML = `
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        loader.appendChild(spinner);
+        document.body.appendChild(loader);
+    }
+}

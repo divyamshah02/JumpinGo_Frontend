@@ -208,9 +208,9 @@
                         <h4>Get in touch</h4>
                         <ul>
                             <li><a href="{% url 'contact' %}">Contact us</a></li>
-                            <li><a href="{% url 'contact' %}">Volunteers</a></li>
-                            <li><a href="{% url 'contact' %}">Food Vendors</a></li>
-                            <li><a href="{% url 'contact' %}">We're hiring</a></li>
+                            <li><a href="{% url 'get_in_touch' %}">Volunteers</a></li>
+                            <li><a href="{% url 'get_in_touch' %}">Food Vendors</a></li>
+                            <li><a href="{% url 'get_in_touch' %}">We're hiring</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
@@ -241,7 +241,7 @@
     <script>
         document.getElementById("contactForm").addEventListener("submit", async function (e) {
             e.preventDefault();
-
+            toggle_loader()
             const formData = new FormData(this);
             formData.append('name', document.getElementById("name").value)
             formData.append('email', document.getElementById("email").value)
@@ -257,9 +257,11 @@
             const data = await response.json();
 
             if (data.success) {
+                toggle_loader()
                 alert("Contact form submitted successfully!");
                 this.reset(); // optional: clears form
             } else {
+                toggle_loader()
                 alert("Something went wrong.");
             }
         });

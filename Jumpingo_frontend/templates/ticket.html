@@ -192,18 +192,18 @@
                             <label for="bookingDate">Date</label>
                             <select id="bookingDate" required>
                                 <option value="">Select a date</option>
-                                <option value="2025-12-25">25th December 2025 (5pm - 11pm)</option>
-                                <option value="2025-12-26">26th December 2025 (5pm - 11pm)</option>
-                                <option value="2025-12-27">27th December 2025 (5pm - 11pm)</option>
-                                <option value="2025-12-28">28th December 2025 (5pm - 11pm)</option>
-                                <option value="2025-12-29">29th December 2025 (5pm - 11pm)</option>
-                                <option value="2025-12-30">30th December 2025 (5pm - 11pm)</option>
-                                <option value="2025-12-31">31st December 2025 (5pm - 11pm)</option>
-                                <option value="2026-01-01">1st January 2026 (5pm - 11pm)</option>
-                                <option value="2026-01-02">2nd January 2026 (5pm - 11pm)</option>
-                                <option value="2026-01-03">3rd January 2026 (5pm - 11pm)</option>
-                                <option value="2026-01-04">4th January 2026 (5pm - 11pm)</option>
-                                <option value="2026-01-05">5th January 2026 (5pm - 11pm)</option>
+                                <option value="2025-12-25">25th December 2025 (5pm - 10pm)</option>
+                                <option value="2025-12-26">26th December 2025 (5pm - 10pm)</option>
+                                <option value="2025-12-27">27th December 2025 (5pm - 10pm)</option>
+                                <option value="2025-12-28">28th December 2025 (5pm - 10pm)</option>
+                                <option value="2025-12-29">29th December 2025 (5pm - 10pm)</option>
+                                <option value="2025-12-30">30th December 2025 (5pm - 10pm)</option>
+                                <option value="2025-12-31">31st December 2025 (5pm - 10pm)</option>
+                                <option value="2026-01-01">1st January 2026 (5pm - 10pm)</option>
+                                <option value="2026-01-02">2nd January 2026 (5pm - 10pm)</option>
+                                <option value="2026-01-03">3rd January 2026 (5pm - 10pm)</option>
+                                <option value="2026-01-04">4th January 2026 (5pm - 10pm)</option>
+                                <option value="2026-01-05">5th January 2026 (5pm - 10pm)</option>
                             </select>
                         </div>
                         <button type="submit" class="booking-submit-btn">Submit</button>
@@ -373,9 +373,9 @@
                         <h4>Get in touch</h4>
                         <ul>
                             <li><a href="{% url 'contact' %}">Contact us</a></li>
-                            <li><a href="{% url 'contact' %}">Volunteers</a></li>
-                            <li><a href="{% url 'contact' %}">Food Vendors</a></li>
-                            <li><a href="{% url 'contact' %}">We're hiring</a></li>
+                            <li><a href="{% url 'get_in_touch' %}">Volunteers</a></li>
+                            <li><a href="{% url 'get_in_touch' %}">Food Vendors</a></li>
+                            <li><a href="{% url 'get_in_touch' %}">We're hiring</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
@@ -405,6 +405,7 @@
     <script>
         document.getElementById("bookingForm").addEventListener("submit", async function (e) {
             e.preventDefault();
+            toggle_loader()
 
             const name = document.getElementById("bookingName").value
             const number = document.getElementById("bookingNumber").value
@@ -426,9 +427,11 @@
             const data = await response.json();
 
             if (data.success) {
+                toggle_loader()
                 alert(`Booking Registered!\n\nOut team will reach out to you shortly\n\nName: ${name}\nNumber: ${number}\nTickets: ${tickets}\nDate: ${dateText}`)
                 this.reset(); // optional: clears form
             } else {
+                toggle_loader()
                 alert("Something went wrong.");
             }
         });
