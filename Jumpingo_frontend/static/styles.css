@@ -729,8 +729,8 @@ body {
 }
 
 .btn-catalogue-download {
-  background: #d32f2f;
-  color: white;
+  background: var(--yellow);
+  color: var(--dark-gray);
   border: none;
   padding: 16px 50px;
   border-radius: 30px;

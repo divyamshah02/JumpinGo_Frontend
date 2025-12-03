@@ -194,12 +194,21 @@ h6 {
 }
 
 .info-text {
+  display: flex;             /* this fixes your alignment problem */
+  align-items: center;       /* vertically centers icon + text */
+  gap: 8px;                  /* spacing between icon and number */
+  
   font-size: 16px;
   font-weight: 400;
   color: rgba(26, 32, 44, 1);
   line-height: 1.8;
   margin-bottom: 15px;
   max-width: 450px;
+}
+
+.info-text i {
+  font-size: 18px;           /* optional: slightly bigger icon */
+  line-height: 1;            /* eliminates icon vertical offset */
 }
 
 /* Testimonials Section */

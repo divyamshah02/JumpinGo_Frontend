@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const heroSection = document.querySelector(".about-hero")
   const floatingElements = document.querySelectorAll("[data-reveal]")
-  const revealRadius = 180
+  const revealRadius = 320
 
   heroSection.addEventListener("mousemove", (e) => {
     const mouseX = e.clientX
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const rect = element.getBoundingClientRect()
       const elementX = rect.left + rect.width / 2
       const elementY = rect.top + rect.height / 2
-
+  
       const distance = Math.sqrt(Math.pow(mouseX - elementX, 2) + Math.pow(mouseY - elementY, 2))
 
       if (distance < revealRadius) {
