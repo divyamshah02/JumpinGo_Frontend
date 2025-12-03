@@ -17,7 +17,7 @@ DEFAULT_RECEIVER = "divyamshah1234@gmail.com"
 def send_email(sender, password, receiver, subject, body):
     msg = MIMEMultipart()
     msg["From"] = sender
-    msg["To"] = receiver
+    msg["To"] = sender
     msg["Subject"] = subject
 
     msg.attach(MIMEText(body, "plain"))
@@ -25,7 +25,7 @@ def send_email(sender, password, receiver, subject, body):
     with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
         server.starttls()
         server.login(sender, password)
-        server.sendmail(sender, receiver, msg.as_string())
+        server.sendmail(sender, sender, msg.as_string())
 
     print(f"Email sent from {sender}!")
 
