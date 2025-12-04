@@ -1,4 +1,7 @@
 /* Updated all fonts to use Winky Rough for headings and Raleway for body text */
+html, body {
+    overflow-x: hidden;
+}
 
 /* Attractions Hero Section */
 .attractions-hero {
@@ -185,241 +188,201 @@
   letter-spacing: 1px;
 }
 
-/* Info Cards Section */
-.info-cards-section {
+/* Replaced info-cards section with contact page testimonial styles */
+
+/* Testimonials Section - Contact Page Style */
+.testimonials-section {
   background: #6d0e27;
-  padding: 80px 0 100px;
+  padding: 80px 20px 100px;
+  position: relative;
+  overflow: hidden;
 }
 
-.info-section-title {
+.testimonials-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.testimonials-title {
   font-family: "Winky Rough", cursive;
-  font-size: 56px;
-  font-weight: 700;
+  font-size: 48px;
   color: white;
   text-align: center;
   margin-bottom: 20px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
-.info-section-subtitle {
-  font-family: "Raleway", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.6;
+.testimonials-subtitle {
+  font-size: 16px;
   color: white;
   text-align: center;
-  max-width: 700px;
-  margin: 0 auto 60px;
-  opacity: 0.95;
+  margin-bottom: 60px;
+  opacity: 0.9;
+  font-family: "Raleway", sans-serif;
 }
 
-/* Updated grid to carousel wrapper with overflow hidden */
-.carousel-wrapper {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 40px;
-  overflow: hidden;
-  position: relative;
-}
-
-.info-cards-carousel {
+.testimonials-carousel {
   display: flex;
   gap: 40px;
+  margin-bottom: 50px;
   transition: transform 0.5s ease-in-out;
-  padding-bottom: 20px;
 }
 
-.info-card {
-  background: #8e0b0f;
-  border: none;
-  border-radius: 16px;
+.testimonial-card {
+  background: rgba(139, 35, 50, 0.8);
+  border-radius: 20px;
   padding: 35px 30px;
-  position: relative;
-  transition: transform 0.3s ease;
-  box-shadow: 12px 12px 0 0 #ff644b;
-  flex: 0 0 calc(33.333% - 27px); /* Show 3 cards at once */
+  box-shadow: 8px 8px 0px rgba(255, 107, 107, 0.4);
+  flex: 0 0 calc(33.333% - 27px);
   min-width: calc(33.333% - 27px);
 }
 
-/* Removing pseudo-elements as box-shadow works better */
-.info-card::after,
-.info-card::before {
-  display: none;
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 25px;
-}
-
-.user-info {
+.testimonial-header {
   display: flex;
   align-items: center;
   gap: 15px;
+  margin-bottom: 25px;
 }
 
-.user-avatar {
-  width: 60px;
-  height: 60px;
-  background: white;
+.testimonial-avatar {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
+  background: white;
   flex-shrink: 0;
 }
 
-.user-details {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+.testimonial-info {
+  flex: 1;
 }
 
-.user-name {
+.testimonial-name {
   font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 2px;
+}
+
+.testimonial-location {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.testimonial-rating {
   font-size: 20px;
   font-weight: 700;
   color: white;
-  margin: 0;
-  line-height: 1.2;
 }
 
-.user-location {
-  font-family: "Raleway", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
-  margin: 0;
-  line-height: 1.2;
-}
-
-.rating {
-  font-family: "Raleway", sans-serif;
-  font-size: 24px;
-  font-weight: 700;
+.testimonial-text {
+  font-size: 15px;
   color: white;
-  line-height: 1;
-}
-
-.info-card-description {
-  font-family: "Raleway", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
   line-height: 1.7;
-  color: white;
-  margin: 0;
+  opacity: 0.95;
+  font-family: "Raleway", sans-serif;
 }
 
-.info-card-icon,
-.info-card-title,
-.info-card-link {
-  display: none;
-}
-
-/* Added carousel navigation dots styling */
-.carousel-navigation {
+/* Carousel Controls */
+.carousel-controls {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.carousel-dots {
+  display: flex;
   gap: 12px;
-  margin-top: 50px;
+  align-items: center;
 }
 
-.nav-dot {
-  width: 16px;
-  height: 16px;
+.dot {
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0;
-}
-
-.nav-dot:hover {
   background: rgba(255, 255, 255, 0.5);
-  transform: scale(1.2);
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
-.nav-dot.active {
-  background: white;
+.dot.active {
   width: 40px;
-  border-radius: 8px;
+  border-radius: 10px;
+  background: white;
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
-  .info-card {
-    flex: 0 0 calc(50% - 20px); /* Show 2 cards on tablet */
-    min-width: calc(50% - 20px);
+.carousel-arrows {
+  display: flex;
+  gap: 15px;
+}
+
+.arrow-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.arrow-btn:hover {
+  background: white;
+  color: #6d0e27;
+}
+
+/* Testimonials Responsive */
+@media (max-width: 1024px) {
+  .testimonials-carousel {
+    gap: 30px;
   }
 
-  .info-section-title {
-    font-size: 48px;
+  .testimonial-card {
+    flex: 0 0 calc(50% - 15px);
+    min-width: calc(50% - 15px);
   }
 }
 
 @media (max-width: 768px) {
-  .attractions-title {
-    font-size: 60px;
+  .testimonials-title {
+    font-size: 36px;
   }
 
-  .title-star {
-    width: 140px;
-    height: 140px;
-  }
-
-  .banner-text-scroll span,
-  .banner-text-scroll-bottom span {
-    font-size: 32px;
-  }
-
-  .attraction-heading {
-    font-size: 42px;
-  }
-
-  .attraction-description {
-    font-size: 14px;
-  }
-
-  .attraction-images-dual {
-    grid-template-columns: 1fr;
+  .testimonials-carousel {
     gap: 20px;
   }
 
-  .info-section-title {
-    font-size: 42px;
-  }
-
-  .info-card-title {
-    font-size: 24px;
-  }
-  .info-card {
-    flex: 0 0 100%; /* Show 1 card on mobile */
+  .testimonial-card {
+    flex: 0 0 100%;
     min-width: 100%;
   }
 }
 
 @media (max-width: 480px) {
-  .attractions-title {
-    font-size: 45px;
+  .testimonials-section {
+    padding: 60px 15px 80px;
   }
 
-  .title-star {
-    width: 110px;
-    height: 110px;
+  .testimonials-title {
+    font-size: 28px;
   }
 
-  .attraction-heading {
-    font-size: 32px;
+  .testimonial-card {
+    padding: 25px 20px;
   }
 
-  .banner-text-scroll span,
-  .banner-text-scroll-bottom span {
-    font-size: 18px;
-  }
-
-  .info-section-title {
-    font-size: 32px;
+  .carousel-controls {
+    flex-direction: column;
+    gap: 20px;
   }
 }
 

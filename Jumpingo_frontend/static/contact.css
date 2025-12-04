@@ -1,3 +1,7 @@
+html, body {
+    overflow-x: hidden;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +15,7 @@
   --primary-yellow: #eddb13;
   --coral: rgba(255, 100, 75, 1);
   --dark-navy: #0a2540;
-  --maroon: #7a1f3d;
+  --maroon: #6d0e27;
   --white: #ffffff;
 }
 
@@ -31,7 +35,6 @@ h6 {
   font-family: "Winky Rough", cursive;
 }
 
-
 /* Hero Section */
 .contact-hero-section {
   padding: 80px 20px 60px;
@@ -50,7 +53,7 @@ h6 {
 
 /* Form Section */
 .form-section {
-  padding: 40px 20px 80px;
+  /* padding: 40px 20px 80px; */
   background: white;
   display: flex;
   justify-content: center;
@@ -65,10 +68,9 @@ h6 {
 }
 
 @media (max-width: 992px) {
-.form-container {
-  max-width: 90%;
-}
-    
+  .form-container {
+    max-width: 90%;
+  }
 }
 
 .form-title {
@@ -135,8 +137,8 @@ h6 {
   font-family: "Winky Rough", cursive;
 }
 .submit-btn:hover {
-    transform: translateY(2px);
-    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+  transform: translateY(2px);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
 }
 /* Info Section */
 .info-section {
@@ -194,10 +196,10 @@ h6 {
 }
 
 .info-text {
-  display: flex;             /* this fixes your alignment problem */
-  align-items: center;       /* vertically centers icon + text */
-  gap: 8px;                  /* spacing between icon and number */
-  
+  display: flex; /* this fixes your alignment problem */
+  align-items: center; /* vertically centers icon + text */
+  gap: 8px; /* spacing between icon and number */
+
   font-size: 16px;
   font-weight: 400;
   color: rgba(26, 32, 44, 1);
@@ -207,8 +209,8 @@ h6 {
 }
 
 .info-text i {
-  font-size: 18px;           /* optional: slightly bigger icon */
-  line-height: 1;            /* eliminates icon vertical offset */
+  font-size: 18px; /* optional: slightly bigger icon */
+  line-height: 1; /* eliminates icon vertical offset */
 }
 
 /* Testimonials Section */
@@ -222,6 +224,7 @@ h6 {
 .testimonials-container {
   max-width: 1400px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .testimonials-title {
@@ -242,10 +245,10 @@ h6 {
 }
 
 .testimonials-carousel {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 40px;
   margin-bottom: 50px;
+  transition: transform 0.5s ease-in-out;
 }
 
 .testimonial-card {
@@ -253,6 +256,8 @@ h6 {
   border-radius: 20px;
   padding: 35px 30px;
   box-shadow: 8px 8px 0px rgba(255, 107, 107, 0.4);
+  flex: 0 0 calc(33.333% - 27px);
+  min-width: calc(33.333% - 27px);
 }
 
 .testimonial-header {
@@ -464,7 +469,12 @@ h6 {
 /* Responsive */
 @media (max-width: 1024px) {
   .testimonials-carousel {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .testimonial-card {
+    flex: 0 0 calc(50% - 15px);
+    min-width: calc(50% - 15px);
   }
 
   .footer-container {
@@ -491,10 +501,34 @@ h6 {
   }
 
   .testimonials-carousel {
-    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .testimonial-card {
+    flex: 0 0 100%;
+    min-width: 100%;
   }
 
   .footer-container {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonials-section {
+    padding: 60px 15px 80px;
+  }
+
+  .testimonials-title {
+    font-size: 28px;
+  }
+
+  .testimonial-card {
+    padding: 25px 20px;
+  }
+
+  .carousel-controls {
+    flex-direction: column;
+    gap: 20px;
   }
 }

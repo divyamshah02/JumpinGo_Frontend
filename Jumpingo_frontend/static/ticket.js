@@ -137,4 +137,136 @@ document.addEventListener("DOMContentLoaded", () => {
   // Pause auto-play on hover
   carousel.addEventListener("mouseenter", stopAutoPlay)
   carousel.addEventListener("mouseleave", startAutoPlay)
+
+  // Testimonial Carousel Functionality
+  const testimonialsCarousel = document.querySelector(".testimonials-carousel")
+  const testimonialCards = document.querySelectorAll(".testimonial-card")
+  const testimonialDots = document.querySelectorAll(".carousel-dots .dot")
+  const prevBtn = document.querySelector(".arrow-btn.prev")
+  const nextBtn = document.querySelector(".arrow-btn.next")
+
+  if (!testimonialsCarousel || !testimonialCards.length || !testimonialDots.length) return
+
+  let currentTestimonialSlide = 0
+  let testimonialCardsPerView = 3
+  let testimonialAutoPlayInterval = null
+
+  // Calculate cards per view based on screen size
+  function updateTestimonialCardsPerView() {
+    const width = window.innerWidth
+    if (width <= 768) {
+      testimonialCardsPerView = 1
+    } else if (width <= 1024) {
+      testimonialCardsPerView = 2
+    } else {
+      testimonialCardsPerView = 3
+    }
+  }
+
+  // Get max slides based on cards and cards per view
+  function getMaxTestimonialSlides() {
+    return Math.max(0, testimonialCards.length - testimonialCardsPerView)
+  }
+
+  // Update carousel position
+  function updateTestimonialsCarousel() {
+    const cardWidth = testimonialCards[0].offsetWidth
+    const gap = Number.parseInt(window.getComputedStyle(testimonialsCarousel).gap) || 40
+    const offset = currentTestimonialSlide * (cardWidth + gap)
+    testimonialsCarousel.style.transform = `translateX(-${offset}px)`
+
+    // Update active dot
+    testimonialDots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentTestimonialSlide)
+    })
+
+    const maxSlides = getMaxTestimonialSlides()
+    if (prevBtn) {
+      prevBtn.style.opacity = maxSlides === 0 ? "0.3" : "1"
+      prevBtn.style.pointerEvents = maxSlides === 0 ? "none" : "auto"
+    }
+    if (nextBtn) {
+      nextBtn.style.opacity = maxSlides === 0 ? "0.3" : "1"
+      nextBtn.style.pointerEvents = maxSlides === 0 ? "none" : "auto"
+    }
+  }
+
+  // Handle dot clicks
+  testimonialDots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      if (getMaxTestimonialSlides() === 0) return
+      currentTestimonialSlide = Math.min(index, getMaxTestimonialSlides())
+      updateTestimonialsCarousel()
+    })
+  })
+
+  // Handle prev button
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      const maxSlides = getMaxTestimonialSlides()
+      if (maxSlides === 0) return
+      if (currentTestimonialSlide > 0) {
+        currentTestimonialSlide = currentTestimonialSlide - 1
+        updateTestimonialsCarousel()
+      }
+    })
+  }
+
+  // Handle next button
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      const maxSlides = getMaxTestimonialSlides()
+      if (maxSlides === 0) return
+      if (currentTestimonialSlide < maxSlides) {
+        currentTestimonialSlide = currentTestimonialSlide + 1
+        updateTestimonialsCarousel()
+      }
+    })
+  }
+
+  // Handle window resize
+  window.addEventListener("resize", () => {
+    updateTestimonialCardsPerView()
+    currentTestimonialSlide = Math.min(currentTestimonialSlide, getMaxTestimonialSlides())
+    updateTestimonialsCarousel()
+    stopTestimonialAutoPlay()
+    startTestimonialAutoPlay()
+  })
+
+  // Initialize
+  updateTestimonialCardsPerView()
+  updateTestimonialsCarousel()
+
+  function startTestimonialAutoPlay() {
+    const maxSlides = getMaxTestimonialSlides()
+    if (maxSlides === 0) return
+
+    testimonialAutoPlayInterval = setInterval(() => {
+      const maxSlides = getMaxTestimonialSlides()
+      if (maxSlides === 0) {
+        stopTestimonialAutoPlay()
+        return
+      }
+      if (currentTestimonialSlide >= maxSlides) {
+        currentTestimonialSlide = 0
+      } else {
+        currentTestimonialSlide = currentTestimonialSlide + 1
+      }
+      updateTestimonialsCarousel()
+    }, 5000)
+  }
+
+  function stopTestimonialAutoPlay() {
+    if (testimonialAutoPlayInterval) {
+      clearInterval(testimonialAutoPlayInterval)
+      testimonialAutoPlayInterval = null
+    }
+  }
+
+  // Start auto-play
+  startTestimonialAutoPlay()
+
+  // Pause auto-play on hover
+  testimonialsCarousel.addEventListener("mouseenter", stopTestimonialAutoPlay)
+  testimonialsCarousel.addEventListener("mouseleave", startTestimonialAutoPlay)
 })
