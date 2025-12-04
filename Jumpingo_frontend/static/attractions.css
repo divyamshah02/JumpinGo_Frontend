@@ -353,6 +353,13 @@ html, body {
 }
 
 @media (max-width: 768px) {
+  .attractions-title {
+    font-size: 60px;
+  }
+  .title-star {
+    width: 140px;
+    height: 140px;
+  }
   .testimonials-title {
     font-size: 36px;
   }
@@ -368,6 +375,14 @@ html, body {
 }
 
 @media (max-width: 480px) {
+  .attractions-title {
+    font-size: 45px;
+  }
+  .title-star {
+    width: 110px;
+    height: 110px;
+  }
+
   .testimonials-section {
     padding: 60px 15px 80px;
   }
