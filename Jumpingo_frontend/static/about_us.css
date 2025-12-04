@@ -1,4 +1,8 @@
 /* About Us Page Styles */
+html,
+body {
+  overflow-x: hidden;
+}
 
 :root {
   --color-blue: #00adef;
@@ -610,6 +614,48 @@ body {
     height: 500px;
   }
 
+  /* Scale down circles for tablet */
+  .circle-1 {
+    width: 500px;
+    height: 500px;
+  }
+
+  .circle-2 {
+    width: 400px;
+    height: 400px;
+  }
+
+  .circle-3 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .circle-center {
+    width: 200px;
+    height: 200px;
+  }
+
+  /* Scale down floating images for tablet */
+  .tilted-img {
+    width: 140px;
+    height: 110px;
+  }
+
+  .floating-label span {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  /* Adjust diagonal banner for tablet */
+  .diagonal-banner-about {
+    bottom: 100px;
+    padding: 18px 0;
+  }
+
+  .banner-text-scroll-about span {
+    font-size: 22px;
+  }
+
   /* Stack timeline vertically on tablet with left-aligned line */
   .timeline {
     padding-left: 50px;
@@ -647,11 +693,140 @@ body {
   .testimonial-card {
     min-width: calc((100% - 30px) / 2);
   }
+
+  /* Map section responsive */
+  .section-heading-blue {
+    font-size: 48px;
+  }
+
+  .section-subtext-blue {
+    font-size: 16px;
+    padding: 0 20px;
+  }
 }
 
 @media (max-width: 768px) {
+  /* Hero section responsive */
+  .about-hero {
+    min-height: 70vh;
+    padding: 80px 0 40px;
+  }
+
   .about-title {
-    font-size: 48px;
+    font-size: 36px;
+    letter-spacing: 1px;
+  }
+
+  .about-subtitle {
+    font-size: 13px;
+  }
+
+  /* Scale down circles for mobile */
+  .circle-container {
+    width: 320px;
+    height: 320px;
+  }
+
+  .circle-1 {
+    width: 320px;
+    height: 320px;
+  }
+
+  .circle-2 {
+    width: 250px;
+    height: 250px;
+  }
+
+  .circle-3 {
+    width: 180px;
+    height: 180px;
+  }
+
+  .circle-center {
+    width: 130px;
+    height: 130px;
+  }
+
+  /* Scale down floating images for mobile */
+  .tilted-img {
+    width: 100px;
+    height: 80px;
+    border-radius: 10px;
+  }
+
+  .floating-label span {
+    padding: 6px 12px;
+    font-size: 11px;
+    border-radius: 15px;
+  }
+
+  /* Reposition floating items for mobile */
+  .floating-item[style*="top: 10%; left: 5%"] {
+    top: 5% !important;
+    left: 2% !important;
+  }
+  .floating-label[style*="top: 8%; left: 13%"] {
+    top: 3% !important;
+    left: 5% !important;
+  }
+
+  .floating-item[style*="top: 10%; right: 5%"] {
+    top: 5% !important;
+    right: 2% !important;
+  }
+  .floating-label[style*="top: 8%; right: 13%"] {
+    top: 3% !important;
+    right: 5% !important;
+  }
+
+  .floating-item[style*="top: 35%; left: 12%"] {
+    top: 28% !important;
+    left: 2% !important;
+  }
+  .floating-label[style*="top: 32%; left: 8%"] {
+    top: 25% !important;
+    left: 0% !important;
+  }
+
+  .floating-item[style*="top: 40%; right: 13%"] {
+    top: 32% !important;
+    right: 2% !important;
+  }
+  .floating-label[style*="top: 38%; right: 8%"] {
+    top: 29% !important;
+    right: 0% !important;
+  }
+
+  /* Hide some floating items on mobile for cleaner look */
+  .floating-item[style*="top: 25%; right: 40%"],
+  .floating-label[style*="top: 25%; right: 48%"],
+  .floating-item[style*="bottom: 25%; right: 50%"],
+  .floating-label[style*="bottom: 22%; right: 45%"] {
+    display: none;
+  }
+
+  /* Diagonal banner responsive for mobile */
+  .diagonal-banner-about {
+    bottom: 90px;
+    padding: 12px 0;
+    transform: rotate(12deg);
+  }
+
+  .banner-text-scroll-about span {
+    font-size: 16px;
+    padding-right: 30px;
+  }
+
+  /* CTA button responsive */
+  .btn-about-cta {
+    bottom: 25px;
+    padding: 10px 35px;
+    font-size: 14px;
+  }
+
+  /* Timeline section responsive */
+  .timeline-section {
+    padding: 50px 0;
   }
 
   .timeline {
@@ -659,41 +834,283 @@ body {
   }
 
   .timeline::before {
-    left: 25px;
+    left: 15px;
+    width: 2px;
+  }
+
+  .timeline-item {
+    gap: 20px;
+    margin-bottom: 50px;
   }
 
   .timeline-dot {
-    left: -31px;
-    width: 22px;
-    height: 22px;
-    border-width: 4px;
+    left: -27px;
+    width: 20px;
+    height: 20px;
+    border-width: 3px;
   }
 
   .timeline-image {
-    height: 200px;
+    height: 180px;
+    border-radius: 12px;
   }
 
   .timeline-content h3 {
-    font-size: 28px;
+    font-size: 24px;
+    margin-bottom: 10px;
   }
 
   .timeline-content p {
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 1.6;
   }
 
-  /* Added responsive styles for 1 card on mobile */
+  /* Map section responsive */
+  .map-section {
+    padding: 40px 0;
+  }
+
+  .section-heading-blue {
+    font-size: 36px;
+    letter-spacing: 1px;
+    padding: 0 15px;
+  }
+
+  .section-subtext-blue {
+    font-size: 14px;
+    padding: 0 20px;
+    margin-bottom: 25px;
+  }
+
+  .map-image {
+    border-radius: 12px;
+  }
+
+  /* Testimonials responsive */
   .testimonials-section {
-    padding: 60px 0 80px;
+    padding: 50px 0 70px;
     min-height: auto;
+  }
+
+  .section-title-white {
+    font-size: 32px;
+    letter-spacing: 1px;
+    padding: 0 15px;
+  }
+
+  .section-subtitle-white {
+    font-size: 15px;
+    padding: 0 20px;
+  }
+
+  .testimonials-grid {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    gap: 20px;
   }
 
   .testimonial-card {
     min-width: 100%;
-    padding: 25px 20px;
+    padding: 22px 18px;
+    box-shadow: 8px 10px 0 rgba(44, 130, 85, 1);
+  }
+
+  .testimonial-text {
+    font-size: 14px;
   }
 
   .testimonial-controls {
     flex-direction: column;
-    gap: 30px;
+    gap: 25px;
+  }
+
+  .arrow-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .about-hero {
+    min-height: 50vh;
+    padding: 70px 0 30px;
+  }
+
+  .about-title {
+    font-size: 28px;
+  }
+
+  .about-subtitle {
+    font-size: 11px;
+    margin-top: 5px;
+  }
+
+  /* Further scale down circles */
+  .circle-container {
+    width: 260px;
+    height: 260px;
+  }
+
+  .circle-1 {
+    width: 260px;
+    height: 260px;
+  }
+
+  .circle-2 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .circle-3 {
+    width: 150px;
+    height: 150px;
+  }
+
+  .circle-center {
+    width: 110px;
+    height: 110px;
+  }
+
+  /* Further scale down floating images */
+  .tilted-img {
+    width: 70px;
+    height: 55px;
+    border-radius: 8px;
+  }
+
+  .floating-label span {
+    padding: 4px 10px;
+    font-size: 9px;
+  }
+
+  /* Diagonal banner for extra small */
+  .diagonal-banner-about {
+    bottom: 70px;
+    padding: 10px 0;
+    border-width: 4px;
+  }
+
+  .banner-text-scroll-about span {
+    font-size: 12px;
+    padding-right: 20px;
+  }
+
+  .btn-about-cta {
+    bottom: 15px;
+    padding: 8px 28px;
+    font-size: 12px;
+    box-shadow: 3px 4px 0 #8b1043;
+  }
+
+  /* Timeline for extra small */
+  .timeline-section {
+    padding: 35px 0;
+  }
+
+  .timeline {
+    padding-left: 30px;
+  }
+
+  .timeline::before {
+    left: 12px;
+  }
+
+  .timeline-item {
+    gap: 15px;
+    margin-bottom: 40px;
+  }
+
+  .timeline-dot {
+    left: -23px;
+    width: 16px;
+    height: 16px;
+    border-width: 3px;
+  }
+
+  .timeline-image {
+    height: 150px;
+    border-radius: 10px;
+  }
+
+  .timeline-content h3 {
+    font-size: 20px;
+  }
+
+  .timeline-content p {
+    font-size: 13px;
+  }
+
+  /* Map section for extra small */
+  .map-section {
+    padding: 30px 0;
+  }
+
+  .section-heading-blue {
+    font-size: 28px;
+  }
+
+  .section-subtext-blue {
+    font-size: 13px;
+  }
+
+  /* Testimonials for extra small */
+  .testimonials-section {
+    padding: 40px 0 60px;
+  }
+
+  .section-title-white {
+    font-size: 26px;
+  }
+
+  .section-subtitle-white {
+    font-size: 13px;
+  }
+
+  .testimonials-grid {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .testimonial-card {
+    padding: 18px 15px;
+    min-height: auto;
+  }
+
+  .testimonial-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .testimonial-info h3 {
+    font-size: 15px;
+  }
+
+  .testimonial-text {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+  }
+
+  .dot.active {
+    width: 35px;
+    height: 12px;
+  }
+
+  .arrow-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+}
+
+/* Fix timeline dot alignment across all breakpoints */
+@media (max-width: 992px) {
+  .timeline-item {
+    display: flex;
   }
 }

@@ -2,7 +2,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const heroSection = document.querySelector(".about-hero")
   const floatingElements = document.querySelectorAll("[data-reveal]")
-  const revealRadius = 320
+  // const revealRadius = 320
+  const revealRadius = window.innerWidth * 0.25 // 25% of screen width
 
   heroSection.addEventListener("mousemove", (e) => {
     const mouseX = e.clientX
