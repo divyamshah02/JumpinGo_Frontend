@@ -126,4 +126,61 @@ document.addEventListener("DOMContentLoaded", () => {
     testimonialsGrid.addEventListener("mouseenter", stopAutoPlay)
     testimonialsGrid.addEventListener("mouseleave", startAutoPlay)
   }
+
+  // Interactive Map Enhancement
+  const rideHotspots = document.querySelectorAll(".ride-hotspot")
+  const mapOverlay = document.querySelector(".map-overlay")
+  const ridePopup = document.getElementById("ridePopup")
+  const ridePopupImg = document.getElementById("ridePopupImg")
+  const ridePopupName = document.getElementById("ridePopupName")
+
+  function showRidePopup(hotspot) {
+    const rideName = hotspot.getAttribute("data-ride")
+    const rideImg = hotspot.getAttribute("data-img")
+
+    if (ridePopupImg && ridePopupName && ridePopup && mapOverlay) {
+      ridePopupImg.src = rideImg
+      ridePopupImg.alt = rideName
+      ridePopupName.textContent = rideName
+
+      mapOverlay.classList.add("active")
+      ridePopup.classList.add("active")
+    }
+  }
+
+  function hideRidePopup() {
+    if (ridePopup && mapOverlay) {
+      mapOverlay.classList.remove("active")
+      ridePopup.classList.remove("active")
+    }
+  }
+
+  rideHotspots.forEach((hotspot) => {
+    // Mouse hover for desktop
+    hotspot.addEventListener("mouseenter", () => {
+      showRidePopup(hotspot)
+    })
+
+    hotspot.addEventListener("mouseleave", () => {
+      hideRidePopup()
+    })
+
+    // Touch support for mobile
+    hotspot.addEventListener("touchstart", (e) => {
+      e.preventDefault()
+      // Remove active class from all other hotspots
+      rideHotspots.forEach((h) => h.classList.remove("touch-active"))
+      // Add active class to current hotspot
+      hotspot.classList.add("touch-active")
+      showRidePopup(hotspot)
+    })
+  })
+
+  // Close popup when tapping outside on mobile
+  document.addEventListener("touchstart", (e) => {
+    if (!e.target.closest(".ride-hotspot")) {
+      rideHotspots.forEach((h) => h.classList.remove("touch-active"))
+      hideRidePopup()
+    }
+  })
 })

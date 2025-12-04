@@ -180,7 +180,37 @@
             <h2 class="section-heading-blue">FIND YOUR NEXT JUMP</h2>
             <p class="section-subtext-blue">Explore the complete JUMPINGO layout. Find all the attractions, food court, entry points, and zones in one glance. Plan your route and maximize your jumping fun!</p>
             <div class="map-image-wrapper">
-                <img src="/static/Jumpingo MAP.webp" alt="Jumpingo Park Map" class="map-image">
+                <div class="interactive-map-container">
+                    <img src="/static/Jumpingo MAP.webp" alt="Jumpingo Park Map" class="map-image">
+                    
+                    <!-- Added map overlay for translucent background effect -->
+                    <div class="map-overlay"></div>
+                    
+                    <!-- Moved ride-popup outside hotspots for centered display -->
+                    <div class="ride-popup" id="ridePopup">
+                        <img src="/placeholder.svg" alt="" id="ridePopupImg">
+                        <span class="ride-name" id="ridePopupName"></span>
+                    </div>
+                    
+                    <!-- Ride Hotspots - removed nested popups -->
+                    <div class="ride-hotspot" data-ride="Turbo Trail" data-img="/static/Turbo Trail.png" style="top: 18%; left: 3%; width: 26%; height: 24%;"></div>
+                    
+                    <div class="ride-hotspot" data-ride="The Castle" data-img="/static/The Castle.png" style="top: 8%; left: 40%; width: 20%; height: 26%;"></div>
+                    
+                    <div class="ride-hotspot" data-ride="Sky Slide" data-img="/static/Sky Slide.png" style="top: 6%; left: 75%; width: 18%; height: 28%;"></div>
+                    
+                    <div class="ride-hotspot" data-ride="Jump X" data-img="/static/Jump X.png" style="top: 52%; left: 5%; width: 20%; height: 32%;"></div>
+                    
+                    <div class="ride-hotspot" data-ride="A-Maze" data-img="/static/A-Maze.png" style="top: 40%; left: 30%; width: 24%; height: 28%;"></div>
+                    
+                    <div class="ride-hotspot" data-ride="The Hive" data-img="/static/The Hive.png" style="top: 35%; left: 59%; width: 26%; height: 30%;"></div>
+                    
+                    <div class="ride-hotspot" data-ride="Shoe Zone" data-img="/static/Shoe Zone.png" style="top: 58%; left: 85%; width: 12%; height: 18%;"></div>
+                    
+                    <div class="ride-hotspot" data-ride="Food Court" data-img="/static/Food Court.png" style="top: 70%; left: 44%; width: 15%; height: 22%;"></div>
+                    
+                    <div class="ride-hotspot" data-ride="Entry" data-img="/static/Entry.png" style="top: 74%; left: 76%; width: 12%; height: 22%;"></div>
+                </div>
             </div>
         </div>
     </section>
