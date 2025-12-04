@@ -276,6 +276,39 @@ body {
   z-index: 1;
 }
 
+/* Added animated line that travels up and down the timeline */
+.timeline::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: 3px;
+  height: 80px;
+  background: linear-gradient(180deg, transparent 0%, #ff4d6d 30%, #ffffff 50%, #ff4d6d 70%, transparent 100%);
+  z-index: 2;
+  animation: timelineTravel 3s ease-in-out infinite;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(255, 77, 109, 0.6), 0 0 20px rgba(255, 77, 109, 0.4);
+}
+
+@keyframes timelineTravel {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(100% - 80px);
+    opacity: 0;
+  }
+}
+
 /* Updated timeline item spacing and layout */
 .timeline-item {
   display: grid;
@@ -342,7 +375,7 @@ body {
   background: var(--color-red);
   border: 5px solid var(--color-red);
   border-radius: 50%;
-  box-shadow: 0 0 0 8px rgba(3, 165, 80, 0.1);
+  box-shadow: 0 0 0 8px rgba(189, 50, 87, 0.1);
   z-index: 2;
   animation: pulse 2s ease-in-out infinite;
 }
@@ -857,6 +890,12 @@ body {
     transform: none;
   }
 
+  /* Adjusted for new ::after element */
+  .timeline::after {
+    left: 40px;
+    transform: none;
+  }
+
   .timeline-item {
     grid-template-columns: auto 1fr;
     gap: 30px;
@@ -1025,6 +1064,12 @@ body {
   }
 
   .timeline::before {
+    left: 15px;
+    width: 2px;
+  }
+
+  /* Adjusted for new ::after element */
+  .timeline::after {
     left: 15px;
     width: 2px;
   }
@@ -1203,13 +1248,18 @@ body {
     left: 12px;
   }
 
+  /* Adjusted for new ::after element */
+  .timeline::after {
+    left: 12px;
+  }
+
   .timeline-item {
     gap: 15px;
     margin-bottom: 40px;
   }
 
   .timeline-dot {
-    left: -23px;
+    left: -25px;
     width: 16px;
     height: 16px;
     border-width: 3px;
