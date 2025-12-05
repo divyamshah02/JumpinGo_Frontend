@@ -38,16 +38,16 @@
                             <a class="nav-link" href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{% url 'ticket' %}">Ticket</a>
+                        </li>
+                        <li class="nav-item">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'attractions' %}">Attractions</a>
+                            </li>
                             <a class="nav-link" href="{% url 'about' %}">About Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'attractions' %}">Attractions</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'ticket' %}">Ticket</a>
                         </li>
                         <!-- Book A Ticket button shown only on mobile (below 576px) -->
                         <li class="nav-item d-sm-none">
@@ -70,22 +70,22 @@
                     <div class="main-image-wrapper">
                         <img src="/static/Attractions-04.webp" alt="Sky Swing Ride" class="ticket-main-image" id="mainImage">
                     </div>
-                    
+
                     <!-- Thumbnail Gallery -->
                     <div class="thumbnail-gallery">
-                        <div class="thumbnail-item active" data-image="Attractions-04.webp">
+                        <div class="thumbnail-item active" data-image="/static/Attractions-04.webp">
                             <img src="/static/Attractions-04.webp" alt="Thumbnail 1">
                         </div>
-                        <div class="thumbnail-item" data-image="Attractions-06.webp">
+                        <div class="thumbnail-item" data-image="/static/Attractions-06.webp">
                             <img src="/static/Attractions-06.webp" alt="Thumbnail 2">
                         </div>
-                        <div class="thumbnail-item" data-image="Attractions-08.webp">
+                        <div class="thumbnail-item" data-image="/static/Attractions-08.webp">
                             <img src="/static/Attractions-08.webp" alt="Thumbnail 3">
                         </div>
-                        <div class="thumbnail-item" data-image="Attractions-11.webp">
+                        <div class="thumbnail-item" data-image="/static/Attractions-11.webp">
                             <img src="/static/Attractions-11.webp" alt="Thumbnail 4">
                         </div>
-                        <div class="thumbnail-item" data-image="Attractions-01.webp">
+                        <div class="thumbnail-item" data-image="/static/Attractions-01.webp">
                             <img src="/static/Attractions-01.webp" alt="Thumbnail 5">
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                     </nav>
 
                     <h1 class="ticket-title">Ticket One</h1>
-                    
+
                     <p class="ticket-description">
                         Experience pure joy as families and friends bounce together in JUMPINGO's specially designed zones. Perfect for ages 5 to 55, this family-friendly session combines age-appropriate inflatables with supervised safety zones where everyone – kids, parents, and grandparents – can jump, play, and connect away from screens.
                     </p>
@@ -218,13 +218,13 @@
     <section class="gallery-section">
         <div class="container">
             <h2 class="gallery-title">Gallery Of Ticket One</h2>
-            
+
             <div class="gallery-grid">
                 <!-- Large top image -->
                 <div class="gallery-item gallery-large">
                     <img src="/static/Attractions-18.webp" alt="Sky Swing Gallery 1">
                 </div>
-                
+
                 <!-- Four smaller images in 2x2 grid -->
                 <div class="gallery-item gallery-small">
                     <img src="/static/Attractions-01.webp" alt="Gallery 2">
@@ -255,7 +255,7 @@
             <div class="testimonials-container">
                 <h2 class="testimonials-title">What Our Jumpmates Are Saying</h2>
                 <p class="testimonials-subtitle">Real stories. Real energy. Real jumps. <br>Hear from the ones who took the leap before you!</p>
-                
+
                 <div class="testimonials-carousel">
                     <div class="testimonial-card">
                         <div class="testimonial-header">
@@ -267,7 +267,7 @@
                         </div>
                         <p class="testimonial-text">Super smooth experience from entry to exit. Kids were safe, engaged, and happily tired by the end of the day – exactly what we wanted from the event</p>
                     </div>
-                    
+
                     <div class="testimonial-card">
                         <div class="testimonial-header">
                             <div class="testimonial-avatar"></div>
@@ -278,7 +278,7 @@
                         </div>
                         <p class="testimonial-text">JUMPINGO completely surprised our group in Ahmedabad – the giant slides and obstacle runs felt like a mini adventure park. The constant bouncing, racing, and friendly challenges gave everyone a solid adrenaline rush and a full‑body workout in the best way.</p>
                     </div>
-                    
+
                     <div class="testimonial-card">
                         <div class="testimonial-header">
                             <div class="testimonial-avatar"></div>
@@ -300,7 +300,7 @@
                         </div>
                         <p class="testimonial-text">Super smooth experience from entry to exit. Kids were safe, engaged, and happily tired by the end of the day – exactly what we wanted from the event</p>
                     </div>
-                    
+
                     <div class="testimonial-card">
                         <div class="testimonial-header">
                             <div class="testimonial-avatar"></div>
@@ -311,7 +311,7 @@
                         </div>
                         <p class="testimonial-text">JUMPINGO completely surprised our group in Ahmedabad – the giant slides and obstacle runs felt like a mini adventure park. The constant bouncing, racing, and friendly challenges gave everyone a solid adrenaline rush and a full‑body workout in the best way.</p>
                     </div>
-                    
+
                     <div class="testimonial-card">
                         <div class="testimonial-header">
                             <div class="testimonial-avatar"></div>
@@ -323,7 +323,7 @@
                         <p class="testimonial-text">JUMPINGO turned our regular gathering into an insane high‑energy session. Sprinting through inflatables, timing our runs, and competing with friends had us shouting, laughing, and sweating like we were on an adventure trail, not just at an event ground.</p>
                     </div>
                 </div>
-                
+
                 <div class="carousel-controls">
                     <div class="carousel-dots">
                         <span class="dot active"></span>
@@ -397,7 +397,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/static/ticket.js"></script>
     <script src="/static/star_animate.js"></script>
-    
+
     <script>
         document.getElementById("bookingForm").addEventListener("submit", async function (e) {
             e.preventDefault();
