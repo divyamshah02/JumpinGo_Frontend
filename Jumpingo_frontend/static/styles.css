@@ -131,6 +131,11 @@ body {
   letter-spacing: 1px;
 }
 
+.btn-hero.buy-now {
+  padding: 5px 20px;
+  font-size: 12px;
+}
+
 .btn-hero:hover {
   transform: translateY(3px);
   box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
@@ -996,7 +1001,7 @@ body {
 /* Adjusted product grid spacing */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   margin-bottom: 50px;
   padding: 0 20px;
@@ -1032,6 +1037,38 @@ body {
   margin: 0;
 }
 
+/* Add this to your styles.css */
+
+/* Blur effect for non-early-bird tickets */
+.blurred-ticket {
+  position: relative;
+}
+
+.blurred-ticket::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.blurred-ticket .product-content,
+.blurred-ticket .product-price,
+.blurred-ticket .product-button {
+  position: relative;
+  z-index: 0;
+}
+
+.blurred-ticket .product-button {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 .wishlist-icon {
   font-size: 20px;
   color: var(--dark-gray);

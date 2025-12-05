@@ -42,9 +42,9 @@
                             <a class="nav-link" href="{% url 'ticket' %}">Ticket</a>
                         </li>
                         <li class="nav-item">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'attractions' %}">Attractions</a>
-                            </li>
+                            <a class="nav-link" href="{% url 'attractions' %}">Attractions</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{% url 'about' %}">About Us</a>
                         </li>
                         <li class="nav-item">
@@ -83,7 +83,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    India’s First-Ever<br><span class="highlight">Jump Park Festival</span> is Here!<br>                    
+                    India’s biggest<br><span class="highlight">jumping park festival</span>!!<br>                    
                 </h1>
                 <p class="hero-subtitle">
                      Dive into a world where fun knows no gravity.<br>
@@ -200,6 +200,23 @@
                 <!-- Updated product cards with white background and proper styling -->
                 <div class="product-card">
                     <div class="product-header">
+                        <h3 class="product-name">Early Bird</h3>
+                        <i class="far fa-heart wishlist-icon"></i>
+                    </div>
+                    <div class="product-image">
+                        <div class="product-placeholder">
+                            <img src="/static/Home page images-07.webp" alt="Catalogue 1">
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">₹999 <span class="price-period">/ day</span></span>
+                        <button class="btn-hero buy-now" onclick="window.location = `{% url 'ticket' %}`">Buy Now</button>
+                    </div>
+                </div>
+
+                <!-- Add blurred class to Solo ticket -->
+                <div class="product-card blurred-ticket">
+                    <div class="product-header">
                         <h3 class="product-name">Solo</h3>
                         <i class="far fa-heart wishlist-icon"></i>
                     </div>
@@ -209,12 +226,13 @@
                         </div>
                     </div>
                     <div class="product-footer">
-                        <span class="product-price">2500 <span class="price-period">/ day</span></span>
-                        <button class="btn-hero" onclick="window.location = `{% url 'ticket' %}`">Buy Now</button>
+                        <span class="product-price">₹2500 <span class="price-period">/ day</span></span>
+                        <button class="btn-hero buy-now disabled-btn" disabled>Buy Now</button>
                     </div>
                 </div>
 
-                <div class="product-card">
+                <!-- Add blurred class to Group ticket -->
+                <div class="product-card blurred-ticket">
                     <div class="product-header">
                         <h3 class="product-name">Group (10 Pax)</h3>
                         <i class="far fa-heart wishlist-icon"></i>
@@ -225,12 +243,13 @@
                         </div>
                     </div>
                     <div class="product-footer">
-                        <span class="product-price">25000 <span class="price-period">/ day</span></span>
-                        <button class="btn-hero" onclick="window.location = `{% url 'ticket' %}`">Buy Now</button>
+                        <span class="product-price">₹25000 <span class="price-period">/ day</span></span>
+                        <button class="btn-hero buy-now disabled-btn" disabled>Buy Now</button>
                     </div>
                 </div>
 
-                <div class="product-card">
+                <!-- Add blurred class to Family ticket -->
+                <div class="product-card blurred-ticket">
                     <div class="product-header">
                         <h3 class="product-name">Family (4 Pax)</h3>
                         <i class="far fa-heart wishlist-icon"></i>
@@ -241,11 +260,10 @@
                         </div>
                     </div>
                     <div class="product-footer">
-                        <span class="product-price">10000 <span class="price-period">/ day</span></span>
-                        <button class="btn-hero" onclick="window.location = `{% url 'ticket' %}`">Buy Now</button>
+                        <span class="product-price">₹10000 <span class="price-period">/ day</span></span>
+                        <button class="btn-hero buy-now disabled-btn" disabled>Buy Now</button>
                     </div>
                 </div>
-
             </div>
 
             <!-- Updated load more button to use secondary white style with shadow -->
