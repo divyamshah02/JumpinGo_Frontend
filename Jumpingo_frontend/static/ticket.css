@@ -1,7 +1,7 @@
-html, body {
-    overflow-x: hidden;
+html,
+body {
+  overflow-x: hidden;
 }
-
 
 /* Ticket Details Section */
 .ticket-details-section {
@@ -551,6 +551,7 @@ html, body {
 }
 
 .banner-text-scroll-bottom {
+  display: flex; /* Added from update */
   white-space: nowrap;
   animation: scrollText 30s linear infinite;
 }
@@ -564,6 +565,16 @@ html, body {
   padding-right: 50px;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+/* Added keyframes animation for infinite horizontal scroll */
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.33%);
+  }
 }
 
 /* Replaced info-cards carousel section with contact page testimonial styles */
