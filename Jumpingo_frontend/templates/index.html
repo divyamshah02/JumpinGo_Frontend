@@ -121,14 +121,31 @@
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    India’s biggest<br><span class="highlight">jumping park</span> festival!<br>                    
+                    India's biggest<br><span class="highlight">jumping park</span> festival!<br>                    
                 </h1>
-                <p class="hero-subtitle">
-                     Dive into a world where fun knows no gravity.<br>
-                    Bounce, flip, fly, and feel the thrill like never before  at India’s biggest celebration of motion and madness.<br>
-                </p>
+                <!-- Updated subtitle container with proper flip animation structure -->
+                <div class="hero-subtitle-container">
+                    <div class="hero-subtitle-wrapper">
+                        <p class="hero-subtitle flip-in">
+                            Dive into a world where fun knows no gravity.<br>
+                            Bounce, flip, fly, and feel the thrill like never before at India's biggest celebration of motion and madness.
+                        </p>
+                    </div>
+                    <div class="hero-subtitle-wrapper">
+                        <p class="hero-subtitle">
+                            Designed for ages 5 to 85, Because joy has no age limit.<br>
+                            Come experience the magic of jumping across all generations.
+                        </p>
+                    </div>
+                    <div class="hero-subtitle-wrapper">
+                        <p class="hero-subtitle">
+                            India's biggest jumping park festival<br>
+                            Where fun has no limits and gravity is just a suggestion.
+                        </p>
+                    </div>
+                </div>
                 <!-- Updated button text and styling -->
-                <button class="btn-hero" onclick="window.location = `https://link.district.in/DSTRKT/JumpingoPartnerWebsite`">Let’s Jump!</button>
+                <button class="btn-hero" onclick="window.location = `https://link.district.in/DSTRKT/JumpingoPartnerWebsite`">Let's Jump!</button>
             </div>
         </div>
 
@@ -137,32 +154,30 @@
             <!-- Added two separate rows that slide in opposite directions -->
             <div class="image-gallery-row row-1">
                 <img src="/static/Home page images-08.webp" alt="Colorful Balloons" class="gallery-img">
-                <img src="/static/Home page images-09.webp" alt="Ferris Wheel" class="gallery-img">
+                <img src="/static/Website Banner-05.webp" alt="Ferris Wheel" class="gallery-img">
                 <img src="/static/Home page images-10.webp" alt="Carousel Horses" class="gallery-img">
-                <img src="/static/Home page images-11.webp" alt="Colorful Balloons" class="gallery-img">
-                <img src="/static/Home page images-12.webp" alt="Ferris Wheel" class="gallery-img">
+                <img src="/static/Website Banner-06.webp" alt="Colorful Balloons" class="gallery-img">
+                <img src="/static/Website Banner-08.webp" alt="Ferris Wheel" class="gallery-img">
                 <!-- Duplicate for seamless loop -->
                 <img src="/static/Home page images-08.webp" alt="Colorful Balloons" class="gallery-img">
-                <img src="/static/Home page images-09.webp" alt="Ferris Wheel" class="gallery-img">
+                <img src="/static/Website Banner-05.webp" alt="Ferris Wheel" class="gallery-img">
                 <img src="/static/Home page images-10.webp" alt="Carousel Horses" class="gallery-img">
-                <img src="/static/Home page images-11.webp" alt="Colorful Balloons" class="gallery-img">
-                <img src="/static/Home page images-12.webp" alt="Ferris Wheel" class="gallery-img">
-
+                <img src="/static/Website Banner-06.webp" alt="Colorful Balloons" class="gallery-img">
+                <img src="/static/Website Banner-08.webp" alt="Ferris Wheel" class="gallery-img">
             </div>
             
             <div class="image-gallery-row row-2">
-                <img src="/static/Home page images-14.webp" alt="Ferris Wheel" class="gallery-img">
+                <img src="/static/Website Banner-03.webp" alt="Ferris Wheel" class="gallery-img">
                 <img src="/static/Home page images-15.webp" alt="Carousel Horses" class="gallery-img">
-                <img src="/static/Home page images-16.webp" alt="Colorful Balloons" class="gallery-img">
+                <img src="/static/Website Banner-08.webp" alt="Colorful Balloons" class="gallery-img">
                 <img src="/static/Home page images-17.webp" alt="Ferris Wheel" class="gallery-img">
                 <img src="/static/Home page images-18.webp" alt="Ferris Wheel" class="gallery-img">
                 <!-- Duplicate for seamless loop -->
-                <img src="/static/Home page images-14.webp" alt="Ferris Wheel" class="gallery-img">
+                <img src="/static/Website Banner-03.webp" alt="Ferris Wheel" class="gallery-img">
                 <img src="/static/Home page images-15.webp" alt="Carousel Horses" class="gallery-img">
-                <img src="/static/Home page images-16.webp" alt="Colorful Balloons" class="gallery-img">
+                <img src="/static/Website Banner-08.webp" alt="Colorful Balloons" class="gallery-img">
                 <img src="/static/Home page images-17.webp" alt="Ferris Wheel" class="gallery-img">
                 <img src="/static/Home page images-18.webp" alt="Ferris Wheel" class="gallery-img">
-
             </div>
         </div>
 
@@ -202,9 +217,12 @@
             <h2 class="catalogue-title">Event Schedule</h2>
             
             <div class="catalogue-content">
-                <!-- Repositioned images with proper structure for parallax -->
+                <!-- Added video button overlay on images -->
                 <div class="catalogue-item catalogue-item-left" data-parallax="left">
                     <img src="/static/Home page images-08.webp" alt="Catalogue 1">
+                    <button class="video-btn" onclick="openVideoModal('https://www.youtube.com/embed/nGswWSurkDQ?si=Zm4PP4xryBf8ox5N')">
+                        <i class="fas fa-play"></i>
+                    </button>
                 </div>
                 
                 <div class="catalogue-center">
@@ -213,6 +231,9 @@
                 
                 <div class="catalogue-item catalogue-item-right" data-parallax="right">
                     <img src="/static/Home page images-09.webp" alt="Catalogue 2">
+                    <button class="video-btn" onclick="openVideoModal('https://www.youtube.com/embed/nGswWSurkDQ?si=Zm4PP4xryBf8ox5N')">
+                        <i class="fas fa-play"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -277,7 +298,7 @@
                     </div>
                     <div class="product-image">
                         <div class="product-placeholder">
-                                <img src="/static/Home page images-05.webp" alt="Group">
+                            <img src="/static/Home page images-05.webp" alt="Group">
                         </div>
                     </div>
                     <div class="product-footer">
@@ -294,7 +315,7 @@
                     </div>
                     <div class="product-image">
                         <div class="product-placeholder">
-                                <img src="/static/Home page images-06.webp" alt="Family">
+                            <img src="/static/Home page images-06.webp" alt="Family">
                         </div>
                     </div>
                     <div class="product-footer">
@@ -312,14 +333,15 @@
     <!-- Features Section -->
     <section class="features-section">
         <div class="">
-            <h2 class="section-title-red">Why everyone’s talking about Jumpingo Jump Park Festival!</h2>
-            <p class="section-subtitle-dark">JUMPINGO brings the thrill of a full high‑energy attraction <br> for all age groups. From giant inflatables and obstacle courses to <br> skill games and kids’ zones, every corner is designed to keep guests <br> laughing, moving, and coming back for more.</p>
+            <h2 class="section-title-red">Why everyone's talking about Jumpingo Jump Park Festival!</h2>
+            <p class="section-subtitle-dark">JUMPINGO brings the thrill of a full high‑energy attraction <br> for all age groups. From giant inflatables and obstacle courses to <br> skill games and kids' zones, every corner is designed to keep guests <br> laughing, moving, and coming back for more.</p>
             
             <div class="features-content mx-2 mx-md-5">
                 <div class="feature-image">
-                    <img src="/static/Home page images-01.webp" alt="Carousel Horses">
+                    <img src="/static/Website Banner-03.webp" alt="Carousel Horses">
                 </div>
                 <div class="feature-list">
+                    <!-- Updated features section with all requested items -->
                     <div class="feature-item">
                         <div class="feature-icon red">
                             <i class="fas fa-headphones"></i>
@@ -337,25 +359,43 @@
                             <h3>Pocket-Friendly Passes</h3>
                             <p>Affordable packages for individuals and groups.</p>
                         </div>
+                    </div>                    
+                    <div class="feature-item">
+                        <div class="feature-icon red">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Toddler Zones</h3>
+                            <p>Safe spaces for little jumpers to explore and play.</p>
+                        </div>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon red">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="fas fa-palette"></i>
                         </div>
                         <div class="feature-text">
-                            <h3>Across Many Cities</h3>
-                            <p>Jump Park Festival is coming to a city near you!</p>
+                            <h3>Art & Craft Spaces</h3>
+                            <p>Creative breaks to refresh between jumps.</p>
                         </div>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon red">
-                            <i class="fas fa-phone"></i>
+                            <i class="fas fa-magic"></i>
                         </div>
                         <div class="feature-text">
-                            <h3>Always There for You</h3>
-                            <p>24x7 customer support for all queries.</p>
+                            <h3>Live Magician</h3>
+                            <p>Bringing moments of wonder and amazement.</p>
                         </div>
                     </div>
+                    <div class="feature-item">
+                        <div class="feature-icon red">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Food Zones</h3>
+                            <p>Curated food options to refuel between jumps.</p>
+                        </div>
+                    </div>                                        
                 </div>
             </div>
 
@@ -477,6 +517,7 @@
         </div>
     </section>
 
+    {% include 'faq.html' %}
     <!-- Footer -->
     <footer class="footer">
         <div class="mx-2 mx-md-5">
@@ -536,8 +577,73 @@
         </div>
     </footer>
 
+    <!-- Video Modal for event schedule -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <button class="video-close" onclick="closeVideoModal()">&times;</button>
+            <!-- <iframe id="videoFrame" width="100%" height="600" src="https://www.youtube.com/embed/nGswWSurkDQ?si=Zm4PP4xryBf8ox5N" frameborder="0" allowfullscreen></iframe> -->
+
+            <iframe id="videoFrame" width="100%" height="600" src="https://www.youtube.com/embed/nGswWSurkDQ?si=Zm4PP4xryBf8ox5N" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/static/script.js"></script>
     <script src="/static/star_animate.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const subtitles = document.querySelectorAll(".hero-subtitle");
+            let currentIndex = 0;
+
+            function rotateSubtitle() {
+                subtitles.forEach((subtitle, index) => {
+                    subtitle.classList.remove("active");
+                });
+                subtitles[currentIndex].classList.add("active");
+                currentIndex = (currentIndex + 1) % subtitles.length;
+            }
+
+            setInterval(rotateSubtitle, 5000);
+        });
+
+        function openVideoModal(videoUrl) {
+            const modal = document.getElementById("videoModal");
+            const iframe = document.getElementById("videoFrame");
+            iframe.src = videoUrl;
+            modal.style.display = "block";
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById("videoModal");
+            const iframe = document.getElementById("videoFrame");
+            iframe.src = "";
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("videoModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+                document.getElementById("videoFrame").src = "";
+            }
+        }
+
+        // document.addEventListener("DOMContentLoaded", () => {
+        //     const faqItems = document.querySelectorAll(".faq-item");
+            
+        //     faqItems.forEach(item => {
+        //         const question = item.querySelector(".faq-question");
+        //         question.addEventListener("click", () => {
+        //             const isActive = item.classList.contains("active");
+                    
+        //             faqItems.forEach(i => i.classList.remove("active"));
+                    
+        //             if (!isActive) {
+        //                 item.classList.add("active");
+        //             }
+        //         });
+        //     });
+        // });
+    </script>
 </body>
 </html>

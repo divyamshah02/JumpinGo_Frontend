@@ -205,4 +205,33 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   })
+
+  let currentSubtitleIndex = 0
+  const subtitles = document.querySelectorAll(".hero-subtitle")
+
+  function flipSubtitle() {
+    if (subtitles.length === 0) return
+
+    // Remove flip-in from current and add flip-out
+    subtitles[currentSubtitleIndex].classList.remove("flip-in")
+    subtitles[currentSubtitleIndex].classList.add("flip-out")
+
+    // Move to next subtitle
+    currentSubtitleIndex = (currentSubtitleIndex + 1) % subtitles.length
+
+    // After flip-out animation completes, add flip-in to next
+    setTimeout(() => {
+      // Remove all flip classes first
+      subtitles.forEach((subtitle) => {
+        subtitle.classList.remove("flip-in", "flip-out")
+      })
+
+      // Add flip-in to current subtitle
+      subtitles[currentSubtitleIndex].classList.add("flip-in")
+    }, 400) // Half of the animation duration
+  }
+
+  // Start the flip animation every 5 seconds
+  setInterval(flipSubtitle, 3000)
+
 })
