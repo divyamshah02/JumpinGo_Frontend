@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) --> 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZSFQ9Q638"></script>
+    <script> window.dataLayer = window.dataLayer || []; function
+    gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config',
+    'G-NZSFQ9Q638'); </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j
+    ,f);
+    })(window,document,'script','dataLayer','GTM-M8LFSC8P');</script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - JUMPIN GO</title>
@@ -16,6 +30,11 @@
 
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-M8LFSC8P"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- Header -->
     <header class="header pt-0">
         <div class="container-fluid px-4">
@@ -25,7 +44,7 @@
                 </a>
                 <div class="ms-auto d-flex align-items-center gap-3">
                     <!-- Book A Ticket button hidden only on mobile (below 576px) -->
-                    <button class="btn-login d-none d-sm-block" onclick="window.location = `{% url 'ticket' %}`">Book A Ticket</button>
+                    <button class="btn-login d-none d-sm-block" onclick="window.location = `https://link.district.in/DSTRKT/JumpingoPartnerWebsite`">Book A Ticket</button>
                     <!-- Bootstrap hamburger toggler now visible on all screen sizes -->
                     <button class="hamburger-menu" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span></span>
@@ -40,7 +59,7 @@
                             <a class="nav-link" href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'ticket' %}">Ticket</a>
+                            <a class="nav-link" href="{% url 'ticket' %}">Tickets</a>
                         </li>
                         <li class="nav-item">
                             <li class="nav-item">
@@ -53,7 +72,7 @@
                         </li>
                         <!-- Book A Ticket button shown only on mobile (below 576px) -->
                         <li class="nav-item d-sm-none">
-                            <a class="nav-link btn-login text-center mt-2" href="{% url 'ticket' %}">Book A Ticket</a>
+                            <a class="nav-link btn-login text-center mt-2" href="https://link.district.in/DSTRKT/JumpingoPartnerWebsite">Book A Ticket</a>
                         </li>
                     </ul>
                 </div>
@@ -232,7 +251,7 @@
                                 </div>
                                 <div class="testimonial-rating">4.5</div>
                             </div>
-                            <p class="testimonial-text">Super smooth experience from entry to exit. Kids were safe, engaged, and happily tired by the end of the day – exactly what we wanted from the event</p>
+                            <p class="testimonial-text">Super smooth experience from entry to exit. Kids were safe, engaged, and happily tired by the end of the day – exactly what we wanted from the event.</p>
                         </div>
 
                         <div class="testimonial-card">
@@ -266,7 +285,7 @@
                                 </div>
                                 <div class="testimonial-rating">4.5</div>
                             </div>
-                            <p class="testimonial-text">Super smooth experience from entry to exit. Kids were safe, engaged, and happily tired by the end of the day – exactly what we wanted from the event</p>
+                            <p class="testimonial-text">Super smooth experience from entry to exit. Kids were safe, engaged, and happily tired by the end of the day – exactly what we wanted from the event.</p>
                         </div>
 
                         <div class="testimonial-card">
@@ -336,7 +355,7 @@
                             <li><a href="{% url 'about' %}">About Us</a></li>
                             <li><a href="{% url 'contact' %}">Contact Us</a></li>
                             <li><a href="{% url 'attractions' %}">Attractions</a></li>
-                            <li><a href="{% url 'ticket' %}">Ticket</a></li>
+                            <li><a href="{% url 'ticket' %}">Tickets</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
@@ -345,7 +364,7 @@
                             <li><a href="{% url 'contact' %}">Contact us</a></li>
                             <li><a href="{% url 'get_in_touch' %}">Volunteers</a></li>
                             <li><a href="{% url 'get_in_touch' %}">Food Vendors</a></li>
-                            <li><a href="{% url 'get_in_touch' %}">We're hiring</a></li>
+                            <li><a href="{% url 'get_in_touch' %}">We’re Hiring</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
@@ -359,9 +378,10 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© JumpinGo. All rights reserved. <a target="_blank" href="https://www.virtuelance.com/" class="text-white" style="text-decoration: none;">Developed by VIRTUELANCE</a></p>
+                <p>© JUMPINGO LLP All Rights Reserved.</p>
+                <p><a target="_blank" href="https://www.virtuelance.com/" class="text-white" style="text-decoration: none;">Developed by VIRTUELANCE</a></p>
                 <div class="footer-bottom-links">
-                    <a href="{% url 'privacy_policy' %}">Privacy & Policy</a>
+                    <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
                     <a href="{% url 'privacy_policy' %}">Terms & Condition</a>
                 </div>
             </div>

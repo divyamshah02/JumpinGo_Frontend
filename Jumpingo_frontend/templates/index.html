@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) --> 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZSFQ9Q638"></script>
+    <script> window.dataLayer = window.dataLayer || []; function
+    gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config',
+    'G-NZSFQ9Q638'); </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j
+    ,f);
+    })(window,document,'script','dataLayer','GTM-M8LFSC8P');</script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JUMPIN GO - Carnival & Fair Attractions</title>
+    <title>JUMPIN GO - Jumping Fest</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,8 +26,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1502638017636120');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1502638017636120&ev=PageView&noscript
+        =1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-M8LFSC8P"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- Header -->
     <!-- Simplified navbar to match design with Register link, Login button, and hamburger menu -->
     <header class="header pt-0">
@@ -24,7 +62,7 @@
                 </a>
                 <div class="ms-auto d-flex align-items-center gap-3">
                     <!-- Book A Ticket button hidden only on mobile (below 576px) -->
-                    <button class="btn-login d-none d-sm-block" onclick="window.location = `{% url 'ticket' %}`">Book A Ticket</button>
+                    <button class="btn-login d-none d-sm-block" onclick="window.location = `https://link.district.in/DSTRKT/JumpingoPartnerWebsite`">Book A Ticket</button>
                     <!-- Bootstrap hamburger toggler now visible on all screen sizes -->
                     <button class="hamburger-menu" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span></span>
@@ -39,7 +77,7 @@
                             <a class="nav-link" href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'ticket' %}">Ticket</a>
+                            <a class="nav-link" href="{% url 'ticket' %}">Tickets</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'attractions' %}">Attractions</a>
@@ -52,7 +90,7 @@
                         </li>
                         <!-- Book A Ticket button shown only on mobile (below 576px) -->
                         <li class="nav-item d-sm-none">
-                            <a class="nav-link btn-login text-center mt-2" href="{% url 'ticket' %}">Book A Ticket</a>
+                            <a class="nav-link btn-login text-center mt-2" href="https://link.district.in/DSTRKT/JumpingoPartnerWebsite">Book A Ticket</a>
                         </li>
                     </ul>
                 </div>
@@ -83,14 +121,14 @@
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    India’s biggest<br><span class="highlight">jumping park</span> festival!!<br>                    
+                    India’s biggest<br><span class="highlight">jumping park</span> festival!<br>                    
                 </h1>
                 <p class="hero-subtitle">
                      Dive into a world where fun knows no gravity.<br>
                     Bounce, flip, fly, and feel the thrill like never before  at India’s biggest celebration of motion and madness.<br>
                 </p>
                 <!-- Updated button text and styling -->
-                <button class="btn-hero" onclick="window.location = `{% url 'ticket' %}`">Let’s Jump!</button>
+                <button class="btn-hero" onclick="window.location = `https://link.district.in/DSTRKT/JumpingoPartnerWebsite`">Let’s Jump!</button>
             </div>
         </div>
 
@@ -170,7 +208,7 @@
                 </div>
                 
                 <div class="catalogue-center">
-                    <button class="btn-catalogue-download" onclick="window.location = `{% url 'ticket' %}`">Book a Ticket</button>
+                    <button class="btn-catalogue-download" onclick="window.location = `https://link.district.in/DSTRKT/JumpingoPartnerWebsite`">Book a Ticket</button>
                 </div>
                 
                 <div class="catalogue-item catalogue-item-right" data-parallax="right">
@@ -185,7 +223,7 @@
     <section class="products-section">
         <div class="container">
             <h2 class="section-title-white">Pick Your Jump Zone</h2>
-            <p class="section-subtitle-white">Every jumper has their vibe,<br>choose your kind of thrill!</p>
+            <p class="section-subtitle-white">Every jumper has their vibe.<br>Choose your kind of thrill!</p>
 
             <div class="category-tabs-wrapper">
                 <div class="category-tabs w-100">
@@ -205,12 +243,12 @@
                     </div>
                     <div class="product-image">
                         <div class="product-placeholder">
-                            <img src="/static/Home page images-07.webp" alt="Catalogue 1">
+                            <img src="/static/Home page images-07.webp" alt="Early Bird">
                         </div>
                     </div>
                     <div class="product-footer">
                         <span class="product-price">₹999 <span class="price-period">/ day</span></span>
-                        <button class="btn-hero buy-now" onclick="window.location = `{% url 'ticket' %}`">Buy Now</button>
+                        <button class="btn-hero buy-now" onclick="window.location = `https://link.district.in/DSTRKT/JumpingoPartnerWebsite`">Buy Now</button>
                     </div>
                 </div>
 
@@ -222,7 +260,7 @@
                     </div>
                     <div class="product-image">
                         <div class="product-placeholder">
-                            <img src="/static/Home page images-04.webp" alt="Catalogue 1">
+                            <img src="/static/Home page images-04.webp" alt="SOLO">
                         </div>
                     </div>
                     <div class="product-footer">
@@ -239,7 +277,7 @@
                     </div>
                     <div class="product-image">
                         <div class="product-placeholder">
-                                <img src="/static/Home page images-05.webp" alt="Catalogue 1">
+                                <img src="/static/Home page images-05.webp" alt="Group">
                         </div>
                     </div>
                     <div class="product-footer">
@@ -256,7 +294,7 @@
                     </div>
                     <div class="product-image">
                         <div class="product-placeholder">
-                                <img src="/static/Home page images-06.webp" alt="Catalogue 1">
+                                <img src="/static/Home page images-06.webp" alt="Family">
                         </div>
                     </div>
                     <div class="product-footer">
@@ -274,7 +312,7 @@
     <!-- Features Section -->
     <section class="features-section">
         <div class="">
-            <h2 class="section-title-red">Why Everyone’s Talking About Jump Fest!</h2>
+            <h2 class="section-title-red">Why everyone’s talking about Jumpingo Jump Park Festival!</h2>
             <p class="section-subtitle-dark">JUMPINGO brings the thrill of a full high‑energy attraction <br> for all age groups. From giant inflatables and obstacle courses to <br> skill games and kids’ zones, every corner is designed to keep guests <br> laughing, moving, and coming back for more.</p>
             
             <div class="features-content mx-2 mx-md-5">
@@ -337,7 +375,7 @@
         <div class="banner-content">
             <h2 class="banner-title">Ready to defy gravity?</h2>
             <p class="banner-subtitle">Leave boring events behind and step into an inflatable world of slides, <br> jumps, climbs, and obstacle runs designed to get everyone moving.</p>
-            <button class="btn-banner" onclick="window.location = `{% url 'ticket' %}`">Book Now</button>
+            <button class="btn-banner" onclick="window.location = `https://link.district.in/DSTRKT/JumpingoPartnerWebsite`">Book Now</button>
         </div>
     </section>
 
@@ -358,7 +396,7 @@
                                 </div>
                                 <div class="testimonial-rating">4.5</div>
                             </div>
-                            <p class="testimonial-text">Super smooth experience from entry to exit. Kids were safe, engaged, and happily tired by the end of the day – exactly what we wanted from the event</p>
+                            <p class="testimonial-text">Super smooth experience from entry to exit. Kids were safe, engaged, and happily tired by the end of the day – exactly what we wanted from the event.</p>
                         </div>
 
                         <div class="testimonial-card">
@@ -392,7 +430,7 @@
                                 </div>
                                 <div class="testimonial-rating">4.5</div>
                             </div>
-                            <p class="testimonial-text">Super smooth experience from entry to exit. Kids were safe, engaged, and happily tired by the end of the day – exactly what we wanted from the event</p>
+                            <p class="testimonial-text">Super smooth experience from entry to exit. Kids were safe, engaged, and happily tired by the end of the day – exactly what we wanted from the event.</p>
                         </div>
 
                         <div class="testimonial-card">
@@ -463,7 +501,7 @@
                             <li><a href="{% url 'about' %}">About Us</a></li>
                             <li><a href="{% url 'contact' %}">Contact Us</a></li>
                             <li><a href="{% url 'attractions' %}">Attractions</a></li>
-                            <li><a href="{% url 'ticket' %}">Ticket</a></li>
+                            <li><a href="{% url 'ticket' %}">Tickets</a></li>
                         </ul>
                     </div>
                     <!-- Changed Community to Get in touch with all links pointing to contact page -->
@@ -473,7 +511,7 @@
                             <li><a href="{% url 'contact' %}">Contact us</a></li>
                             <li><a href="{% url 'get_in_touch' %}">Volunteers</a></li>
                             <li><a href="{% url 'get_in_touch' %}">Food Vendors</a></li>
-                            <li><a href="{% url 'get_in_touch' %}">We're hiring</a></li>
+                            <li><a href="{% url 'get_in_touch' %}">We’re Hiring</a></li>
                         </ul>
                     </div>
                     <!-- Updated Socials to keep only Instagram, Facebook, LinkedIn -->
@@ -488,9 +526,10 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© JumpinGo. All rights reserved. <a target="_blank" href="https://www.virtuelance.com/" class="text-white" style="text-decoration: none;">Developed by VIRTUELANCE</a></p>
+                <p>© JUMPINGO LLP All Rights Reserved.</p>
+                <p><a target="_blank" href="https://www.virtuelance.com/" class="text-white" style="text-decoration: none;">Developed by VIRTUELANCE</a></p>
                 <div class="footer-bottom-links">
-                    <a href="{% url 'privacy_policy' %}">Privacy & Policy</a>
+                    <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
                     <a href="{% url 'privacy_policy' %}">Terms & Condition</a>
                 </div>
             </div>
