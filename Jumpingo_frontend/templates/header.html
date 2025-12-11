@@ -1,0 +1,72 @@
+    <header class="header pt-0">
+        <div class="container-fluid px-4">
+            <nav class="navbar navbar-expand-md py-0">
+
+                <!-- Logo -->
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <img src="/static/logo.png" alt="JUMPIN GO" class="logo">
+                </a>
+
+                <!-- Desktop Right Group -->
+                <div class="ms-auto d-flex align-items-center gap-3">
+
+                    <!-- Desktop Book Button -->
+                    <!-- <button class="btn-login d-none d-sm-block" 
+                        onclick="window.location = `https://link.district.in/DSTRKT/JumpingoPartnerWebsite`">
+                        Book A Ticket
+                    </button> -->
+
+                    <!-- Hamburger (visible only on mobile) -->
+                    <button class="hamburger-menu d-md-none" 
+                        type="button" 
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#navbarNav" 
+                        aria-controls="navbarNav" 
+                        aria-expanded="false" 
+                        aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                </div>
+
+                <!-- Collapsible Nav -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+
+                    <ul class="navbar-nav ms-auto align-items-md-center">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'ticket' %}">Tickets</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'attractions' %}">Attractions</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">About Us</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+                        </li>
+
+                        <!-- Mobile Book Button -->
+                        <li class="nav-item">
+                            <button class="btn-login" 
+                                onclick="window.location = `https://link.district.in/DSTRKT/JumpingoPartnerWebsite`">
+                                Book A Ticket
+                            </button>                        
+                        </li>
+
+                    </ul>
+                </div>
+
+            </nav>
+        </div>
+    </header>

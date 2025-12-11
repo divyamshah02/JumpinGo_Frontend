@@ -36,50 +36,7 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <!-- Header -->
-    <header class="header pt-0">
-        <div class="container-fluid px-4">
-            <nav class="navbar py-0">
-                <a class="navbar-brand" href="{% url 'home' %}">
-                    <img src="/static/logo.png" alt="JUMPIN GO" class="logo">
-                </a>
-                <div class="ms-auto d-flex align-items-center gap-3">
-                    <!-- Book A Ticket button hidden only on mobile (below 576px) -->
-                    <button class="btn-login d-none d-sm-block" onclick="window.location = `https://link.district.in/DSTRKT/JumpingoPartnerWebsite`">Book A Ticket</button>
-                    <!-- Bootstrap hamburger toggler now visible on all screen sizes -->
-                    <button class="hamburger-menu" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-                <!-- Collapsible menu -->
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home' %}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'ticket' %}">Tickets</a>
-                        </li>
-                        <li class="nav-item">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'attractions' %}">Attractions</a>
-                            </li>
-                            <a class="nav-link" href="{% url 'about' %}">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
-                        </li>
-                        <!-- Book A Ticket button shown only on mobile (below 576px) -->
-                        <li class="nav-item d-sm-none">
-                            <a class="nav-link btn-login text-center mt-2" href="https://link.district.in/DSTRKT/JumpingoPartnerWebsite">Book A Ticket</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
-
+    {% include 'header.html' %}
     <!-- Hero Section with Circles -->
     <section class="about-hero">
         <div class="circle-container">
