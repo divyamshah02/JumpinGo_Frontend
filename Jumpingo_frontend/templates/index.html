@@ -322,7 +322,29 @@
     <section class="features-section">
         <div class="">
             <h2 class="section-title-red">Why everyone's talking about Jumpingo Jump Park Festival!</h2>
-            <p class="section-subtitle-dark">JUMPINGO brings the thrill of a full high‑energy attraction <br> for all age groups. From giant inflatables and obstacle courses to <br> skill games and kids' zones, every corner is designed to keep guests <br> laughing, moving, and coming back for more.</p>
+            <div class="d-flex flex-column flex-lg-row justify-content-center gap-4 px-2">
+                <div class="feature-item d-flex">
+                    <div class="feature-icon red">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3 class="text-start">DJ Experiences</h3>
+                        <p>High energy music keeping the vibe alive all day.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item d-flex">
+                    <div class="feature-icon red">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3 class="text-start">Game Zone</h3>
+                        <p>Full of old school classics and modern fun.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <p class="section-subtitle-dark">JUMPINGO brings the thrill of a full high‑energy attraction <br> for all age groups. From giant inflatables and obstacle courses to <br> skill games and kids' zones, every corner is designed to keep guests <br> laughing, moving, and coming back for more.</p> -->
             
             <div class="features-content mx-2 mx-md-5">                
                 <!-- Bootstrap Carousel START -->
@@ -443,8 +465,16 @@
         </div>
     </section>
 
-    <!-- Added red banner section with jumping person image -->
     <section class="banner-section red-banner">
+        <div class="banner-content">
+            <h2 class="banner-title">Ready to defy gravity?</h2>
+            <p class="banner-subtitle">Leave boring events behind and step into an inflatable world of slides, <br> jumps, climbs, and obstacle runs designed to get everyone moving.</p>
+            <button class="btn-banner" onclick="window.location = `{% url 'ticket' %}`">Book Now</button>
+        </div>
+    </section>
+
+    <!-- Added red banner section with jumping person image -->
+    <section class="banner-section red-banner" style="display: none;">
         <div class="banner-content">
             <div class="row">
                 <div class="col-0 col-md-7 col-lg-9"></div>
@@ -615,9 +645,9 @@
                     <div class="footer-column">
                         <h4>Socials</h4>
                         <ul>
-                            <li><a href="https://www.instagram.com/jumpingoofficial/">Instagram</a></li>
-                            <li><a href="https://www.facebook.com/profile.php?id=61581200615232">Facebook</a></li>
-                            <li><a href="https://www.linkedin.com/company/jumpingo/">LinkedIn</a></li>
+                            <li><a target="_blank" href="https://www.instagram.com/jumpingoofficial/">Instagram</a></li>
+                            <li><a target="_blank" href="https://www.facebook.com/profile.php?id=61581200615232">Facebook</a></li>
+                            <li><a target="_blank" href="https://www.linkedin.com/company/jumpingo/">LinkedIn</a></li>
                         </ul>
                     </div>
                 </div>
@@ -665,13 +695,20 @@
         function openVideoModal(videoUrl) {
             const modal = document.getElementById("videoModal");
             const iframe = document.getElementById("videoFrame");
-            iframe.src = videoUrl;
+
+            // show modal first
             modal.style.display = "block";
+
+            // then set src AFTER rendering
+            setTimeout(() => {
+                iframe.src = videoUrl + "?playsinline=1";
+            }, 150);
         }
 
         function closeVideoModal() {
             const modal = document.getElementById("videoModal");
             const iframe = document.getElementById("videoFrame");
+
             iframe.src = "";
             modal.style.display = "none";
         }

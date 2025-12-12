@@ -70,3 +70,44 @@
             </nav>
         </div>
     </header>
+
+    <!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+   .whatsapp-fab {
+    text-decoration: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+    background-color: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 999;
+    animation: floatUpDown 2.2s ease-in-out infinite;
+  }
+
+  @keyframes floatUpDown {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+  }
+
+  .whatsapp-fab:hover {
+    text-decoration: none;
+    background-color: #1ebe5d;
+    color: #fff;
+    transform: scale(1.08);
+  }
+</style>
+
+<a href="https://wa.me/919723900200" target="_blank" class="whatsapp-fab">
+    <i class="fab fa-whatsapp"></i>
+</a>
