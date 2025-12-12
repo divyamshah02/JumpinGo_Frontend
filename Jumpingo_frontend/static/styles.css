@@ -61,6 +61,16 @@ body {
   color: var(--green);
 }
 
+.nav-item:hover {
+  background: var(--light-gray);
+  border-radius: 8px;
+}
+
+.nav-link:hover {
+  font-weight: 800;
+  color: var(--green);
+}
+
 /* Simplified button shadows to match design */
 .btn-login {
   background: var(--yellow);
