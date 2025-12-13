@@ -61,6 +61,10 @@ body {
   color: var(--green);
 }
 
+.nav-item {
+  margin-right: 20px;
+}
+
 .nav-item:hover {
   background: var(--light-gray);
   border-radius: 8px;
@@ -565,9 +569,16 @@ body {
 }
 
 .hero-subtitle {
-  font-family: "Raleway", sans-serif;
-  font-size: 16px;
+  /* font-family: "Raleway", sans-serif; */
+  font-family: "Winky Rough", sans-serif;
+  
+  /* font-size: 16px;
+  font-weight: 700; */
+
+  font-size: 36px;
   font-weight: 700;
+
+
   line-height: 1.6;
   color: #ffffff;
   text-align: center;
@@ -1642,6 +1653,11 @@ body {
   transition: all 0.3s;
 }
 
+.social-icons.dark a {
+  background: rgba(255, 255, 255, 0.2);
+  color: black;  
+}
+
 .social-icons a:hover {
   background: white;
   color: var(--green);
@@ -2173,6 +2189,10 @@ select,
 
   .social-icons {
     justify-content: center;
+  }
+
+  .social-icons.dark {
+    justify-content: start;
   }
 
   .footer-column h4 {
