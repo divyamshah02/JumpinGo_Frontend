@@ -25,7 +25,8 @@ body {
   --yellow: #eddb13;
   --red: #eb2127;
   --blue: #29abe2;
-  --pink: #bd3257;
+  /* --pink: #bd3257; */
+  --pink: var(--red);
   --dark-gray: #4a4a4a;
   --light-gray: #f5f5f5;
 }
@@ -2876,4 +2877,20 @@ select,
 
 .video-close:hover {
   color: var(--yellow);
+}
+
+.image-bottom-strip {
+    font-family: "Winky Rough", sans-serif;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--green); /* bootstrap danger, slightly transparent */
+    color: #fff;
+    text-align: center;
+    padding: 10px 12px;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0.3px;
+    border-radius: 0 0 8px 8px; /* match image radius */
 }

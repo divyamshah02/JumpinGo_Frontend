@@ -3,7 +3,7 @@ import json
 from PIL import Image
 
 # ------------ CONFIG ------------
-STATIC_ROOT = r"update"
+STATIC_ROOT = r"temp"
 TEMPLATES_ROOT = "templates"
 
 OUTPUT_STATIC = r"output_static"
