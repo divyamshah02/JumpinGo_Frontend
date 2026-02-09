@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5g*el)9)p5sl8sg8!khy2nn2!3(i9!xh$8bq!p%maes-xlgptb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -113,3 +113,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+WHITENOISE_AUTOREFRESH = False
+WHITENOISE_USE_FINDERS = True
