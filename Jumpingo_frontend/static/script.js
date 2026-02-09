@@ -1,13 +1,26 @@
 // Category tabs functionality
 document.addEventListener("DOMContentLoaded", () => {
-  const categoryTabs = document.querySelectorAll(".category-tab")
+  const categoryTabs = document.querySelectorAll(".category-tab");
+  const tabContents = document.querySelectorAll(".products-grid.tab-content");
 
   categoryTabs.forEach((tab) => {
     tab.addEventListener("click", function () {
-      categoryTabs.forEach((t) => t.classList.remove("active"))
-      this.classList.add("active")
-    })
-  })
+      // 1. Remove active class from all buttons
+      categoryTabs.forEach((t) => t.classList.remove("active"));
+      // 2. Add active class to clicked button
+      this.classList.add("active");
+
+      // 3. Hide all product grids
+      tabContents.forEach((content) => content.classList.remove("active"));
+
+      // 4. Show the specific grid linked to this button
+      const targetId = this.getAttribute("data-target");
+      const targetGrid = document.getElementById(targetId);
+      if (targetGrid) {
+        targetGrid.classList.add("active");
+      }
+    });
+  });
 
   // Wishlist functionality
   const wishlistIcons = document.querySelectorAll(".wishlist-icon")

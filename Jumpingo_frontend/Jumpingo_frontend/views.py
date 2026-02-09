@@ -17,6 +17,9 @@ def attractions(request):
 def contact(request):
     return render(request, 'contact.html')
 
+def gallery(request):
+    return render(request, 'gallery.html')
+
 def get_in_touch(request):
     return render(request, 'get_in_touch.html')
 

@@ -13,6 +13,7 @@ urlpatterns = [
     path('about', about, name='about'),
     path('attractions', attractions, name='attractions'),
     path('contact', contact, name='contact'),
+    path('gallery', gallery, name='gallery'),
     path('get_in_touch', get_in_touch, name='get_in_touch'),
     path('ticket', ticket, name='ticket'),
     path('privacy_policy', privacy_policy, name='privacy_policy'),

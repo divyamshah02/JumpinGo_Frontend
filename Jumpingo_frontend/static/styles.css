@@ -2894,3 +2894,90 @@ select,
     letter-spacing: 0.3px;
     border-radius: 0 0 8px 8px; /* match image radius */
 }
+
+/* --- Tab Functionality Styles --- */
+
+/* By default, hide the grids that act as tab content */
+.products-grid.tab-content {
+    display: none;
+    animation: fadeInGrid 0.5s ease; /* Smooth fade-in effect */
+}
+
+/* Only display the grid that has the 'active' class */
+.products-grid.tab-content.active {
+    display: grid;
+}
+
+/* Simple animation for smooth switching */
+@keyframes fadeInGrid {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- City Selection Section Styles --- */
+
+/* Reusing the pink background to match brand flow */
+.city-section {
+    background: var(--pink);
+    padding: 0 0 50px 0; /* Adjust spacing as needed */
+}
+
+/* Specific Card Styling for the City Tickets */
+.city-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* Optional: Add a white border or shadow to make it pop off the pink background */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); 
+    background: transparent; /* Keeping it transparent to let the ticket shape shine */
+    max-width: 350px; /* Limits width so it doesn't get too huge on tablets */
+    margin: 0 auto;
+}
+
+.city-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.city-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Ensure the image corners match the card border */
+    border-radius: 15px; 
+}
+
+/* Optional: Button Overlay that appears on hover for active cities */
+.city-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.city-card:hover .city-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fix for the blurred item reusing your existing class */
+.city-card.blurred-ticket {
+    cursor: default; /* Remove pointer cursor */
+}
+
+.city-card.blurred-ticket:hover {
+    transform: none; /* Disable hover lift effect for the blurred card */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Keep shadow static */
+}
+
+/* Ensure the existing blur effect covers the rounded corners properly */
+.city-card.blurred-ticket::before {
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1); /* Slight white tint to enhance blur */
+}
