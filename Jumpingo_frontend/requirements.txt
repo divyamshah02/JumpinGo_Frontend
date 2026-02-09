@@ -1,0 +1,33 @@
+# --- Core Framework ---
+Django==5.1.2
+djangorestframework==3.15.2
+
+# --- Date & Time Utilities ---
+python-dateutil==2.9.0.post0
+
+# --- Database Drivers ---
+# SQLite works out of the box, but if you ever switch to PostgreSQL (Render recommends Postgres)
+# psycopg2-binary==2.9.9
+psycopg2-binary
+
+# --- Deployment Utilities ---
+gunicorn==23.0.0             # WSGI server Render uses to run Django
+whitenoise==6.7.0            # For static files on Render
+dj-database-url==2.2.0       # To parse Render DATABASE_URL
+python-dotenv==1.0.1         # Optional: if you use .env files locally
+
+# --- Django Essentials ---
+django-cors-headers==4.3.1   # If you expose APIs to frontend
+django-environ==0.11.2       # Optional alternative to dotenv
+Pillow==10.4.0               # For image fields (commonly required)
+
+# --- Utils / Common dependencies ---
+requests==2.32.3             # If any API calls are made internally
+
+gunicorn==23.0.0
+whitenoise==6.7.0
+
+boto3
+django-storages
+firebase-admin
+twilio
