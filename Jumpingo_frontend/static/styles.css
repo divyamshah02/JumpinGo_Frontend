@@ -149,7 +149,7 @@ body {
 
 .btn-hero.buy-now {
   padding: 5px 20px;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .btn-hero:hover {
@@ -825,6 +825,10 @@ body {
 }
 
 @media (max-width: 992px) {
+  .catalogue-section{
+    padding: 50px 0;
+  }
+  
   .catalogue-section::before {
     clip-path: polygon(0 75%, 0 85%, 0 55%, 0 72%);
   }
@@ -949,8 +953,8 @@ body {
 }
 
 .catalogue-item-right img {
-  width: 240px;
-  height: 300px;
+  width: 440px;  /* Increased width */
+  height: 250px; /* Decreased height */
   object-fit: cover;
   border-radius: 24px;
   transition: transform 0.3s ease;
@@ -1793,8 +1797,8 @@ select,
   }
 
   .catalogue-item-right img {
-    width: 200px;
-    height: 260px;
+    width: 370px;
+    height: 210px;
   }
 }
 
@@ -1914,10 +1918,15 @@ select,
     transform: none !important;
   }
 
-  .catalogue-item-left img,
-  .catalogue-item-right img {
+  .catalogue-item-left img {
     width: 220px;
-    height: 280px;
+    height: 400px;
+  }
+  
+  /* Right image stays landscape on tablet */
+  .catalogue-item-right img {
+    width: 400px;
+    height: 230px;
   }
 
   .catalogue-center {
@@ -2084,9 +2093,14 @@ select,
     margin-top: 30px;
   }
 
-  .catalogue-item-left img,
-  .catalogue-item-right img {
+  .catalogue-item-left img {
     width: 180px;
+    height: 400px;
+    border-radius: 16px;
+  }
+
+  .catalogue-item-right img {
+    width: 400px;
     height: 230px;
     border-radius: 16px;
   }
@@ -2305,10 +2319,15 @@ select,
     padding: 0 15px;
   }
 
-  .catalogue-item-left img,
-  .catalogue-item-right img {
+  .catalogue-item-left img {
     width: 265px;
     height: 265px;
+  }
+
+  /* Right image compact landscape on mobile */
+  .catalogue-item-right img {
+    width: 280px;
+    height: 160px;
   }
 
   .btn-catalogue-download {
@@ -2915,6 +2934,25 @@ select,
 }
 
 /* --- City Selection Section Styles --- */
+
+/* --- City Status Titles --- */
+.city-status-title {
+    font-family: "Winky Rough", sans-serif;
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 32px;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 768px) {
+    .city-status-title {
+        font-size: 26px;
+        margin-bottom: 10px;
+    }
+}
 
 /* Reusing the pink background to match brand flow */
 .city-section {

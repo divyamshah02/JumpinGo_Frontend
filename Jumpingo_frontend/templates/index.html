@@ -129,7 +129,7 @@
                     </div>
                 </div>
                 <!-- Updated button text and styling -->
-                <button class="btn-hero" onclick="window.location = `https://link.district.in/DSTRKT/3x6ett8o`">Let's Jump!</button>
+                <button class="btn-hero" onclick="window.open(`https://link.district.in/DSTRKT/3x6ett8o`, `_blank`)">Let's Jump!</button>
             </div>
         </div>
 
@@ -144,9 +144,9 @@
                 <img src="/static/Home page images-14.webp" alt="Colorful Balloons" class="gallery-img">
                 <img src="/static/Home page images-18.webp" alt="Ferris Wheel" class="gallery-img">
                 <!-- Duplicate for seamless loop -->
-                <img src="/static/Website Banner-03.webp" alt="Colorful Balloons" class="gallery-img">
+                <img src="/static/Banner-03.jpg" alt="Colorful Balloons" class="gallery-img">
                 <img src="/static/Website Banner-05.webp" alt="Ferris Wheel" class="gallery-img">
-                <img src="/static/Website Banner-06.jpg" alt="Carousel Horses" class="gallery-img">
+                <img src="/static/Banner-01.jpg" alt="Carousel Horses" class="gallery-img">
                 <img src="/static/Website Banner-07.webp" alt="Colorful Balloons" class="gallery-img">
                 <img src="/static/Website Banner-08.webp" alt="Colorful Balloons" class="gallery-img">
                 <img src="/static/Banner-02.jpg" alt="Ferris Wheel" class="gallery-img">
@@ -156,16 +156,16 @@
                 <img src="/static/Banner-01.jpg" alt="Ferris Wheel" class="gallery-img">
                 <img src="/static/Banner-02.jpg" alt="Carousel Horses" class="gallery-img">
                 <img src="/static/Banner-03.jpg" alt="Colorful Balloons" class="gallery-img">
-                <img src="/static/Website Banner-06.jpg" alt="Ferris Wheel" class="gallery-img">
-                <img src="/static/Website Banner-07.webp" alt="Colorful Balloons" class="gallery-img">
+                <img src="/static/Home page images-01.webp" alt="Ferris Wheel" class="gallery-img">
+                <img src="/static/Home page images-02.webp" alt="Colorful Balloons" class="gallery-img">
                 <img src="/static/Home page images-18.webp" alt="Ferris Wheel" class="gallery-img">
                 <!-- Duplicate for seamless loop -->
                 <img src="/static/Website Banner-05.webp" alt="Ferris Wheel" class="gallery-img">
                 <img src="/static/Home page images-15.webp" alt="Carousel Horses" class="gallery-img">
                 <img src="/static/Website Banner-08.webp" alt="Colorful Balloons" class="gallery-img">
                 <img src="/static/Home page images-17.webp" alt="Ferris Wheel" class="gallery-img">
-                <img src="/static/Website Banner-06.jpg" alt="Colorful Balloons" class="gallery-img">
-                <img src="/static/Group 1000004165.webp" alt="Ferris Wheel" class="gallery-img">
+                <img src="/static/Home page images-08.webp" alt="Colorful Balloons" class="gallery-img">
+                <img src="/static/Home page images-12.webp" alt="Ferris Wheel" class="gallery-img">
             </div>
         </div>
 
@@ -209,7 +209,7 @@
                 <div class="catalogue-item catalogue-item-left" data-parallax="left">
                     <!-- <img src="/static/Home page images-07.webp" alt="Catalogue 1">  -->                    
                     <div class="position-relative d-inline-block">
-                        <img src="/static/Home page images-07.webp"
+                        <img src="/static/Jumpingo_Ticket For Website-01.jpg"
                             alt="Catalogue 1"
                             class="img-fluid rounded">
 
@@ -221,11 +221,11 @@
                 </div>
                 
                 <div class="catalogue-center">
-                    <button class="btn-catalogue-download" onclick="window.location = `https://link.district.in/DSTRKT/3x6ett8o`">Book a Ticket</button>
+                    <button class="btn-catalogue-download" onclick="window.open(`https://link.district.in/DSTRKT/3x6ett8o`, `_blank`)">Book your Jump</button>
                 </div>
                 
                 <div class="catalogue-item catalogue-item-right" data-parallax="right">
-                    <img src="/static/Home page images-09.webp" alt="Catalogue 2">
+                    <img src="/static/Banner-03.jpg" alt="Catalogue 2">
                     <button class="video-btn" onclick="openVideoModal('https://www.youtube.com/embed/nGswWSurkDQ?si=Zm4PP4xryBf8ox5N')">
                         <i class="fas fa-play"></i>
                     </button>
@@ -241,33 +241,41 @@
     <img src="/static/Banner-01.jpg" alt="Ferris Wheel" class="img-fluid" width="100%">
 
     <!-- City Selection Section -->
-     <section class="city-section pt-5">
+    <section class="city-section pt-5">
         <div class="container">
             <h2 class="section-title-white">Where Are You Jumping?</h2>
             <p class="section-subtitle-white">Select your city to see available passes!</p>
             
             <div class="row justify-content-center city-grid">
+                
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div class="city-card" onclick="window.location='#weekday-grid'"> <img src="/static/Area wise ticket website-01.png" alt="Ahmedabad" class="city-img">
+                    <h3 class="city-status-title">Past Attraction</h3>
+                    
+                    <div class="city-card blurred-ticket"> 
+                        <img src="/static/Area wise ticket website-01.png" alt="Ahmedabad" class="city-img">
+                        
+                        </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <h3 class="city-status-title">Ongoing Attraction</h3>
+                    
+                    <div class="city-card" onclick="window.location='#weekday-grid'"> 
+                        <img src="/static/Area wise ticket website-02.png" alt="Surat" class="city-img">
                         <div class="city-overlay">
-                            <button class="btn-hero buy-now">Select</button>
+                            <button class="btn-hero buy-now">Book Your Jump</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div class="city-card" onclick="window.location='#weekday-grid'"> <img src="/static/Area wise ticket website-02.png" alt="Surat" class="city-img">
-                        <div class="city-overlay">
-                            <button class="btn-hero buy-now">Select</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <h3 class="city-status-title">Future Attraction</h3>
+                    
                     <div class="city-card blurred-ticket">
                         <img src="/static/Area wise ticket website-03.png" alt="Coming Soon" class="city-img">
-                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -291,7 +299,7 @@
 
             <!-- Weekday Tab -->
             <div id="weekday-grid" class="products-grid tab-content active">
-                <!-- Updated product cards with white background and proper styling -->
+                <!-- Solo Ticket -->
                 <div class="product-card">
                     <div class="product-header">
                         <h3 class="product-name">Early Bird</h3>
@@ -304,31 +312,14 @@
                     </div>
                     <div class="product-footer">
                         <span class="product-price">₹999 <span class="price-period">/ day</span></span>
-                        <button class="btn-hero buy-now" onclick="window.location = `https://link.district.in/DSTRKT/3x6ett8o`">Buy Now</button>
+                        <button class="btn-hero buy-now" onclick="window.open(`https://link.district.in/DSTRKT/3x6ett8o`, `_blank`)">Buy Now</button>
                     </div>
                 </div>
 
-                <!-- Add blurred class to Solo ticket -->
-                <div class="product-card blurred-ticket">
+                <!-- Family Ticket -->
+                <div class="product-card">
                     <div class="product-header">
-                        <h3 class="product-name">Squad (4 Pax)</h3>
-                        <i class="far fa-heart wishlist-icon"></i>
-                    </div>
-                    <div class="product-image">
-                        <div class="product-placeholder">
-                            <img src="/static/Jumpingo_Ticket For Website-03.jpg" alt="SOLO">
-                        </div>
-                    </div>
-                    <div class="product-footer">
-                        <span class="product-price">₹3996 <span class="price-period">/ day</span></span>
-                        <button class="btn-hero buy-now disabled-btn" disabled>Buy Now</button>
-                    </div>
-                </div>
-
-                <!-- Add blurred class to Group ticket -->
-                <div class="product-card blurred-ticket">
-                    <div class="product-header">
-                        <h3 class="product-name">Family (6 Pax)</h3>
+                        <h3 class="product-name">Family (4 Pax)</h3>
                         <i class="far fa-heart wishlist-icon"></i>
                     </div>
                     <div class="product-image">
@@ -337,15 +328,32 @@
                         </div>
                     </div>
                     <div class="product-footer">
-                        <span class="product-price">₹5994 <span class="price-period">/ day</span></span>
-                        <button class="btn-hero buy-now disabled-btn" disabled>Buy Now</button>
+                        <span class="product-price">₹3799 <span class="price-period">/ day</span></span>
+                        <button class="btn-hero buy-now" onclick="window.open(`https://link.district.in/DSTRKT/3x6ett8o`, `_blank`)">Buy Now</button>
                     </div>
                 </div>
 
-                <!-- Add blurred class to Family ticket -->
-                <div class="product-card blurred-ticket">
+                <!-- Squad Ticket -->
+                <div class="product-card">
                     <div class="product-header">
-                        <h3 class="product-name">Group (10 Pax)</h3>
+                        <h3 class="product-name">Squad (6 Pax)</h3>
+                        <i class="far fa-heart wishlist-icon"></i>
+                    </div>
+                    <div class="product-image">
+                        <div class="product-placeholder">
+                            <img src="/static/Jumpingo_Ticket For Website-03.jpg" alt="SOLO">
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">₹5399 <span class="price-period">/ day</span></span>
+                        <button class="btn-hero buy-now" onclick="window.open(`https://link.district.in/DSTRKT/3x6ett8o`, `_blank`)">Buy Now</button>
+                    </div>
+                </div>
+
+                <!-- Gang Ticket -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-name">Gang (10 Pax)</h3>
                         <i class="far fa-heart wishlist-icon"></i>
                     </div>
                     <div class="product-image">
@@ -354,15 +362,15 @@
                         </div>
                     </div>
                     <div class="product-footer">
-                        <span class="product-price">₹9990 <span class="price-period">/ day</span></span>
-                        <button class="btn-hero buy-now disabled-btn" disabled>Buy Now</button>
+                        <span class="product-price">₹8499 <span class="price-period">/ day</span></span>
+                        <button class="btn-hero buy-now" onclick="window.open(`https://link.district.in/DSTRKT/3x6ett8o`, `_blank`)">Buy Now</button>
                     </div>
                 </div>
             </div>
 
             <!-- Weekend Tab -->
             <div id="weekend-grid" class="products-grid tab-content">
-                <!-- Updated product cards with white background and proper styling -->
+                <!-- Solo Ticket -->
                 <div class="product-card">
                     <div class="product-header">
                         <h3 class="product-name">Early Bird</h3>
@@ -374,32 +382,15 @@
                         </div>
                     </div>
                     <div class="product-footer">
-                        <span class="product-price">₹999 <span class="price-period">/ day</span></span>
-                        <button class="btn-hero buy-now" onclick="window.location = `https://link.district.in/DSTRKT/3x6ett8o`">Buy Now</button>
+                        <span class="product-price">₹1299 <span class="price-period">/ day</span></span>
+                        <button class="btn-hero buy-now" onclick="window.open(`https://link.district.in/DSTRKT/3x6ett8o`, `_blank`)">Buy Now</button>
                     </div>
                 </div>
 
-                <!-- Add blurred class to Solo ticket -->
-                <div class="product-card blurred-ticket">
+                <!-- Family Ticket -->
+                <div class="product-card">
                     <div class="product-header">
-                        <h3 class="product-name">Squad (4 Pax)</h3>
-                        <i class="far fa-heart wishlist-icon"></i>
-                    </div>
-                    <div class="product-image">
-                        <div class="product-placeholder">
-                            <img src="/static/Jumpingo_Ticket For Website-03.jpg" alt="SOLO">
-                        </div>
-                    </div>
-                    <div class="product-footer">
-                        <span class="product-price">₹3996 <span class="price-period">/ day</span></span>
-                        <button class="btn-hero buy-now disabled-btn" disabled>Buy Now</button>
-                    </div>
-                </div>
-
-                <!-- Add blurred class to Group ticket -->
-                <div class="product-card blurred-ticket">
-                    <div class="product-header">
-                        <h3 class="product-name">Family (6 Pax)</h3>
+                        <h3 class="product-name">Family (4 Pax)</h3>
                         <i class="far fa-heart wishlist-icon"></i>
                     </div>
                     <div class="product-image">
@@ -408,15 +399,32 @@
                         </div>
                     </div>
                     <div class="product-footer">
-                        <span class="product-price">₹5994 <span class="price-period">/ day</span></span>
-                        <button class="btn-hero buy-now disabled-btn" disabled>Buy Now</button>
+                        <span class="product-price">₹4949 <span class="price-period">/ day</span></span>
+                        <button class="btn-hero buy-now" onclick="window.open(`https://link.district.in/DSTRKT/3x6ett8o`, `_blank`)">Buy Now</button>
                     </div>
                 </div>
 
-                <!-- Add blurred class to Family ticket -->
-                <div class="product-card blurred-ticket">
+                <!-- Squad Ticket -->
+                <div class="product-card">
                     <div class="product-header">
-                        <h3 class="product-name">Group (10 Pax)</h3>
+                        <h3 class="product-name">Squad (6 Pax)</h3>
+                        <i class="far fa-heart wishlist-icon"></i>
+                    </div>
+                    <div class="product-image">
+                        <div class="product-placeholder">
+                            <img src="/static/Jumpingo_Ticket For Website-03.jpg" alt="SOLO">
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">₹7199 <span class="price-period">/ day</span></span>
+                        <button class="btn-hero buy-now" onclick="window.open(`https://link.district.in/DSTRKT/3x6ett8o`, `_blank`)">Buy Now</button>
+                    </div>
+                </div>
+
+                <!-- Gang Ticket -->
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3 class="product-name">Gang (10 Pax)</h3>
                         <i class="far fa-heart wishlist-icon"></i>
                     </div>
                     <div class="product-image">
@@ -425,8 +433,8 @@
                         </div>
                     </div>
                     <div class="product-footer">
-                        <span class="product-price">₹9990 <span class="price-period">/ day</span></span>
-                        <button class="btn-hero buy-now disabled-btn" disabled>Buy Now</button>
+                        <span class="product-price">₹11499 <span class="price-period">/ day</span></span>
+                        <button class="btn-hero buy-now" onclick="window.open(`https://link.district.in/DSTRKT/3x6ett8o`, `_blank`)">Buy Now</button>
                     </div>
                 </div>
             </div>
@@ -617,7 +625,7 @@
             </div>
             <!-- <h2 class="banner-title">Ready to defy gravity?</h2>
             <p class="banner-subtitle">Leave boring events behind and step into an inflatable world of slides, <br> jumps, climbs, and obstacle runs designed to get everyone moving.</p> -->
-            <button class="btn-banner" onclick="window.location = `https://link.district.in/DSTRKT/3x6ett8o`">Book Now</button>
+            <button class="btn-banner" onclick="window.open(`https://link.district.in/DSTRKT/3x6ett8o`, `_blank`)">Book Now</button>
                 </div>
             </div>           
         </div>
