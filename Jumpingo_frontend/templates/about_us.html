@@ -150,6 +150,46 @@
         </div>
     </section>
 
+    <!-- City Selection Section -->
+    <section class="city-section pt-5">
+        <div class="container">
+            <h2 class="section-title-white">Where Are You Jumping?</h2>
+            <p class="section-subtitle-white">Select your city to see available passes!</p>
+            
+            <div class="row justify-content-center city-grid">
+                
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <h3 class="city-status-title">Past Attraction</h3>
+                    
+                    <div class="city-card blurred-ticket"> 
+                        <img src="/static/Area wise ticket website-01.png" alt="Ahmedabad" class="city-img">
+                        
+                        </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <h3 class="city-status-title">Ongoing Attraction</h3>
+                    
+                    <div class="city-card" onclick="window.location='#weekday-grid'"> 
+                        <img src="/static/Area wise ticket website-02.png" alt="Surat" class="city-img">
+                        <div class="city-overlay">
+                            <button class="btn-hero buy-now" onclick="window.location = `{% url 'ticket' %}`">Book Your Jump</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <h3 class="city-status-title">Future Attraction</h3>
+                    
+                    <div class="city-card blurred-ticket">
+                        <img src="/static/Area wise ticket website-03.png" alt="Coming Soon" class="city-img">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Map Section -->
     <section class="map-section">
         <div class="container-fluid p-0">
