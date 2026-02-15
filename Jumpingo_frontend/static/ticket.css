@@ -426,119 +426,163 @@ body {
   }
 }
 
-/* --- Interactive Flip Cards --- */
+/* --- Polaroid Pinboard Rides Section --- */
 
-.rides-flip-section {
-    background: #fff;
-    padding: 60px 0 80px;
-}
-
-.flip-card {
-    background-color: transparent;
-    height: 280px; /* Fixed height for consistent grid */
-    perspective: 1000px; /* Adds the 3D depth effect */
-    cursor: pointer;
-}
-
-.flip-card-inner {
+.rides-polaroid-section {
+    background: #f9f9f9; /* Light background to make photos pop */
+    padding: 80px 0 100px;
     position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-    transform-style: preserve-3d;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    border-radius: 20px;
-}
-
-/* The Flip Trigger */
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border-radius: 20px;
     overflow: hidden;
 }
 
-/* --- Front Side (Image) --- */
-.flip-card-front {
-    background-color: #fff;
-}
-
-.flip-card-front img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Label on top of image so users know what it is before flipping */
-.front-label {
+/* Optional: faint pattern for the "wall" texture */
+.rides-polaroid-section::before {
+    content: "";
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0,0,0,0.6);
-    color: white;
-    font-family: "Winky Rough", sans-serif;
-    padding: 10px;
-    font-size: 22px;
-    letter-spacing: 1px;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.5;
+    pointer-events: none;
 }
 
-/* --- Back Side (Details) --- */
-.flip-card-back {
-    color: white;
-    transform: rotateY(180deg);
+.polaroid-grid {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    gap: 40px; /* Space between polaroids */
     padding: 20px;
 }
 
-.flip-card-back h3 {
-    font-family: "Winky Rough", sans-serif;
-    font-size: 28px;
-    margin-bottom: 10px;
-    border-bottom: 2px solid rgba(255,255,255,0.3);
-    padding-bottom: 5px;
+.polaroid-card {
+    background: white;
+    padding: 15px 15px 25px 15px; /* Top/Side padding less, Bottom more for caption */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
+    position: relative;
+    width: 350px; /* Base width */
+    max-width: 100%;
+    transform-origin: center top;
+    cursor: pointer;
+    /* The "Polaroid" white border look is created by the padding + background */
 }
 
-.flip-card-back p {
-    font-family: "Raleway", sans-serif;
-    font-size: 15px;
+/* --- The "Washi Tape" Effect --- */
+.polaroid-card::after {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 35px;
+    background-color: rgba(235, 33, 39, 0.8); /* Default Red */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 10;
+    clip-path: polygon(2% 0, 98% 0, 100% 100%, 0 100%); /* Jagged/Tape look */
+    opacity: 0.9;
+}
+
+/* Cycle Brand Colors for the Tape */
+.polaroid-card:nth-child(4n+1)::after { background-color: var(--red); transform: translateX(-50%) rotate(-2deg); }
+.polaroid-card:nth-child(4n+2)::after { background-color: var(--blue); transform: translateX(-50%) rotate(1deg); }
+.polaroid-card:nth-child(4n+3)::after { background-color: var(--green); transform: translateX(-50%) rotate(-1deg); }
+.polaroid-card:nth-child(4n+4)::after { background-color: var(--yellow); transform: translateX(-50%) rotate(2deg); }
+
+/* --- Random Rotations for the "Messy Wall" Look --- */
+.polaroid-card:nth-child(odd) {
+    transform: rotate(-3deg);
+    margin-top: 10px;
+}
+
+.polaroid-card:nth-child(even) {
+    transform: rotate(2deg);
+    margin-top: -10px;
+}
+
+/* --- Hover Effect: Straighten & Pop --- */
+.polaroid-card:hover {
+    transform: rotate(0deg) scale(1.05) translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    z-index: 20;
+}
+
+/* --- Image Styling --- */
+.polaroid-img-wrapper {
+    width: 100%;
+    height: 280px; /* Standard height for consistency */
+    overflow: hidden;
+    background: #eee;
+    margin-bottom: 20px;
+    position: relative;
+    border: 1px solid #eee; /* Slight border definition */
+}
+
+/* Special height for the Tall/Vertical images to fit better */
+.polaroid-card.vertical-ride .polaroid-img-wrapper {
+    height: 380px; /* Taller frame for vertical rides */
+}
+
+.polaroid-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.polaroid-card:hover .polaroid-img-wrapper img {
+    transform: scale(1.1); /* Subtle zoom inside frame */
+}
+
+/* --- Caption Styling --- */
+.polaroid-caption {
+    text-align: center;
+    padding: 0 10px;
+}
+
+.polaroid-caption h3 {
+    font-family: "Winky Rough", cursive; /* Brand Font */
+    font-size: 32px;
+    color: var(--dark-gray);
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.polaroid-caption p {
+    font-family: "Raleway", sans-serif; /* "Handwritten" feel body font */
+    font-size: 14px;
+    color: #666;
     line-height: 1.5;
     margin: 0;
 }
 
-/* --- Vertical Flip Card Variant --- */
-.flip-card.vertical {
-    height: 450px; /* Taller height for portrait images */
-}
-
-/* On mobile, we might want them slightly shorter but still tall */
-@media (max-width: 768px) {
-    .flip-card.vertical {
-        height: 380px;
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    /* Reduce rotation on tablet to save space */
+    .polaroid-card:nth-child(odd),
+    .polaroid-card:nth-child(even) {
+        transform: rotate(0);
+        margin-top: 0;
+    }
+    
+    .polaroid-card:hover {
+        transform: translateY(-5px);
     }
 }
 
-/* --- Brand Background Colors --- */
-.bg-red { background: var(--red); }
-.bg-blue { background: var(--blue); }
-.bg-green { background: var(--green); }
-.bg-yellow { background: var(--yellow); }
-
-/* --- Mobile Responsiveness --- */
-@media (max-width: 992px) {
-    .flip-card {
-        height: 220px; /* Slightly smaller on tablet */
+@media (max-width: 576px) {
+    .rides-polaroid-section {
+        padding: 60px 0;
+    }
+    
+    .polaroid-card {
+        width: 100%;
+        max-width: 380px;
+    }
+    
+    /* On mobile, let's keep heights consistent */
+    .polaroid-card.vertical-ride .polaroid-img-wrapper {
+        height: 300px; 
     }
 }
 
