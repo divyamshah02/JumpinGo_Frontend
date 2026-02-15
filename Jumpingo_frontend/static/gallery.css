@@ -105,6 +105,7 @@
 /* 1. Top Wide Bar */
 .gallery-grid-item:nth-child(10n + 1) {
     grid-column: span 4;
+    grid-row: span 2;
 }
 
 /* 2. Tall Box Left */
@@ -115,7 +116,8 @@
 
 /* 3. Top Right Small Hole Filler */
 .gallery-grid-item:nth-child(10n + 3) {
-    grid-column: span 1; 
+    grid-column: span 1;
+    grid-row: span 2;
 }
 
 /* 4. Center Small */
@@ -136,23 +138,25 @@
 
 /* 7. Big Square Right */
 .gallery-grid-item:nth-child(10n + 7) {
-    grid-column: span 2; 
+    grid-column: span 2;
     grid-row: span 2;
 }
 
 /* 8. Bottom Left Wide */
 .gallery-grid-item:nth-child(10n + 8) {
-    grid-column: span 2; 
+    grid-column: span 2;
 }
 
 /* 9. Bottom Left Small */
 .gallery-grid-item:nth-child(10n + 9) {
-    grid-column: span 1; 
+    grid-column: span 1;
+    grid-row: span 2;
 }
 
 /* 10. Bottom Wide Bar */
 .gallery-grid-item:nth-child(10n + 10) {
-    grid-column: span 4; 
+    grid-column: span 4;
+    grid-row: span 2;
 }
 
 /* --- Responsive Design --- */

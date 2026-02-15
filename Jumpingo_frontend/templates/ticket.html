@@ -136,7 +136,7 @@
 
                     <!-- Updated button to trigger modal instead of alert -->
                     <!-- <button class="btn-book-now" data-bs-toggle="modal" data-bs-target="#bookingModal">Book Now</button> -->
-                    <button class="btn-book-now" onclick="window.location = `https://link.district.in/DSTRKT/3x6ett8o`">Book Now</button>
+                    <button class="btn-book-now" onclick="window.open(`https://link.district.in/DSTRKT/3x6ett8o`, `_blank`)">Book Now</button>
                 </div>
             </div>
         </div>
@@ -190,6 +190,108 @@
             </div>
         </div>
     </div>
+
+    <!-- Ride's Details -->
+    <section class="rides-flip-section">
+        <div class="container">
+            <h2 class="section-title-red text-center mb-5">What's Included?</h2>
+            
+            <div class="row g-4">
+                
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="flip-card vertical">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="/static/Sky Slide/Sky Slide_1.webp" alt="Sky Slide">
+                                <div class="front-label">Sky Slide</div>
+                            </div>
+                            <div class="flip-card-back bg-blue">
+                                <h3>Sky Slide</h3>
+                                <p>Climb to the summit and experience an adrenaline-pumping slide back to earth. It’s a long way up, and a fast way down!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="flip-card vertical">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="/static/JUMP X/JUMP X_1.webp" alt="JUMP X">
+                                <div class="front-label">JUMP X</div>
+                            </div>
+                            <div class="flip-card-back bg-yellow">
+                                <h3 style="color: #333 !important;">JUMP X</h3>
+                                <p style="color: #333 !important;">The ultimate airtime arena. Dedicated to extreme bouncing and freestyle moves. Catch some serious air!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="flip-card vertical">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="/static/Turbo Trail/Turbo Trail_1.webp" alt="Turbo Trail">
+                                <div class="front-label">Turbo Trail</div>
+                            </div>
+                            <div class="flip-card-back bg-red">
+                                <h3>Turbo Trail</h3>
+                                <p>Ready, set, GO! A high-speed obstacle course designed for racing. Dodge, duck, and dive your way to the finish line.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="/static/the-castle.jpg" alt="The Castle">
+                                <div class="front-label">The Castle</div>
+                            </div>
+                            <div class="flip-card-back bg-red">
+                                <h3>The Castle</h3>
+                                <p>The heart of the festival! A massive inflatable fortress to bounce, tumble, and feel like royalty.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="/static/A-Maze/A-Maze_1.webp" alt="A-Maze">
+                                <div class="front-label">A-Maze</div>
+                            </div>
+                            <div class="flip-card-back bg-green">
+                                <h3>A-Maze</h3>
+                                <p>Navigate tricky turns and surprise obstacles in this colorful inflatable labyrinth.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="/static/The HIVE/The HIVE_1.webp" alt="The HIVE">
+                                <div class="front-label">The HIVE</div>
+                            </div>
+                            <div class="flip-card-back bg-blue">
+                                <h3>The HIVE</h3>
+                                <p>A buzzing network of interconnected bounce zones. Explore different chambers and find new ways to play.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <!-- Gallery Section -->
     <section class="gallery-section">
@@ -380,7 +482,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/static/ticket.js"></script>
-    <script src="/static/star_animate.js"></script>
+    <!-- <script src="/static/star_animate.js"></script> -->
 
     <script>
         document.getElementById("bookingForm").addEventListener("submit", async function (e) {
