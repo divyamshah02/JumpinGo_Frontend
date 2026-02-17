@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-In - JumpinGo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- Check-In Form Card -->
+                <div class="card shadow-sm" id="checkinCard">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">
+                            <i class="fas fa-qrcode me-2"></i>Park Check-In
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted mb-4">Enter your booking details to generate your entry pass</p>
+
+                        <!-- Alert Messages -->
+                        <div id="errorAlert" class="alert alert-danger d-none" role="alert"></div>
+                        <div id="successAlert" class="alert alert-success d-none" role="alert"></div>
+
+                        <!-- Check-In Form -->
+                        <form id="checkinForm">
+                            <div class="mb-3">
+                                <label for="bookingId" class="form-label">Booking ID</label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="bookingId" 
+                                    placeholder="e.g., BK1234567890"
+                                    required
+                                >
+                                <div class="form-text">Enter your booking ID received via email/SMS</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="lastFourDigits" class="form-label">Last 4 Digits of Mobile</label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="lastFourDigits" 
+                                    placeholder="1234"
+                                    maxlength="4"
+                                    pattern="[0-9]{4}"
+                                    required
+                                >
+                                <div class="form-text">Enter last 4 digits of your registered mobile number</div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100" id="checkinBtn">
+                                <span id="checkinBtnText">
+                                    <i class="fas fa-check-circle me-2"></i>Check-In & Generate Pass
+                                </span>
+                                <span id="checkinBtnLoader" class="d-none">
+                                    <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                    Processing...
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- QR Code Display Card (Hidden Initially) -->
+                <div class="card shadow-sm mt-4 d-none" id="qrCard">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-check-circle me-2"></i>Check-In Successful!
+                        </h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="text-muted mb-3">Your entry pass has been generated</p>
+                        
+                        <!-- QR Code Image -->
+                        <div class="mb-3">
+                            <img id="qrImage" src="/placeholder.svg" alt="QR Code" class="img-fluid border rounded" style="max-width: 300px;">
+                        </div>
+
+                        <!-- Booking Details -->
+                        <div class="alert alert-info mb-3">
+                            <h6 class="mb-2">Booking Details</h6>
+                            <p class="mb-1"><strong>Booking ID:</strong> <span id="displayBookingId"></span></p>
+                            <p class="mb-1"><strong>Customer:</strong> <span id="displayCustomerName"></span></p>
+                            <p class="mb-1"><strong>Number of People:</strong> <span id="displayNumPeople"></span></p>
+                            <p class="mb-0"><strong>Visit Date:</strong> <span id="displayVisitDate"></span></p>
+                        </div>
+
+                        <!-- Download Button -->
+                        <a id="downloadBtn" href="#" download class="btn btn-success w-100 mb-2">
+                            <i class="fas fa-download me-2"></i>Download QR Pass
+                        </a>
+
+                        <!-- New Check-In Button -->
+                        <button class="btn btn-outline-primary w-100" onclick="resetForm()">
+                            <i class="fas fa-plus me-2"></i>Check-In Another Booking
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/api_caller.js"></script>
+    <script src="/static/js/checkin.js"></script>
+    <script src="/static/js/theme-toggle.js"></script>
+
+    <script>
+        window.onload = async function () {
+            await initCheckin("{% url 'check-in-api-list' %}", "{{csrf_token}}")
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Scanner - JumpinGo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #fbbc05;
+            --danger-color: #ea4335;
+            --light-color: #f8f9fa;
+            --dark-color: #202124;
+            --gray-color: #5f6368;
+            --border-radius: 16px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f5f5f7;
+            color: var(--dark-color);
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .scanner-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #fff;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: var(--box-shadow);
+        }
+
+        .header {
+            padding: 1.5rem;
+            text-align: center;
+            background-color: #fff;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .header h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .subtitle {
+            color: var(--gray-color);
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        .scanner-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            padding: 1rem;
+        }
+
+        .camera-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            background-color: #000;
+            box-shadow: var(--box-shadow);
+        }
+
+        #video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .scanner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .scanner-frame {
+            position: relative;
+            width: 70%;
+            height: 70%;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+        }
+
+        .corner {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-color: var(--primary-color);
+            border-width: 4px;
+        }
+
+        .top-left {
+            top: -2px;
+            left: -2px;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-top-left-radius: 8px;
+        }
+
+        .top-right {
+            top: -2px;
+            right: -2px;
+            border-top-style: solid;
+            border-right-style: solid;
+            border-top-right-radius: 8px;
+        }
+
+        .bottom-left {
+            bottom: -2px;
+            left: -2px;
+            border-bottom-style: solid;
+            border-left-style: solid;
+            border-bottom-left-radius: 8px;
+        }
+
+        .bottom-right {
+            bottom: -2px;
+            right: -2px;
+            border-bottom-style: solid;
+            border-right-style: solid;
+            border-bottom-right-radius: 8px;
+        }
+
+        .scanner-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            top: 50%;
+            transform: translateY(-50%);
+            animation: scan 2s linear infinite;
+        }
+
+        @keyframes scan {
+            0% {
+                top: 20%;
+                opacity: 0.8;
+            }
+            50% {
+                top: 80%;
+                opacity: 1;
+            }
+            100% {
+                top: 20%;
+                opacity: 0.8;
+            }
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: #3367d6;
+            border-color: #3367d6;
+            box-shadow: 0 4px 8px rgba(66, 133, 244, 0.3);
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            border-color: var(--danger-color);
+        }
+
+        .status-bar {
+            padding: 1rem 1.5rem;
+            background-color: #fff;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+        }
+
+        .scanning .status-dot {
+            background-color: var(--primary-color);
+            animation: pulse 1.5s infinite;
+        }
+
+        .success .status-dot {
+            background-color: var(--secondary-color);
+        }
+
+        .error .status-dot {
+            background-color: var(--danger-color);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Entry Form Overlay Styles */
+        .entry-form-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .entry-form-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .entry-form-content {
+            background-color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .entry-form-overlay.show .entry-form-content {
+            transform: translateY(0);
+        }
+
+        .entry-form-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .entry-form-header h3 {
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .booking-info {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--gray-color);
+        }
+
+        .info-value {
+            color: var(--dark-color);
+        }
+
+        .arrival-input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .arrival-input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .arrival-input-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .arrival-input-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .entry-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .entry-actions button {
+            flex: 1;
+            padding: 0.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-confirm-entry {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-confirm-entry:hover {
+            background-color: #2d8e47;
+            box-shadow: 0 4px 8px rgba(52, 168, 83, 0.3);
+        }
+
+        .btn-cancel-entry {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-cancel-entry:hover {
+            background-color: #5a6268;
+        }
+
+        /* Success and Error Overlays */
+        .success-overlay,
+        .error-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .success-overlay.show,
+        .error-overlay.show {
+            opacity: 1;
+        }
+
+        .success-overlay {
+            background-color: #34a853;
+        }
+
+        .error-overlay {
+            background-color: #ea4335;
+        }
+
+        .success-content,
+        .error-content {
+            text-align: center;
+            color: white;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease 0.2s;
+        }
+
+        .success-overlay.show .success-content,
+        .error-overlay.show .error-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .success-icon,
+        .error-icon {
+            margin-bottom: 1.5rem;
+            animation: pop 0.5s ease 0.3s both;
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-message h2,
+        .error-message h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .customer-name {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .detail-text {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            .scanner-container {
+                height: 100vh;
+                max-width: 100%;
+            }
+
+            .camera-container {
+                padding-bottom: 100%;
+            }
+
+            .header {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .controls {
+                margin-top: 1rem;
+            }
+
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .camera-container {
+                padding-bottom: 75%;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scanner-container">
+        <div class="header">
+            <h1>Security Scanner</h1>
+            <p class="subtitle">Position the QR code within the frame</p>
+        </div>
+
+        <div class="scanner-wrapper">
+            <div class="camera-container">
+                <video id="video" playsinline></video>
+                <canvas id="canvas" class="d-none"></canvas>
+                <div class="scanner-overlay">
+                    <div class="scanner-frame">
+                        <div class="corner top-left"></div>
+                        <div class="corner top-right"></div>
+                        <div class="corner bottom-left"></div>
+                        <div class="corner bottom-right"></div>
+                        <div class="scanner-line"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="startButton" class="btn btn-primary">
+                    <i class="fas fa-camera"></i>
+                    <span>Start Scan</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span id="statusText">Ready to scan</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Entry Form Overlay Modal -->
+    <div class="entry-form-overlay" id="entryFormOverlay">
+        <div class="entry-form-content">
+            <div class="entry-form-header">
+                <h3>Record Entry</h3>
+                <p class="text-muted">Enter number of people arriving</p>
+            </div>
+
+            <div class="booking-info" id="bookingInfo">
+                <!-- Booking details will be populated here -->
+            </div>
+
+            <div class="arrival-input-group">
+                <label for="numArrivingInput">Number of People Entering</label>
+                <input 
+                    type="number" 
+                    id="numArrivingInput" 
+                    min="1" 
+                    placeholder="Enter number"
+                    class="form-control"
+                >
+            </div>
+
+            <div class="entry-actions">
+                <button class="btn-cancel-entry" onclick="hideEntryForm()">
+                    Cancel
+                </button>
+                <button class="btn-confirm-entry" onclick="confirmArrival()">
+                    Confirm Entry
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <script src="/static/js/api_caller.js"></script>
+    <script src="/static/js/security_scanner.js"></script>
+    
+    <script>
+        window.onload = async function () {
+            await initScanner("{% url 'qr-verify-api-list' %}", "{% url 'qr-verify-api-record-arrival' %}", "{{csrf_token}}")
+        }
+    </script>
+</body>
+</html>
