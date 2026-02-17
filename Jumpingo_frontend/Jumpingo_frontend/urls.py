@@ -8,7 +8,11 @@ from .views import *
 urlpatterns = [
     path('favicon.ico', RedirectView.as_view(url='/static/small_logo.png')),
     path('admin/', admin.site.urls),
-
+    
+    path('parks-api/', include('Park.urls')),
+    path('user-api/', include('UserDetail.urls')),
+    path('bookings-api/', include('Booking.urls')),
+    
     path('', home, name='home'),
     path('about', about, name='about'),
     path('attractions', attractions, name='attractions'),
@@ -17,6 +21,7 @@ urlpatterns = [
     path('get_in_touch', get_in_touch, name='get_in_touch'),
     path('ticket', ticket, name='ticket'),
     path('privacy_policy', privacy_policy, name='privacy_policy'),
+    path('', include('FrontEnd.urls')),
     
     path('send_contact_email_req', send_contact_email_req, name='send_contact_email_req'),
     path('send_booking_email_req', send_booking_email_req, name='send_booking_email_req'),

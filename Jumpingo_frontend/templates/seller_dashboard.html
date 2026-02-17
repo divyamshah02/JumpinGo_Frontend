@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard - JumpinGo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+</head>
+<body>
+    <!-- <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">
+                <i class="fas fa-ticket-alt me-2"></i>Seller Dashboard
+            </span>
+            <div class="text-white">
+                <span id="userName" class="me-3"></span>
+                <span id="userRole" class="badge bg-light text-primary"></span>
+            </div>
+        </div>
+    </nav> -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-ticket-alt me-2"></i>
+                JumpinGo <span id="userRole"></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span id="userName"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Logout</a>
+                    </li>
+                </ul>
+            </div>
+            <button class="theme-toggle" type="button" title="Toggle dark/light mode">
+                <i class="fas fa-moon"></i> Dark
+            </button>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <!-- Statistics Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card text-white bg-primary">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Bookings</h5>
+                        <h2 id="totalBookings">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-success">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Revenue</h5>
+                        <h2 id="totalRevenue">₹0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-info">
+                    <div class="card-body">
+                        <h5 class="card-title">Today's Bookings</h5>
+                        <h2 id="todayBookings">0</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" id="commissionCard" style="display: none;">
+                <div class="card text-white bg-warning">
+                    <div class="card-body">
+                        <h5 class="card-title">Commission Earned</h5>
+                        <h2 id="commissionEarned">₹0</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="bookings-tab" data-bs-toggle="tab" data-bs-target="#bookings" type="button">
+                    <i class="fas fa-list me-2"></i>My Bookings
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="create-booking-tab" data-bs-toggle="tab" data-bs-target="#create-booking" type="button">
+                    <i class="fas fa-plus me-2"></i>Create Booking
+                </button>
+            </li>
+            <!-- Pre-Booking tab for cash counter -->
+            <li class="nav-item" role="presentation" id="prebooking-tab-nav" style="display: none;">
+                <button class="nav-link" id="prebooking-tab" data-bs-toggle="tab" data-bs-target="#prebooking" type="button">
+                    <i class="fas fa-calendar me-2"></i>Pre-Bookings
+                </button>
+            </li>
+            <!-- Added Add-On tab for cash counter only -->
+            <li class="nav-item" role="presentation" id="addon-tab-nav" style="display: none;">
+                <button class="nav-link" id="addon-tab" data-bs-toggle="tab" data-bs-target="#addon" type="button">
+                    <i class="fas fa-cart-plus me-2"></i>Add-On Purchase
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content mt-3" id="dashboardTabContent">
+            <!-- Bookings Tab -->
+            <div class="tab-pane fade show active" id="bookings">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">My Bookings</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Filters -->
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <label class="form-label">Start Date</label>
+                                <input type="date" class="form-control" id="filterStartDate">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">End Date</label>
+                                <input type="date" class="form-control" id="filterEndDate">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Payment Status</label>
+                                <select class="form-select" id="filterPaymentStatus">
+                                    <option value="">All</option>
+                                    <option value="success">Success</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="failed">Failed</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Search</label>
+                                <input type="text" class="form-control" id="searchBookings" placeholder="Booking ID, Name, Phone">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <button class="btn btn-primary" onclick="applyBookingFilters()">
+                                    <i class="fas fa-filter me-2"></i>Apply Filters
+                                </button>
+                                <button class="btn btn-secondary" onclick="clearBookingFilters()">
+                                    <i class="fas fa-times me-2"></i>Clear
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Bookings Table -->
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Booking ID</th>
+                                        <th>Customer</th>
+                                        <th>Contact</th>
+                                        <th>Visit Date</th>
+                                        <th>People</th>
+                                        <th>Amount</th>
+                                        <th id="commissionHeader" style="display: none;">Commission</th>
+                                        <th>Payment</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bookingsTableBody">
+                                    <tr>
+                                        <td colspan="9" class="text-center">Loading...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Booking Tab -->
+            <div class="tab-pane fade" id="create-booking">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Create New Booking</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="bookingForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Customer Name</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="customerName" placeholder="Start typing..." required>
+                                        <button type="button" class="btn btn-outline-secondary" id="clearCustomerBtn" onclick="clearCustomerSelection()" style="display: none;">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <div id="customerSearchDropdown" class="list-group mt-2" style="display: none; max-height: 300px; overflow-y: auto;">
+                                    </div>
+                                    <small id="customerSelectedStatus" class="text-success"></small>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Customer Email</label>
+                                    <input type="email" class="form-control" id="customerEmail" required readonly>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Visit Date</label>
+                                    <input type="date" class="form-control" id="visitDate" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Number of People</label>
+                                    <input type="number" class="form-control" id="numPeople" min="1" value="1" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Customer Mobile Number</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">+91</span>
+                                        <input type="tel" class="form-control" id="customerMobile" maxlength="10" required readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Payment Method</label>
+                                    <select class="form-select" id="paymentMethod" required>
+                                        <option value="cash">Cash</option>
+                                        <option value="upi">UPI</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <h5>Total Amount: <span id="totalAmount">₹0</span></h5>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-success" id="createBookingBtn">
+                                <i class="fas fa-ticket-alt me-2"></i>Create Booking
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Added Add-On Tab -->
+            <div class="tab-pane fade" id="addon">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Purchase Additional Ride Access</h5>
+                        <small class="text-muted">For customers already inside the park</small>
+                    </div>
+                    <div class="card-body">
+                        <form id="addonForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Booking ID</label>
+                                    <input type="text" class="form-control" id="addonBookingId" placeholder="Enter booking ID" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Select Ride</label>
+                                    <select class="form-select" id="addonRideId" required>
+                                        <option value="">-- Select Paid Ride --</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <button type="button" class="btn btn-primary" onclick="checkRideAccess()">
+                                        <i class="fas fa-search me-2"></i>Check Available Entries
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Current Access Info (hidden initially) -->
+                            <div id="currentAccessInfo" style="display: none;">
+                                <div class="alert alert-info">
+                                    <h6>Current Access Information</h6>
+                                    <p class="mb-1"><strong>Customer:</strong> <span id="addonCustomerName"></span></p>
+                                    <p class="mb-1"><strong>Ride:</strong> <span id="addonRideName"></span></p>
+                                    <p class="mb-1"><strong>Total Allowed:</strong> <span id="addonTotalAllowed"></span></p>
+                                    <p class="mb-1"><strong>Used:</strong> <span id="addonUsedCount"></span></p>
+                                    <p class="mb-1"><strong>Remaining:</strong> <span id="addonRemaining"></span></p>
+                                    <p class="mb-0"><strong>Price per Entry:</strong> ₹<span id="addonRidePrice"></span></p>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Additional Entries to Purchase</label>
+                                        <input type="number" class="form-control" id="additionalEntries" min="1" value="1" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Payment Method</label>
+                                        <select class="form-select" id="addonPaymentMethod" required>
+                                            <option value="cash">Cash</option>
+                                            <option value="upi">UPI</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <h5>Total Amount: <span id="addonTotalAmount">₹0</span></h5>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-success" id="purchaseAddonBtn">
+                                    <i class="fas fa-shopping-cart me-2"></i>Purchase Add-On
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/api_caller.js"></script>
+    <script src="/static/js/seller_dashboard.js"></script>
+    <script src="/static/js/theme-toggle.js"></script>
+
+    <script>
+        window.onload = async function () {
+            await initSellerDashboard(
+                "{% url 'seller-api-list' %}",
+                "{% url 'booking-api-list' %}",                
+                "{% url 'user-profile-api-list' %}",
+                "{{ csrf_token }}"
+            )
+        }
+    </script>
+</body>
+</html>

@@ -1,5 +1,9 @@
 from pathlib import Path
 import os
+import dj_database_url
+
+IS_LOCAL = True
+LOCAL_DB = True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -15,6 +19,11 @@ SECRET_KEY = 'django-insecure-5g*el)9)p5sl8sg8!khy2nn2!3(i9!xh$8bq!p%maes-xlgptb
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+# X_FRAME_OPTIONS = 'ALLOWALL'
+# CORS_ALLOW_ALL_ORIGINS = True  # allow fetch/ajax from anywhere
+
+AUTH_USER_MODEL = 'UserDetail.User'
 
 
 # Application definition
@@ -26,6 +35,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'FrontEnd',
+    'Park',
+    'UserDetail',
+    'Booking',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -63,12 +77,31 @@ WSGI_APPLICATION = 'Jumpingo_frontend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if IS_LOCAL:
+    if LOCAL_DB:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+            }
+        }
+    else:
+        DATABASES = {
+            "default": dj_database_url.config(
+                default="postgresql://jumpingo_user:8N5DDV1lWqOuwVEA8RNyNn005th52oso@dpg-d6a1qhjnv86c73f7jckg-a.singapore-postgres.render.com/jumpingo",
+                conn_max_age=600,
+                ssl_require=True,
+            )
+        }
+
+else:
+    DATABASES = {
+        "default": dj_database_url.config(
+            default=os.environ.get("DATABASE_URL"),
+            conn_max_age=600,
+            ssl_require=True,
+        )
     }
-}
 
 
 # Password validation
