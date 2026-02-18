@@ -35,6 +35,7 @@ class BookingSerializer(serializers.ModelSerializer):
             "visit_date", "num_people",
             "total_amount", "payment_status", "payment_method",
             "sold_from", "sold_by", "commission_rate", "commission_amount",
+            "is_an_invite", "reference", "other_reference",
             "qr_code_path",
             "checked_in", "checkedin_at", "entered", "entered_at",
             "entry_scanned", "entryscanned_at", "scanned_by",
@@ -60,6 +61,7 @@ class PreBookingSerializer(serializers.ModelSerializer):
     """Serializer for pre-booking window."""
     park_name = serializers.CharField(source="park.name", read_only=True)
     confirmed_by_name = serializers.CharField(source="confirmed_by.name", read_only=True)
+    approved_by_name = serializers.CharField(source="approved_by.name", read_only=True)
 
     class Meta:
         model = PreBooking
@@ -67,6 +69,8 @@ class PreBookingSerializer(serializers.ModelSerializer):
             "id", "prebooking_id", "park", "park_name",
             "customer_name", "customer_number", "num_people", "visit_date",
             "status", "booking", "notes",
+            "is_an_invite", "reference", "other_reference",
+            "approval_status", "approved_amount", "approved_by", "approved_by_name", "approved_at", "rejection_reason",
             "created_at", "confirmed_at", "confirmed_by", "confirmed_by_name"
         ]
-        read_only_fields = ["id", "prebooking_id", "booking", "created_at", "confirmed_at", "confirmed_by", "confirmed_by_name"]
+        read_only_fields = ["id", "prebooking_id", "booking", "created_at", "confirmed_at", "confirmed_by", "confirmed_by_name", "approved_at", "approved_by_name"]

@@ -134,3 +134,10 @@ class PreBookingViewSet(viewsets.ViewSet):
     @check_authentication()
     def list(self, request):
         return render(request, 'prebooking.html')
+
+class InvitePreBookingViewSet(viewsets.ViewSet):
+
+    @handle_exceptions
+    @check_authentication()
+    def list(self, request):
+        return render(request, 'invite_prebooking.html')

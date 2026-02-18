@@ -1578,6 +1578,131 @@ class AdminDashboardViewSet(viewsets.ViewSet):
                 "user_unauthorized": False
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+    @handle_exceptions
+    @check_authentication(required_role=['super_admin', 'park_admin'])
+    @action(detail=True, methods=['put'])
+    def update_user(self, request, pk=None):
+        """Update user information (name, email, status, commission rate)"""
+        try:
+            user = User.objects.get(id=pk)
+            
+            # Get data from request
+            name = request.data.get('name', user.name)
+            email = request.data.get('email', user.email)
+            is_active_user = request.data.get('is_active_user', user.is_active_user)
+            commission_rate = request.data.get('commission_rate')
+            
+            # Update user fields
+            user.name = name
+            user.email = email
+            user.is_active_user = is_active_user
+            
+            if commission_rate is not None and user.role == 'seller':
+                user.commission_rate = float(commission_rate)
+            
+            user.save()
+            
+            return Response({
+                "success": True,
+                "data": {
+                    "user_id": user.user_id,
+                    "name": user.name,
+                    "email": user.email,
+                    "is_active_user": user.is_active_user,
+                    "commission_rate": float(user.commission_rate) if user.commission_rate else 0,
+                },
+                "error": None,
+                "user_not_logged_in": False,
+                "user_unauthorized": False
+            }, status=status.HTTP_200_OK)
+            
+        except User.DoesNotExist:
+            return Response({
+                "success": False,
+                "data": None,
+                "error": "User not found",
+                "user_not_logged_in": False,
+                "user_unauthorized": False
+            }, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({
+                "success": False,
+                "data": None,
+                "error": str(e),
+                "user_not_logged_in": False,
+                "user_unauthorized": False
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    @handle_exceptions
+    @check_authentication(required_role=['super_admin', 'park_admin'])
+    @action(detail=True, methods=['post'])
+    def update_password(self, request, pk=None):
+        """Update password for a specific user"""
+        try:
+            user = User.objects.get(id=pk)
+            
+            new_password = request.data.get('new_password')
+            confirm_password = request.data.get('confirm_password')
+            
+            if not new_password or not confirm_password:
+                return Response({
+                    "success": False,
+                    "data": None,
+                    "error": "Both new_password and confirm_password are required.",
+                    "user_not_logged_in": False,
+                    "user_unauthorized": False
+                }, status=status.HTTP_400_BAD_REQUEST)
+            
+            if new_password != confirm_password:
+                return Response({
+                    "success": False,
+                    "data": None,
+                    "error": "Passwords do not match.",
+                    "user_not_logged_in": False,
+                    "user_unauthorized": False
+                }, status=status.HTTP_400_BAD_REQUEST)
+            
+            if len(new_password) < 6:
+                return Response({
+                    "success": False,
+                    "data": None,
+                    "error": "Password must be at least 6 characters long.",
+                    "user_not_logged_in": False,
+                    "user_unauthorized": False
+                }, status=status.HTTP_400_BAD_REQUEST)
+            
+            # Update password
+            user.set_password(new_password)
+            user.save()
+            
+            return Response({
+                "success": True,
+                "data": {
+                    "user_id": user.user_id,
+                    "message": "Password updated successfully"
+                },
+                "error": None,
+                "user_not_logged_in": False,
+                "user_unauthorized": False
+            }, status=status.HTTP_200_OK)
+            
+        except User.DoesNotExist:
+            return Response({
+                "success": False,
+                "data": None,
+                "error": "User not found",
+                "user_not_logged_in": False,
+                "user_unauthorized": False
+            }, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({
+                "success": False,
+                "data": None,
+                "error": str(e),
+                "user_not_logged_in": False,
+                "user_unauthorized": False
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 class SellerDashboardViewSet(viewsets.ViewSet):
     """

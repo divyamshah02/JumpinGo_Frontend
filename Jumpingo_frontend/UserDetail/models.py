@@ -24,6 +24,7 @@ class User(AbstractUser):
         ("seller", "External Seller"),
         ("cash_counter", "Cash Counter"),
         ("pre_booker", "Pre Booker"),
+        ("invi_pre_booker", "Invites Pre Booker"),
         ("customer", "Customer"),
     ]
 
@@ -65,6 +66,7 @@ class User(AbstractUser):
                 "seller": "SL",
                 "cash_counter": "CC",
                 "pre_booker": "PB",
+                "invi_pre_booker": "IP",
                 "customer": "CU",
             }
             code = role_codes.get(self.role, "XX")
