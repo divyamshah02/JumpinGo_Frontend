@@ -48,8 +48,7 @@ class BookingViewSet(viewsets.ViewSet):
 
     # @handle_exceptions
     @check_authentication(required_role=["super_admin", "park_admin", "seller", "cash_counter", "customer"])
-    def create(self, request):
-        print(request.data)
+    def create(self, request):        
         data = request.data.copy()
         user = request.user
 

@@ -94,6 +94,7 @@ class AccountViewSet(viewsets.ViewSet):
 class SecurityScannerViewSet(viewsets.ViewSet):
 
     @handle_exceptions
+    @check_authentication()
     def list(self, request):
         return render(request, 'security_scanner.html')
 
@@ -101,6 +102,7 @@ class SecurityScannerViewSet(viewsets.ViewSet):
 class RideScannerViewSet(viewsets.ViewSet):
 
     @handle_exceptions
+    @check_authentication()
     def list(self, request):
         return render(request, 'ride_scanner.html')
 
@@ -114,12 +116,14 @@ class SocksScannerViewSet(viewsets.ViewSet):
 class AdminDashboardViewSet(viewsets.ViewSet):
 
     @handle_exceptions
+    @check_authentication()
     def list(self, request):
         return render(request, 'admin_dashboard.html')
 
 class SellerDashboardViewSet(viewsets.ViewSet):
 
     @handle_exceptions
+    @check_authentication()
     def list(self, request):
         return render(request, 'seller_dashboard.html')
 
@@ -127,5 +131,6 @@ class SellerDashboardViewSet(viewsets.ViewSet):
 class PreBookingViewSet(viewsets.ViewSet):
 
     @handle_exceptions
+    @check_authentication()
     def list(self, request):
         return render(request, 'prebooking.html')

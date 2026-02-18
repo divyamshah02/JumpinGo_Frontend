@@ -567,7 +567,7 @@ class AdminDashboardViewSet(viewsets.ViewSet):
         """Get dashboard statistics"""
         try:
             park_id = request.query_params.get('park_id')
-            date_filter = request.query_params.get('date_filter', 'today')
+            date_filter = request.query_params.get('date_filter', '')
             start_date = request.query_params.get('start_date')
             end_date = request.query_params.get('end_date')
             

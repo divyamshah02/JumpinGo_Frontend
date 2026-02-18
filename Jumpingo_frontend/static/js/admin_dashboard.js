@@ -10,9 +10,13 @@ async function initDashboard(api_url, token) {
   admin_api_url = api_url
   csrf_token = token
 
-  const istDate = new Date(Date.now() + 5.5 * 3600000).toISOString().split("T")[0]
-  document.getElementById("bookingStartDate").value = istDate
-  document.getElementById("bookingEndDate").value = istDate
+  // const istDate = new Date(Date.now() + 5.5 * 3600000).toISOString().split("T")[0]
+  // document.getElementById("bookingStartDate").value = istDate
+  // document.getElementById("bookingEndDate").value = istDate
+
+  document.getElementById("bookingStartDate").value = "2026-02-19";
+  document.getElementById("bookingEndDate").value = "2026-03-01";
+
 
   // Load initial data
   await loadDashboardStats()
