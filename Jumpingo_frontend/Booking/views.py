@@ -992,15 +992,15 @@ class PreBookingViewSet(viewsets.ViewSet):
             )
 
         # Generate QR code
-        qr = qrcode.QRCode(version=1, box_size=10, border=5)
-        qr.add_data(booking.booking_id)
-        qr.make(fit=True)
-        img = qr.make_image(fill_color="black", back_color="white")
+        # qr = qrcode.QRCode(version=1, box_size=10, border=5)
+        # qr.add_data(booking.booking_id)
+        # qr.make(fit=True)
+        # img = qr.make_image(fill_color="black", back_color="white")
 
-        qr_path = os.path.join(settings.MEDIA_ROOT, "qr_codes", f"{booking.booking_id}.png")
-        os.makedirs(os.path.dirname(qr_path), exist_ok=True)
-        img.save(qr_path)
-        booking.qr_code_path = f"media/qr_codes/{booking.booking_id}.png"
+        # qr_path = os.path.join(settings.MEDIA_ROOT, "qr_codes", f"{booking.booking_id}.png")
+        # os.makedirs(os.path.dirname(qr_path), exist_ok=True)
+        # img.save(qr_path)
+        # booking.qr_code_path = f"media/qr_codes/{booking.booking_id}.png"
         booking.save()
 
         # Update pre-booking status

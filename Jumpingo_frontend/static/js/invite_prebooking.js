@@ -153,7 +153,7 @@ function renderPrebookingsTable(prebookings) {
                 <td>${new Date(pb.visit_date).toLocaleDateString()}</td>
                 <td><span class="badge bg-${pb.status === "pending" || pb.status === "approved" ? "warning" : pb.status === "confirmed" ? "success" : "danger"}">${pb.status}</span></td>
                 <td><span class="badge bg-${pb.approval_status === "pending" ? "secondary" : pb.approval_status === "approved" ? "success" : "danger"}">${pb.approval_status}</span></td>
-                <td>${pb.approved_amount !== null ? `₹${pb.approved_amount.toFixed(2)}` : '-'}</td>
+                <td>${pb.approved_amount !== null ? `₹${pb.approved_amount}` : '-'}</td>
                 <td>${new Date(pb.created_at).toLocaleDateString()}</td>
                 <td>${actionButtons}</td>
             </tr>
@@ -314,7 +314,7 @@ async function viewApprovalStatus(prebookingId) {
       document.getElementById("approvalApprovalStatusBadge").className = `badge bg-${pb.approval_status === "pending" ? "secondary" : pb.approval_status === "approved" ? "success" : "danger"}`
 
       document.getElementById("approvalStatusAmount").textContent = 
-        pb.approved_amount !== null ? `₹${pb.approved_amount.toFixed(2)}` : "-"
+        pb.approved_amount !== null ? `₹${pb.approved_amount}` : "-"
       document.getElementById("approvalStatusApprovedBy").textContent = pb.approved_by_name || "-"
       document.getElementById("approvalStatusApprovedAt").textContent = 
         pb.approved_at ? new Date(pb.approved_at).toLocaleDateString() : "-"

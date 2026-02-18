@@ -1246,7 +1246,7 @@ function renderInvitePreBookingsTable(prebookings) {
     tbody.innerHTML = '<tr><td colspan="9" class="text-center">No invite pre-bookings found</td></tr>'
     return
   }
-
+  // <td>₹${pb.approved_amount !== null ? pb.approved_amount.toFixed(2) : '-'}</td>
   tbody.innerHTML = prebookings
     .map(
       (pb) => `
@@ -1257,8 +1257,8 @@ function renderInvitePreBookingsTable(prebookings) {
             <td>${pb.visit_date}</td>
             <td>${pb.num_people}</td>
             <td><span class="badge bg-secondary">${pb.status}</span></td>
-            <td><span class="badge ${getApprovalBadgeClass(pb.approval_status)}">${pb.approval_status}</span></td>
-            <td>₹${pb.approved_amount !== null ? pb.approved_amount.toFixed(2) : '-'}</td>
+            <td><span class="badge ${getApprovalBadgeClass(pb.approval_status)}">${pb.approval_status}</span></td>            
+            <td>₹${pb.approved_amount !== null ? pb.approved_amount : '-'}</td>
             <td>
                 <button class="btn btn-sm btn-info" onclick="viewInvitePreBookingDetails(${pb.id})">
                     <i class="fas fa-eye"></i>
@@ -1297,8 +1297,7 @@ async function viewInvitePreBookingDetails(prebookingId) {
     if (success && response.success) {
       const pb = response.data
 
-      // Populate detail fields
-      document.getElementById("inviteDetailPrebookingId").textContent = pb.prebooking_id
+      // Populate detail fields      
       document.getElementById("inviteDetailCustomerName").textContent = pb.customer_name
       document.getElementById("inviteDetailCustomerNumber").textContent = pb.customer_number
       document.getElementById("inviteDetailNumPeople").textContent = pb.num_people
@@ -1315,7 +1314,7 @@ async function viewInvitePreBookingDetails(prebookingId) {
       document.getElementById("inviteDetailApprovalStatus").className = `badge ${getApprovalBadgeClass(pb.approval_status)}`
 
       document.getElementById("inviteDetailApprovedAmount").textContent =
-        pb.approved_amount !== null ? `₹${pb.approved_amount.toFixed(2)}` : "-"
+        pb.approved_amount !== null ? `₹${pb.approved_amount}` : "-"
       document.getElementById("inviteDetailApprovedBy").textContent = pb.approved_by_name || "-"
       document.getElementById("inviteDetailApprovedAt").textContent =
         pb.approved_at ? new Date(pb.approved_at).toLocaleDateString() : "-"
