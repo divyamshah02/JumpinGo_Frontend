@@ -38,7 +38,7 @@
 
     <div class="container-fluid mt-4">
         <!-- Statistics Cards -->
-        <div class="row mb-4" style="display: none;">
+        <div class="row mb-4">
             <div class="col-md-3">
                 <div class="card text-white bg-primary">
                     <div class="card-body">
@@ -74,13 +74,13 @@
         </div>
 
         <!-- Tabs -->
-        <ul class="nav nav-tabs" id="prebookingTabs" role="tablist" style="display: none;">
+        <ul class="nav nav-tabs" id="prebookingTabs" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="create-tab" data-bs-toggle="tab" data-bs-target="#create-prebooking" type="button">
                     <i class="fas fa-plus me-2"></i>Create Pre-Booking
                 </button>
             </li>
-            <li class="nav-item" role="presentation" style="display: none;">
+            <li class="nav-item" role="presentation">
                 <button class="nav-link" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-prebookings" type="button">
                     <i class="fas fa-list me-2"></i>All Pre-Bookings
                 </button>
@@ -117,7 +117,20 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Reference (Optional)</label>
+                                    <select class="form-select" id="prebookingReference">
+                                        <option value="">Refrence</option>
+                                        <option value="harsh">Harsh</option>
+                                        <option value="vijay">Vijay</option>
+                                        <option value="raju">raju</option>
+                                        <option value="darpit">Darpit</option>
+                                        <option value="influencer">Influencer</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <input type="text" class="form-control" style="display: none;" id="otherPrebookingReference" placeholder="Enter reference">
+                                </div>
+                                <div class="col-md-6 mb-3">
                                     <label class="form-label">Notes (Optional)</label>
                                     <textarea class="form-control" id="prebookingNotes" rows="3" placeholder="Add any notes..."></textarea>
                                 </div>
@@ -137,7 +150,7 @@
                 </div>
             </div>
             <!-- All Pre-Bookings Tab -->
-            <div class="tab-pane fade" id="all-prebookings" style="display: none;">
+            <div class="tab-pane fade" id="all-prebookings">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="mb-0">Pre-Booking Management</h5>
@@ -177,13 +190,15 @@
                                         <th>People</th>
                                         <th>Visit Date</th>
                                         <th>Status</th>
+                                        <th>Approval</th>
+                                        <th>Amount</th>
                                         <th>Created</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody id="prebookingsTableBody">
                                     <tr>
-                                        <td colspan="8" class="text-center text-muted">
+                                        <td colspan="10" class="text-center text-muted">
                                             <i class="fas fa-spinner fa-spin me-2"></i>Loading pre-bookings...
                                         </td>
                                     </tr>
@@ -194,6 +209,56 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+
+    <!-- View Pre-Booking Approval Status Modal -->
+    <div id="viewApprovalStatusModal" class="modal" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Pre-Booking Approval Status</h5>
+                    <button type="button" class="btn-close" onclick="closeApprovalStatusModal()"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info">
+                        <strong id="approvalStatusCode"></strong> - 
+                        <span id="approvalStatusCustomer"></span>
+                    </div>
+                    <table class="table table-sm">
+                        <tr>
+                            <td class="fw-bold">Status:</td>
+                            <td><span class="badge" id="approvalStatusBadge">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Approval Status:</td>
+                            <td><span class="badge" id="approvalApprovalStatusBadge">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Approved Amount:</td>
+                            <td id="approvalStatusAmount">-</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Approved By:</td>
+                            <td id="approvalStatusApprovedBy">-</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Approved At:</td>
+                            <td id="approvalStatusApprovedAt">-</td>
+                        </tr>
+                        <tr id="rejectionReasonRow" style="display: none;">
+                            <td class="fw-bold">Rejection Reason:</td>
+                            <td id="approvalStatusRejectionReason">-</td>
+                        </tr>
+                    </table>
+                    <div id="confirmationPrompt" style="display: none;" class="mt-3">
+                        <p class="text-success"><i class="fas fa-check-circle me-2"></i>This invite pre-booking has been approved by admin! You can now confirm it to create a booking.</p>
+                        <button type="button" class="btn btn-success w-100" onclick="confirmApprovedPreBooking()">
+                            <i class="fas fa-calendar-check me-2"></i>Confirm & Create Booking
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -242,7 +307,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/static/js/api_caller.js"></script>
     <script src="/static/js/theme-toggle.js"></script>
-    <script src="/static/js/prebooking.js"></script>
+    <script src="/static/js/invite_prebooking.js"></script>
 
     <script>
         // Initialize Pre-Booking Page with API endpoints and CSRF token
@@ -251,6 +316,18 @@
             const csrfToken = "{{ csrf_token }}"
             initPrebooking(prebookingApiUrl, csrfToken)
         });
+        document.getElementById("prebookingReference").addEventListener("change", function () {
+            const otherInput = document.getElementById("otherPrebookingReference");
+            const selectedValue = this.value;
+
+            if (selectedValue === "influencer" || selectedValue === "other") {
+                otherInput.style.display = "block";
+            } else {
+                otherInput.style.display = "none";
+                otherInput.value = ""; // reset when hidden
+            }
+        });
+
     </script>
 </body>
 </html>

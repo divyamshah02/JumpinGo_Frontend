@@ -18,6 +18,7 @@ router.register(r'sock_scanner', SocksScannerViewSet, basename='sock_scanner')
 router.register(r'admin_dashboard', AdminDashboardViewSet, basename='admin_dashboard')
 router.register(r'seller_dashboard', SellerDashboardViewSet, basename='seller_dashboard')
 router.register(r'prebooking', PreBookingViewSet, basename='prebooking')
+router.register(r'invite_prebooking', InvitePreBookingViewSet, basename='invite_prebooking')
 
 urlpatterns = [
     path('', include(router.urls)),

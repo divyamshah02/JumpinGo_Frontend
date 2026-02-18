@@ -64,6 +64,10 @@ body {
   min-height: 100vh;
 }
 
+td, th {
+  background-color: var(--bg-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
 /* ============================================
    Navbar Styling
    ============================================ */

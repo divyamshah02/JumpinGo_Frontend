@@ -1,13 +1,15 @@
 // Dashboard State
 let admin_api_url = null
+let prebooking_api_url = null
 let csrf_token = null
 const PARK_ID = 1 // Static park ID for now (future multi-park support)
 let currentSellerId = null
 let currentCashCounterId = null
 
 // Initialize Dashboard
-async function initDashboard(api_url, token) {
+async function initDashboard(api_url, prebooking_url, token) {
   admin_api_url = api_url
+  prebooking_api_url = prebooking_url
   csrf_token = token
 
   // const istDate = new Date(Date.now() + 5.5 * 3600000).toISOString().split("T")[0]
@@ -27,6 +29,7 @@ async function initDashboard(api_url, token) {
   await loadCashCounters()
   await loadRides()
   await loadAddOns()
+  await loadInvitePreBookings()
 }
 
 async function loadDashboardStats() {
@@ -210,7 +213,7 @@ function renderUsersTable(users) {
   const tbody = document.getElementById("usersTableBody")
 
   if (users.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="6" class="text-center">No users found</td></tr>'
+    tbody.innerHTML = '<tr><td colspan="7" class="text-center">No users found</td></tr>'
     return
   }
 
@@ -221,6 +224,7 @@ function renderUsersTable(users) {
             <td>${user.user_id}</td>
             <td>${user.name || "N/A"}</td>
             <td>${user.contact_number}</td>
+            <td>${user.email || "N/A"}</td>
             <td><span class="badge bg-info">${user.role}</span></td>
             <td>
                 <span class="badge bg-${user.is_active_user ? "success" : "danger"}">
@@ -289,6 +293,9 @@ function openEditUserModal(userId, name, email, isActive, role, commissionRate) 
   document.getElementById("editUserName").value = name
   document.getElementById("editUserEmail").value = email
   document.getElementById("editUserStatus").value = isActive.toString()
+  document.getElementById("editUserRole").value = role
+  document.getElementById("editUserPassword").value = ""
+  document.getElementById("editUserConfirmPassword").value = ""
 
   if (role === "seller") {
     document.getElementById("editUserCommissionGroup").style.display = "block"
@@ -308,12 +315,16 @@ async function updateUser() {
   const name = document.getElementById("editUserName").value
   const email = document.getElementById("editUserEmail").value
   const isActive = document.getElementById("editUserStatus").value === "true"
+  const role = document.getElementById("editUserRole").value
   const commissionRate = document.getElementById("editUserCommission").value
+  const newPassword = document.getElementById("editUserPassword").value
+  const confirmPassword = document.getElementById("editUserConfirmPassword").value
 
   const userData = {
     name: name,
     email: email,
     is_active_user: isActive,
+    role: role
   }
 
   if (document.getElementById("editUserCommissionGroup").style.display !== "none" && commissionRate) {
@@ -324,9 +335,41 @@ async function updateUser() {
 
   if (success && response.success) {
     alert("User updated successfully!")
+
+    // Update password if provided
+    if (newPassword && confirmPassword) {
+      if (newPassword !== confirmPassword) {
+        alert("Password confirmation does not match!")
+        return
+      }
+
+      if (newPassword.length < 6) {
+        alert("Password must be at least 6 characters long!")
+        return
+      }
+
+      const passwordData = {
+        new_password: newPassword,
+        confirm_password: confirmPassword
+      }
+
+      const [pwSuccess, pwResponse] = await callApi("POST", `${admin_api_url}${userId}/update_password/`, passwordData, csrf_token)
+
+      if (pwSuccess && pwResponse.success) {
+        alert("Password updated successfully!")
+      } else {
+        alert("Failed to update password: " + (pwResponse.error || "Unknown error"))
+      }
+    }
+
     const bootstrap = window.bootstrap // Declare bootstrap variable
     const modal = bootstrap.Modal.getInstance(document.getElementById("editUserModal"))
     modal.hide()
+
+    // Clear password fields
+    document.getElementById("editUserPassword").value = ""
+    document.getElementById("editUserConfirmPassword").value = ""
+
     await loadUsers()
   } else {
     alert("Failed to update user: " + (response.error || "Unknown error"))
@@ -647,13 +690,12 @@ function renderSellerBookingsTable(bookings) {
                 </span>
             </td>
             <td>
-                ${
-                  !booking.commission_paid
-                    ? `<button class="btn btn-sm btn-success" onclick="markSingleCommissionPaid(${booking.id})">
+                ${!booking.commission_paid
+          ? `<button class="btn btn-sm btn-success" onclick="markSingleCommissionPaid(${booking.id})">
                     <i class="fas fa-check"></i> Pay
                 </button>`
-                    : '<span class="text-success"><i class="fas fa-check-circle"></i></span>'
-                }
+          : '<span class="text-success"><i class="fas fa-check-circle"></i></span>'
+        }
             </td>
         </tr>
     `,
@@ -805,13 +847,12 @@ function renderCashCounterBookingsTable(bookings) {
                 </span>
             </td>
             <td>
-                ${
-                  !booking.sale_confirmed
-                    ? `<button class="btn btn-sm btn-success" onclick="markSingleSaleConfirmed(${booking.id})">
+                ${!booking.sale_confirmed
+          ? `<button class="btn btn-sm btn-success" onclick="markSingleSaleConfirmed(${booking.id})">
                     <i class="fas fa-check"></i> Confirm
                 </button>`
-                    : '<span class="text-success"><i class="fas fa-check-circle"></i></span>'
-                }
+          : '<span class="text-success"><i class="fas fa-check-circle"></i></span>'
+        }
             </td>
         </tr>
     `,
@@ -1165,5 +1206,234 @@ async function viewBookingDetails(bookingId) {
   } catch (error) {
     console.error("[v0] Error loading booking details:", error)
     alert("An error occurred while loading booking details")
+  }
+}
+
+// ===================== INVITE PRE-BOOKINGS FUNCTIONS =====================
+
+// Load Invite Pre-Bookings with Filters
+async function loadInvitePreBookings() {
+  const statusFilter = document.getElementById("inviteStatus")?.value || ""
+  const approvalStatusFilter = document.getElementById("inviteApprovalStatus")?.value || ""
+  const search = document.getElementById("inviteSearch")?.value || ""
+
+  let url = `${prebooking_api_url}?is_invite=true`
+  const params = new URLSearchParams()
+
+  if (statusFilter) params.append("status", statusFilter)
+  if (approvalStatusFilter) params.append("approval_status", approvalStatusFilter)
+  if (search) params.append("search", search)
+
+  if (params.toString()) {
+    url += `&${params.toString()}`
+  }
+
+  const [success, response] = await callApi("GET", url, null, csrf_token)
+
+  if (success && response.success) {
+    renderInvitePreBookingsTable(response.data)
+  } else {
+    document.getElementById("invitePreBookingsTableBody").innerHTML =
+      '<tr><td colspan="9" class="text-center text-danger">Failed to load invite pre-bookings</td></tr>'
+  }
+}
+
+// Render Invite Pre-Bookings Table
+function renderInvitePreBookingsTable(prebookings) {
+  const tbody = document.getElementById("invitePreBookingsTableBody")
+
+  if (prebookings.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="9" class="text-center">No invite pre-bookings found</td></tr>'
+    return
+  }
+  // <td>₹${pb.approved_amount !== null ? pb.approved_amount.toFixed(2) : '-'}</td>
+  tbody.innerHTML = prebookings
+    .map(
+      (pb) => `
+        <tr>
+            <td>${pb.prebooking_id}</td>
+            <td>${pb.customer_name || "N/A"}</td>
+            <td>${pb.customer_number || "N/A"}</td>
+            <td>${pb.visit_date}</td>
+            <td>${pb.num_people}</td>
+            <td><span class="badge bg-secondary">${pb.status}</span></td>
+            <td><span class="badge ${getApprovalBadgeClass(pb.approval_status)}">${pb.approval_status}</span></td>            
+            <td>₹${pb.approved_amount !== null ? pb.approved_amount : '-'}</td>
+            <td>
+                <button class="btn btn-sm btn-info" onclick="viewInvitePreBookingDetails(${pb.id})">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </td>
+        </tr>
+      `
+    )
+    .join("")
+}
+
+// Get badge class for approval status
+function getApprovalBadgeClass(status) {
+  switch (status) {
+    case "approved":
+      return "bg-success"
+    case "rejected":
+      return "bg-danger"
+    case "pending":
+      return "bg-warning text-dark"
+    default:
+      return "bg-secondary"
+  }
+}
+
+// View Invite Pre-Booking Details
+async function viewInvitePreBookingDetails(prebookingId) {
+  try {
+    const [success, response] = await callApi(
+      "GET",
+      `${prebooking_api_url}${prebookingId}/`,
+      null,
+      csrf_token
+    )
+
+    if (success && response.success) {
+      const pb = response.data
+
+      // Populate detail fields      
+      document.getElementById("inviteDetailCustomerName").textContent = pb.customer_name
+      document.getElementById("inviteDetailCustomerNumber").textContent = pb.customer_number
+      document.getElementById("inviteDetailNumPeople").textContent = pb.num_people
+      document.getElementById("inviteDetailVisitDate").textContent = pb.visit_date
+      document.getElementById("inviteDetailReference").textContent = pb.reference || "-"
+      document.getElementById("inviteDetailOtherReference").textContent = pb.other_reference || "-"
+      document.getElementById("inviteDetailCreatedAt").textContent = new Date(pb.created_at).toLocaleDateString()
+
+      // Populate approval fields
+      document.getElementById("inviteDetailStatus").textContent = pb.status
+      document.getElementById("inviteDetailStatus").className = `badge bg-secondary`
+
+      document.getElementById("inviteDetailApprovalStatus").textContent = pb.approval_status
+      document.getElementById("inviteDetailApprovalStatus").className = `badge ${getApprovalBadgeClass(pb.approval_status)}`
+
+      document.getElementById("inviteDetailApprovedAmount").textContent =
+        pb.approved_amount !== null ? `₹${pb.approved_amount}` : "-"
+      document.getElementById("inviteDetailApprovedBy").textContent = pb.approved_by_name || "-"
+      document.getElementById("inviteDetailApprovedAt").textContent =
+        pb.approved_at ? new Date(pb.approved_at).toLocaleDateString() : "-"
+      document.getElementById("inviteDetailRejectionReason").textContent = pb.rejection_reason || "-"
+
+      // Store ID for later use
+      document.getElementById("invitePreBookingDetailModal").dataset.prebookingId = prebookingId
+
+      // Show/hide approval form based on approval status
+      const approvalFormContainer = document.getElementById("inviteApprovalFormContainer")
+      const confirmationFormContainer = document.getElementById("inviteConfirmationFormContainer")
+
+      if (pb.approval_status === "pending") {
+        approvalFormContainer.style.display = "block"
+        confirmationFormContainer.style.display = "none"
+        document.getElementById("inviteApprovedAmountInput").value = ""
+      } else if (pb.approval_status === "approved" && pb.status === "approved") {
+        approvalFormContainer.style.display = "none"
+        confirmationFormContainer.style.display = "block"
+      } else {
+        approvalFormContainer.style.display = "none"
+        confirmationFormContainer.style.display = "none"
+      }
+
+      const modal = new bootstrap.Modal(document.getElementById("invitePreBookingDetailModal"))
+      modal.show()
+    } else {
+      alert("Failed to load invite pre-booking details: " + (response.error || "Unknown error"))
+    }
+  } catch (error) {
+    console.error("[v0] Error loading invite pre-booking details:", error)
+    alert("An error occurred while loading invite pre-booking details")
+  }
+}
+
+// Approve Invite Pre-Booking
+async function approveInvitePreBooking() {
+  const prebookingId = document.getElementById("invitePreBookingDetailModal").dataset.prebookingId
+  const approvedAmount = document.getElementById("inviteApprovedAmountInput").value
+
+  if (!approvedAmount || isNaN(approvedAmount)) {
+    alert("Please enter a valid approved amount")
+    return
+  }
+
+  try {
+    const [success, response] = await callApi(
+      "POST",
+      `${prebooking_api_url}${prebookingId}/approve_invite/`,
+      { approved_amount: parseFloat(approvedAmount) },
+      csrf_token
+    )
+
+    if (success && response.success) {
+      alert("Invite pre-booking approved successfully!")
+      bootstrap.Modal.getInstance(document.getElementById("invitePreBookingDetailModal")).hide()
+      await loadInvitePreBookings()
+    } else {
+      alert("Failed to approve: " + (response.error || "Unknown error"))
+    }
+  } catch (error) {
+    console.error("[v0] Error approving invite pre-booking:", error)
+    alert("An error occurred while approving the invite pre-booking")
+  }
+}
+
+// Reject Invite Pre-Booking
+async function rejectInvitePreBooking() {
+  const prebookingId = document.getElementById("invitePreBookingDetailModal").dataset.prebookingId
+  const rejectionReason = document.getElementById("inviteRejectionReason").value
+
+  if (!rejectionReason) {
+    alert("Please enter a rejection reason")
+    return
+  }
+
+  try {
+    const [success, response] = await callApi(
+      "POST",
+      `${prebooking_api_url}${prebookingId}/reject_invite/`,
+      { rejection_reason: rejectionReason },
+      csrf_token
+    )
+
+    if (success && response.success) {
+      alert("Invite pre-booking rejected successfully!")
+      bootstrap.Modal.getInstance(document.getElementById("inviteRejectModal")).hide()
+      bootstrap.Modal.getInstance(document.getElementById("invitePreBookingDetailModal")).hide()
+      await loadInvitePreBookings()
+    } else {
+      alert("Failed to reject: " + (response.error || "Unknown error"))
+    }
+  } catch (error) {
+    console.error("[v0] Error rejecting invite pre-booking:", error)
+    alert("An error occurred while rejecting the invite pre-booking")
+  }
+}
+
+// Confirm and Create Booking from Invite Pre-Booking
+async function confirmInvitePreBooking() {
+  const prebookingId = document.getElementById("invitePreBookingDetailModal").dataset.prebookingId
+
+  try {
+    const [success, response] = await callApi(
+      "POST",
+      `${prebooking_api_url}${prebookingId}/confirm/`,
+      { payment_method: "cash" },
+      csrf_token
+    )
+
+    if (success && response.success) {
+      alert("Invite pre-booking confirmed and booking created successfully!")
+      bootstrap.Modal.getInstance(document.getElementById("invitePreBookingDetailModal")).hide()
+      await loadInvitePreBookings()
+    } else {
+      alert("Failed to confirm: " + (response.error || "Unknown error"))
+    }
+  } catch (error) {
+    console.error("[v0] Error confirming invite pre-booking:", error)
+    alert("An error occurred while confirming the invite pre-booking")
   }
 }

@@ -676,13 +676,13 @@ class PreBookingViewSet(viewsets.ViewSet):
     """
 
     @handle_exceptions
-    @check_authentication(required_role=["super_admin", "park_admin", "cash_counter", "pre_booker"])
+    @check_authentication(required_role=["super_admin", "park_admin", "cash_counter", "pre_booker", "invi_pre_booker"])
     def list(self, request):
         user = request.user
         search_query = request.query_params.get('search', '')
         status_filter = request.query_params.get('status', '')
 
-        if user.role in ["cash_counter", "pre_booker"]:
+        if user.role in ["cash_counter", "pre_booker", "invi_pre_booker"]:
             prebookings = PreBooking.objects.filter(park=user.park)
         elif user.role == "park_admin":
             prebookings = PreBooking.objects.filter(park=user.park)
@@ -711,13 +711,37 @@ class PreBookingViewSet(viewsets.ViewSet):
         }, status=status.HTTP_200_OK)
 
     @handle_exceptions
-    @check_authentication(required_role=["super_admin", "park_admin", "cash_counter", "pre_booker", "customer"])
+    @check_authentication(required_role=["super_admin", "park_admin", "cash_counter", "pre_booker", "customer", "invi_pre_booker"])
+    def retrieve(self, request, pk=None):
+        """Get single pre-booking detail"""
+        try:
+            prebooking = PreBooking.objects.get(id=pk)
+        except PreBooking.DoesNotExist:
+            return Response({
+                "success": False,
+                "user_not_logged_in": False,
+                "user_unauthorized": False,
+                "data": None,
+                "error": "Pre-booking not found"
+            }, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = PreBookingSerializer(prebooking)
+        return Response({
+            "success": True,
+            "user_not_logged_in": False,
+            "user_unauthorized": False,
+            "data": serializer.data,
+            "error": None
+        }, status=status.HTTP_200_OK)
+
+    @handle_exceptions
+    @check_authentication(required_role=["super_admin", "park_admin", "cash_counter", "pre_booker", "customer", "invi_pre_booker"])
     def create(self, request):
         data = request.data.copy()
         user = request.user
-
+        print(data)
         # Determine park
-        if user.role in ["cash_counter", "pre_booker"]:
+        if user.role in ["cash_counter", "pre_booker", "invi_pre_booker"]:
             data["park"] = user.park.id if user.park else None
         elif user.role == "park_admin":
             data["park"] = user.park.id
@@ -750,7 +774,132 @@ class PreBookingViewSet(viewsets.ViewSet):
         }, status=status.HTTP_201_CREATED)
 
     @handle_exceptions
-    @check_authentication(required_role=["super_admin", "park_admin", "cash_counter"])
+    @check_authentication(required_role=["super_admin", "park_admin"])
+    @action(detail=True, methods=['post'])
+    def approve_invite(self, request, pk=None):
+        """Admin approves invite pre-booking and sets discount amount"""
+        try:
+            prebooking = PreBooking.objects.get(id=pk)
+        except PreBooking.DoesNotExist:
+            return Response({
+                "success": False,
+                "user_not_logged_in": False,
+                "user_unauthorized": False,
+                "data": None,
+                "error": "Pre-booking not found"
+            }, status=status.HTTP_404_NOT_FOUND)
+
+        # Only allow approval for invite pre-bookings
+        if not prebooking.is_an_invite:
+            return Response({
+                "success": False,
+                "user_not_logged_in": False,
+                "user_unauthorized": False,
+                "data": None,
+                "error": "Can only approve invite pre-bookings"
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        # Check approval status
+        if prebooking.approval_status != "pending":
+            return Response({
+                "success": False,
+                "user_not_logged_in": False,
+                "user_unauthorized": False,
+                "data": None,
+                "error": f"Can only approve pending invites. Current status: {prebooking.approval_status}"
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        # Extract approved amount from request
+        data = request.data.copy()
+        approved_amount = data.get("approved_amount", 0)
+        
+        try:
+            approved_amount = float(approved_amount)
+            if approved_amount < 0:
+                raise ValueError("Approved amount cannot be negative")
+        except (ValueError, TypeError):
+            return Response({
+                "success": False,
+                "user_not_logged_in": False,
+                "user_unauthorized": False,
+                "data": None,
+                "error": "Invalid approved amount"
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        # Update pre-booking with approval
+        prebooking.approval_status = "approved"
+        prebooking.approved_amount = approved_amount
+        prebooking.approved_by = request.user
+        prebooking.approved_at = timezone.now()
+        prebooking.status = "approved"
+        prebooking.save()
+
+        return Response({
+            "success": True,
+            "user_not_logged_in": False,
+            "user_unauthorized": False,
+            "data": PreBookingSerializer(prebooking).data,
+            "error": None
+        }, status=status.HTTP_200_OK)
+
+    @handle_exceptions
+    @check_authentication(required_role=["super_admin", "park_admin"])
+    @action(detail=True, methods=['post'])
+    def reject_invite(self, request, pk=None):
+        """Admin rejects invite pre-booking with reason"""
+        try:
+            prebooking = PreBooking.objects.get(id=pk)
+        except PreBooking.DoesNotExist:
+            return Response({
+                "success": False,
+                "user_not_logged_in": False,
+                "user_unauthorized": False,
+                "data": None,
+                "error": "Pre-booking not found"
+            }, status=status.HTTP_404_NOT_FOUND)
+
+        # Only allow rejection for invite pre-bookings
+        if not prebooking.is_an_invite:
+            return Response({
+                "success": False,
+                "user_not_logged_in": False,
+                "user_unauthorized": False,
+                "data": None,
+                "error": "Can only reject invite pre-bookings"
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        # Check approval status
+        if prebooking.approval_status != "pending":
+            return Response({
+                "success": False,
+                "user_not_logged_in": False,
+                "user_unauthorized": False,
+                "data": None,
+                "error": f"Can only reject pending invites. Current status: {prebooking.approval_status}"
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        # Extract rejection reason from request
+        data = request.data.copy()
+        rejection_reason = data.get("rejection_reason", "No reason provided")
+
+        # Update pre-booking with rejection
+        prebooking.approval_status = "rejected"
+        prebooking.approved_by = request.user
+        prebooking.approved_at = timezone.now()
+        prebooking.rejection_reason = rejection_reason
+        prebooking.status = "cancelled"
+        prebooking.save()
+
+        return Response({
+            "success": True,
+            "user_not_logged_in": False,
+            "user_unauthorized": False,
+            "data": PreBookingSerializer(prebooking).data,
+            "error": None
+        }, status=status.HTTP_200_OK)
+
+    @handle_exceptions
+    @check_authentication(required_role=["super_admin", "park_admin", "cash_counter", "invi_pre_booker"])
     @action(detail=True, methods=['post'])
     def confirm(self, request, pk=None):
         """Convert pre-booking to actual booking"""
@@ -765,7 +914,18 @@ class PreBookingViewSet(viewsets.ViewSet):
                 "error": "Pre-booking not found"
             }, status=status.HTTP_404_NOT_FOUND)
 
-        if prebooking.status != "pending":
+        # For invite pre-bookings, check if approved by admin
+        if prebooking.is_an_invite and prebooking.approval_status != "approved":
+            return Response({
+                "success": False,
+                "user_not_logged_in": False,
+                "user_unauthorized": False,
+                "data": None,
+                "error": f"Invite pre-booking must be approved by admin first. Current approval status: {prebooking.approval_status}"
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        # For non-invite bookings, check pending status
+        if not prebooking.is_an_invite and prebooking.status != "pending":
             return Response({
                 "success": False,
                 "user_not_logged_in": False,
@@ -774,9 +934,25 @@ class PreBookingViewSet(viewsets.ViewSet):
                 "error": f"Can only confirm pending pre-bookings. Current status: {prebooking.status}"
             }, status=status.HTTP_400_BAD_REQUEST)
 
+        # For invite pre-bookings that are approved, status should be "approved"
+        if prebooking.is_an_invite and prebooking.status != "approved":
+            return Response({
+                "success": False,
+                "user_not_logged_in": False,
+                "user_unauthorized": False,
+                "data": None,
+                "error": f"Can only confirm approved invite pre-bookings. Current status: {prebooking.status}"
+            }, status=status.HTTP_400_BAD_REQUEST)
+
         # Extract data from request
         data = request.data.copy()
-        total_amount = data.get("total_amount", 0)
+        
+        # Use approved_amount for invite pre-bookings, otherwise use total_amount from request
+        if prebooking.is_an_invite:
+            total_amount = prebooking.approved_amount or 0
+        else:
+            total_amount = data.get("total_amount", 0)
+        
         payment_method = data.get("payment_method", "cash")
 
         # Check if customer exists, otherwise create
@@ -800,7 +976,10 @@ class PreBookingViewSet(viewsets.ViewSet):
             sold_from="cash_counter",
             sold_by=request.user,
             sale_confirmed=True,
-            commission_rate=0
+            commission_rate=0,
+            is_an_invite=prebooking.is_an_invite,
+            reference=prebooking.reference,
+            other_reference=prebooking.other_reference
         )
 
         # Create ride access for all paid rides
@@ -813,15 +992,15 @@ class PreBookingViewSet(viewsets.ViewSet):
             )
 
         # Generate QR code
-        qr = qrcode.QRCode(version=1, box_size=10, border=5)
-        qr.add_data(booking.booking_id)
-        qr.make(fit=True)
-        img = qr.make_image(fill_color="black", back_color="white")
+        # qr = qrcode.QRCode(version=1, box_size=10, border=5)
+        # qr.add_data(booking.booking_id)
+        # qr.make(fit=True)
+        # img = qr.make_image(fill_color="black", back_color="white")
 
-        qr_path = os.path.join(settings.MEDIA_ROOT, "qr_codes", f"{booking.booking_id}.png")
-        os.makedirs(os.path.dirname(qr_path), exist_ok=True)
-        img.save(qr_path)
-        booking.qr_code_path = f"media/qr_codes/{booking.booking_id}.png"
+        # qr_path = os.path.join(settings.MEDIA_ROOT, "qr_codes", f"{booking.booking_id}.png")
+        # os.makedirs(os.path.dirname(qr_path), exist_ok=True)
+        # img.save(qr_path)
+        # booking.qr_code_path = f"media/qr_codes/{booking.booking_id}.png"
         booking.save()
 
         # Update pre-booking status

@@ -46,6 +46,11 @@ class Booking(models.Model):
     commission_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     commission_paid = models.BooleanField(default=False)
 
+    # Invite tracking fields
+    is_an_invite = models.BooleanField(default=False)
+    reference = models.CharField(max_length=255, blank=True, null=True, help_text="Reference for invite bookings (e.g. inviter's name or contact)")
+    other_reference = models.CharField(max_length=255, blank=True, null=True, help_text="Additional reference info for invite bookings")
+
     # QR Code
     qr_code_path = models.CharField(max_length=255, null=True, blank=True)
 
@@ -184,13 +189,41 @@ class PreBooking(models.Model):
     customer_number = models.CharField(max_length=15)
     num_people = models.PositiveIntegerField(default=1)
     visit_date = models.DateField()
+    is_an_invite = models.BooleanField(default=False)
+    reference = models.CharField(max_length=255, blank=True, null=True, help_text="Reference for invite pre-bookings (e.g. inviter's name or contact)")
+    other_reference = models.CharField(max_length=255, blank=True, null=True, help_text="Additional reference info for invite pre-bookings")
 
     # Status tracking
     status = models.CharField(
         max_length=20,
-        choices=[("pending", "Pending"), ("confirmed", "Confirmed"), ("cancelled", "Cancelled"), ("expired", "Expired")],
+        choices=[("pending", "Pending"), ("approved", "Approved"), ("rejected", "Rejected"), ("confirmed", "Confirmed"), ("cancelled", "Cancelled"), ("expired", "Expired")],
         default="pending"
     )
+
+    # Invite approval by admin (only for invite pre-bookings)
+    approval_status = models.CharField(
+        max_length=20,
+        choices=[("pending", "Pending"), ("approved", "Approved"), ("rejected", "Rejected")],
+        default="pending",
+        help_text="Admin approval status for invite pre-bookings"
+    )
+    approved_amount = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        blank=True,
+        help_text="Amount approved by admin for invite pre-booking (0 or any amount for discount)"
+    )
+    approved_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="approved_invite_prebookings",
+        limit_choices_to={"role": "park_admin"}
+    )
+    approved_at = models.DateTimeField(null=True, blank=True)
+    rejection_reason = models.TextField(blank=True, null=True, help_text="Reason for rejecting invite pre-booking")
 
     # Booking conversion
     booking = models.OneToOneField(
