@@ -58,6 +58,7 @@ class LoginViewSet(viewsets.ViewSet):
 
     @handle_exceptions
     def list(self, request):
+        return render(request, 'login_with_email.html')
         return render(request, 'login.html')
 
 class LogoutViewSet(viewsets.ViewSet):

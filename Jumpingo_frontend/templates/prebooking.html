@@ -13,7 +13,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <i class="fas fa-calendar me-2"></i>
-                JumpinGo <span id="userRole"></span>
+                JumpinGo<span id="userRole"></span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -76,20 +76,68 @@
         <!-- Tabs -->
         <ul class="nav nav-tabs" id="prebookingTabs" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-prebookings" type="button">
-                    <i class="fas fa-list me-2"></i>All Pre-Bookings
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="create-tab" data-bs-toggle="tab" data-bs-target="#create-prebooking" type="button">
+                <button class="nav-link active" id="create-tab" data-bs-toggle="tab" data-bs-target="#create-prebooking" type="button">
                     <i class="fas fa-plus me-2"></i>Create Pre-Booking
                 </button>
             </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-prebookings" type="button">
+                    <i class="fas fa-list me-2"></i>All Pre-Bookings
+                </button>
+            </li>            
         </ul>
 
         <div class="tab-content mt-3" id="prebookingTabContent">
+            <!-- Create Pre-Booking Tab -->
+            <div class="tab-pane fade show active" id="create-prebooking">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Create New Pre-Booking</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="createPrebookingForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Customer Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="prebookingName" placeholder="Enter customer name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Phone Number <span class="text-danger">*</span></label>
+                                    <input type="tel" class="form-control" id="prebookingPhone" placeholder="Enter phone number" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Number of People <span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="prebookingPeople" min="1" placeholder="Enter number of people" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Visit Date <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" id="prebookingVisitDate" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label">Notes (Optional)</label>
+                                    <textarea class="form-control" id="prebookingNotes" rows="3" placeholder="Add any notes..."></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-success" id="createPrebookingBtn">
+                                        <i class="fas fa-save me-2"></i>Create Pre-Booking
+                                    </button>
+                                    <button type="reset" class="btn btn-secondary ms-2">
+                                        <i class="fas fa-redo me-2"></i>Reset
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <!-- All Pre-Bookings Tab -->
-            <div class="tab-pane fade show active" id="all-prebookings">
+            <div class="tab-pane fade" id="all-prebookings">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="mb-0">Pre-Booking Management</h5>
@@ -146,54 +194,6 @@
                 </div>
             </div>
 
-            <!-- Create Pre-Booking Tab -->
-            <div class="tab-pane fade" id="create-prebooking">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">Create New Pre-Booking</h5>
-                    </div>
-                    <div class="card-body">
-                        <form id="createPrebookingForm">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Customer Name <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="prebookingName" placeholder="Enter customer name" required>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Phone Number <span class="text-danger">*</span></label>
-                                    <input type="tel" class="form-control" id="prebookingPhone" placeholder="Enter phone number" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Number of People <span class="text-danger">*</span></label>
-                                    <input type="number" class="form-control" id="prebookingPeople" min="1" placeholder="Enter number of people" required>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Visit Date <span class="text-danger">*</span></label>
-                                    <input type="date" class="form-control" id="prebookingVisitDate" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label">Notes (Optional)</label>
-                                    <textarea class="form-control" id="prebookingNotes" rows="3" placeholder="Add any notes..."></textarea>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <button type="submit" class="btn btn-success" id="createPrebookingBtn">
-                                        <i class="fas fa-save me-2"></i>Create Pre-Booking
-                                    </button>
-                                    <button type="reset" class="btn btn-secondary ms-2">
-                                        <i class="fas fa-redo me-2"></i>Reset
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
