@@ -72,3 +72,22 @@ class OTPVerificationSerializer(serializers.ModelSerializer):
         model = OTPVerification
         fields = ["id", "mobile", "otp", "is_verified", "attempt_count", "created_at", "expires_at"]
         read_only_fields = ["id", "is_verified", "attempt_count", "created_at"]
+
+
+class EmailPasswordLoginSerializer(serializers.Serializer):
+    """
+    Serializer for email and password login
+    """
+    email = serializers.EmailField(required=True)
+    password = serializers.CharField(required=True, write_only=True)
+
+    def validate(self, attrs):
+        email = attrs.get('email')
+        password = attrs.get('password')
+
+        if not email or not password:
+            raise serializers.ValidationError(
+                {"error": "Email and password are required."}
+            )
+
+        return attrs

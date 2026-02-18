@@ -89,15 +89,15 @@
         <!-- Tabs -->
         <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="bookings-tab" data-bs-toggle="tab" data-bs-target="#bookings" type="button">
-                    <i class="fas fa-list me-2"></i>My Bookings
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="create-booking-tab" data-bs-toggle="tab" data-bs-target="#create-booking" type="button">
+                <button class="nav-link active" id="create-booking-tab" data-bs-toggle="tab" data-bs-target="#create-booking" type="button">
                     <i class="fas fa-plus me-2"></i>Create Booking
                 </button>
             </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="bookings-tab" data-bs-toggle="tab" data-bs-target="#bookings" type="button">
+                    <i class="fas fa-list me-2"></i>My Bookings
+                </button>
+            </li>            
             <!-- Pre-Booking tab for cash counter -->
             <li class="nav-item" role="presentation" id="prebooking-tab-nav" style="display: none;">
                 <button class="nav-link" id="prebooking-tab" data-bs-toggle="tab" data-bs-target="#prebooking" type="button">
@@ -113,8 +113,77 @@
         </ul>
 
         <div class="tab-content mt-3" id="dashboardTabContent">
+            <!-- Create Booking Tab -->
+            <div class="tab-pane fade show active" id="create-booking">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Create New Booking</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="bookingForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Customer Name</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="customerName" placeholder="Start typing..." required>
+                                        <button type="button" class="btn btn-outline-secondary" id="clearCustomerBtn" onclick="clearCustomerSelection()" style="display: none;">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <div id="customerSearchDropdown" class="list-group mt-2" style="display: none; max-height: 300px; overflow-y: auto;">
+                                    </div>
+                                    <small id="customerSelectedStatus" class="text-success"></small>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Customer Email</label>
+                                    <input type="email" class="form-control" id="customerEmail" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Visit Date</label>
+                                    <input type="date" class="form-control" id="visitDate" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Number of People</label>
+                                    <input type="number" class="form-control" id="numPeople" min="1" value="1" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Customer Mobile Number</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">+91</span>
+                                        <input type="tel" class="form-control" id="customerMobile" maxlength="10" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Payment Method</label>
+                                    <select class="form-select" id="paymentMethod" required>
+                                        <option value="cash">Cash</option>
+                                        <option value="upi">UPI</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <h5>Total Amount: <span id="totalAmount">₹0</span></h5>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-success" id="createBookingBtn">
+                                <i class="fas fa-ticket-alt me-2"></i>Create Booking
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             <!-- Bookings Tab -->
-            <div class="tab-pane fade show active" id="bookings">
+            <div class="tab-pane fade" id="bookings">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="mb-0">My Bookings</h5>
@@ -178,75 +247,6 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Create Booking Tab -->
-            <div class="tab-pane fade" id="create-booking">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">Create New Booking</h5>
-                    </div>
-                    <div class="card-body">
-                        <form id="bookingForm">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Customer Name</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="customerName" placeholder="Start typing..." required>
-                                        <button type="button" class="btn btn-outline-secondary" id="clearCustomerBtn" onclick="clearCustomerSelection()" style="display: none;">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </div>
-                                    <div id="customerSearchDropdown" class="list-group mt-2" style="display: none; max-height: 300px; overflow-y: auto;">
-                                    </div>
-                                    <small id="customerSelectedStatus" class="text-success"></small>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Customer Email</label>
-                                    <input type="email" class="form-control" id="customerEmail" required readonly>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Visit Date</label>
-                                    <input type="date" class="form-control" id="visitDate" required>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Number of People</label>
-                                    <input type="number" class="form-control" id="numPeople" min="1" value="1" required>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Customer Mobile Number</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">+91</span>
-                                        <input type="tel" class="form-control" id="customerMobile" maxlength="10" required readonly>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Payment Method</label>
-                                    <select class="form-select" id="paymentMethod" required>
-                                        <option value="cash">Cash</option>
-                                        <option value="upi">UPI</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12 mb-3">
-                                    <h5>Total Amount: <span id="totalAmount">₹0</span></h5>
-                                </div>
-                            </div>
-
-                            <button type="submit" class="btn btn-success" id="createBookingBtn">
-                                <i class="fas fa-ticket-alt me-2"></i>Create Booking
-                            </button>
-                        </form>
                     </div>
                 </div>
             </div>

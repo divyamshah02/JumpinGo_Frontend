@@ -48,8 +48,8 @@ async function loadPrebookingStats() {
     const firstItem = data[0]
     if (firstItem) {
       document.getElementById("userName").textContent = firstItem.confirmed_by_name || "Admin"
-      document.getElementById("userRole").textContent = "Pre-Booker"
     }
+    document.getElementById("userRole").textContent = "Pre-Booker"
 
     document.getElementById("totalPrebookings").textContent = total
     document.getElementById("confirmedPrebookings").textContent = confirmed

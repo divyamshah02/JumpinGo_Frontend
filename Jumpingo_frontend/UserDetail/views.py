@@ -1874,3 +1874,79 @@ class CustomerAccountViewSet(viewsets.ViewSet):
                 "user_not_logged_in": False,
                 "user_unauthorized": False
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class EmailPasswordLoginViewSet(viewsets.ViewSet):
+    """
+    Email and Password Authentication ViewSet
+    POST: Login with email and password
+    """
+
+    @handle_exceptions
+    def create(self, request):
+        """
+        API: Email/Password Login
+        """
+        email = request.data.get("email")
+        password = request.data.get("password")
+        
+        if not email or not password:
+            return Response({
+                "success": False,
+                "user_not_logged_in": False,
+                "user_unauthorized": False,
+                "data": None,
+                "error": "Email and password are required."
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        # Find user by email
+        user = User.objects.filter(email=email).first()
+
+        if user is None:
+            return Response({
+                "success": False,
+                "user_not_logged_in": False,
+                "user_unauthorized": False,
+                "data": None,
+                "error": "Invalid email or password."
+            }, status=status.HTTP_401_UNAUTHORIZED)
+
+        # Verify password
+        if not check_password(password, user.password):
+            return Response({
+                "success": False,
+                "user_not_logged_in": False,
+                "user_unauthorized": False,
+                "data": None,
+                "error": "Invalid email or password."
+            }, status=status.HTTP_401_UNAUTHORIZED)
+
+        # Check if user is active
+        if not user.is_active:
+            return Response({
+                "success": False,
+                "user_not_logged_in": False,
+                "user_unauthorized": False,
+                "data": None,
+                "error": "User account is inactive."
+            }, status=status.HTTP_403_FORBIDDEN)
+
+        # Log the user in
+        old_session_id = request.session.get('session_token')
+        login(request, user)
+        new_session_id = request.session.get('session_token')
+
+        return Response({
+            "success": True,
+            "user_not_logged_in": False,
+            "user_unauthorized": False,
+            "data": {
+                "login_success": True,
+                "user_id": user.user_id,
+                "role": user.role,
+                "email": user.email,
+                "name": user.name,
+                "old_session_id": old_session_id
+            },
+            "error": None
+        }, status=status.HTTP_200_OK)

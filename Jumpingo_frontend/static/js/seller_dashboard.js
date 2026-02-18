@@ -160,9 +160,9 @@ async function loadDashboardStats() {
       document.getElementById("commissionEarned").textContent = `₹${data.commission_earned.toFixed(2)}`
     }
 
-    if (data.user_role === "cash_counter") {
-      document.getElementById("addon-tab-nav").style.display = "block"
-    }
+    // if (data.user_role === "cash_counter") {
+    //   document.getElementById("addon-tab-nav").style.display = "block"
+    // }
   } else {
     console.error("Failed to load dashboard stats:", response.error)
   }
