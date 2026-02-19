@@ -159,12 +159,34 @@
                                         <input type="tel" class="form-control" id="customerMobile" maxlength="10" required>
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <!-- <div class="col-md-6 mb-3">
                                     <label class="form-label">Payment Method</label>
                                     <select class="form-select" id="paymentMethod" required>
                                         <option value="cash">Cash</option>
-                                        <option value="upi">UPI</option>
+                                        <option value="online">Online</option>
                                     </select>
+                                </div> -->
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label d-block">Payment Method</label>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" 
+                                            type="radio" 
+                                            name="paymentMethod" 
+                                            id="paymentCash" 
+                                            value="cash" 
+                                            required>
+                                        <label class="form-check-label" for="paymentCash">Cash</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" 
+                                            type="radio" 
+                                            name="paymentMethod" 
+                                            id="paymentOnline" 
+                                            value="online">
+                                        <label class="form-check-label" for="paymentOnline">Online</label>
+                                    </div>
                                 </div>
                             </div>
 

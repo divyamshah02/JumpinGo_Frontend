@@ -110,12 +110,10 @@ function renderBookingsTable(bookings) {
                     ${booking.payment_status}
                 </span>
             </td>
-            <td>${booking.sold_by_name || "Direct"}</td>
             <td>
-                <span class="badge bg-${booking.checked_in ? "success" : "secondary"}">
-                    ${booking.checked_in ? "Checked In" : "Not Checked In"}
-                </span>
+              ${booking.payment_method}              
             </td>
+            <td>${booking.sold_by_name || "Direct"}</td>
             <td>
                 <button class="btn btn-sm btn-info" onclick="viewBookingDetails(${booking.id})">
                     <i class="fas fa-info-circle"></i> More Info
@@ -125,6 +123,9 @@ function renderBookingsTable(bookings) {
     `,
     )
     .join("")
+      // <span class="badge bg-${booking.checked_in ? "success" : "secondary"}">
+      //               ${booking.checked_in ? "Checked In" : "Not Checked In"}
+      //           </span>
 }
 
 // Load Customers with Filters

@@ -17,10 +17,10 @@ async function initSellerDashboard(seller_url, booking_url, user_url, csrf) {
   user_api_url = user_url
   csrf_token = csrf
 
-  await loadDashboardStats()
-  await loadBookings()
+  // await loadDashboardStats()
+  // await loadBookings()
   setupEventListeners()
-  await loadPaidRides()
+  // await loadPaidRides()
   toggle_loader()
 }
 
@@ -278,16 +278,10 @@ function calculateTotalAmount() {
   // Pricing structure
   const pricing = {
     weekday: {
-      1: 999,
-      4: 3799,
-      6: 5399,
-      10: 8499
+      1: 1000,
     },
     weekend: {
-      1: 1299,
-      4: 4949,
-      6: 7199,
-      10: 11499
+      1: 1300,
     }
   }
 
@@ -315,7 +309,8 @@ async function createBooking(e) {
   const customerMobile = document.getElementById("customerMobile").value.trim()
   const visitDate = document.getElementById("visitDate").value
   const numPeople = Number.parseInt(document.getElementById("numPeople").value)
-  const paymentMethod = document.getElementById("paymentMethod").value
+  // const paymentMethod = document.getElementById("paymentMethod").value
+  const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value;
   const totalAmount = Number.parseFloat(document.getElementById("totalAmount").textContent.replace("₹", ""))
 
   if (!customerMobile || customerMobile.length !== 10) {
