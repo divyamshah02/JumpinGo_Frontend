@@ -4,7 +4,7 @@ from rest_framework.decorators import action
 
 from utils.decorators import handle_exceptions, check_authentication
 
-from Park.models import Ride
+from Park.models import Park, Ride
 from .models import Booking, BookingRideAccess, AddOn, PreBooking
 from .serializers import BookingSerializer, BookingRideAccessSerializer, PreBookingSerializer
 from UserDetail.models import User
@@ -759,6 +759,10 @@ class PreBookingViewSet(viewsets.ViewSet):
                 "data": None,
                 "error": "Only authorized staff can create pre-bookings"
             }, status=status.HTTP_403_FORBIDDEN)
+
+        # if user.role in ["cash_counter", "pre_booker", "invi_pre_booker"]:
+        # first_park = Park.objects.order_by("id").first()
+        # data["park"] = first_park.id
 
         serializer = PreBookingSerializer(data=data)
         if not serializer.is_valid():
