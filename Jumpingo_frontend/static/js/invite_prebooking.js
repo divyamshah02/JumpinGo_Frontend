@@ -11,6 +11,7 @@ async function initPrebooking(prebooking_url, csrf) {
   await loadPrebookingStats()
   await searchPrebookings()
   setupPrebookingEventListeners()
+  toggle_loader()
 }
 
 // Setup Event Listeners

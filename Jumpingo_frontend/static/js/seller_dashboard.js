@@ -21,6 +21,7 @@ async function initSellerDashboard(seller_url, booking_url, user_url, csrf) {
   await loadBookings()
   setupEventListeners()
   await loadPaidRides()
+  toggle_loader()
 }
 
 // Setup Event Listeners
@@ -253,10 +254,54 @@ function clearBookingFilters() {
 }
 
 // Calculate Total Amount
-function calculateTotalAmount() {
+function calculateTotalAmount_flat_rate() {
   const numPeople = Number.parseInt(document.getElementById("numPeople").value) || 1
   const pricePerPerson = 500 // Base price, should come from API
   const total = numPeople * pricePerPerson
+
+  document.getElementById("totalAmount").textContent = `₹${total.toFixed(2)}`
+}
+
+function calculateTotalAmount() {
+  const numPeople = parseInt(document.getElementById("numPeople").value) || 1
+  const visitDateValue = document.getElementById("visitDate").value
+
+  if (!visitDateValue) {
+    document.getElementById("totalAmount").textContent = "₹0"
+    return
+  }
+
+  const visitDate = new Date(visitDateValue)
+  const day = visitDate.getDay() // 0 = Sunday, 6 = Saturday
+  const isWeekend = (day === 0 || day === 6)
+
+  // Pricing structure
+  const pricing = {
+    weekday: {
+      1: 999,
+      4: 3799,
+      6: 5399,
+      10: 8499
+    },
+    weekend: {
+      1: 1299,
+      4: 4949,
+      6: 7199,
+      10: 11499
+    }
+  }
+
+  const type = isWeekend ? "weekend" : "weekday"
+
+  let total
+
+  if (pricing[type][numPeople]) {
+    // Exact match for bundle
+    total = pricing[type][numPeople]
+  } else {
+    // Fallback: per person pricing
+    total = pricing[type][1] * numPeople
+  }
 
   document.getElementById("totalAmount").textContent = `₹${total.toFixed(2)}`
 }
@@ -316,9 +361,9 @@ async function createBooking(e) {
     await loadBookings()
 
     // Switch to bookings tab
-    const bootstrap = window.bootstrap
-    const bookingsTab = new bootstrap.Tab(document.getElementById("bookings-tab"))
-    bookingsTab.show()
+    // const bootstrap = window.bootstrap
+    // const bookingsTab = new bootstrap.Tab(document.getElementById("bookings-tab"))
+    // bookingsTab.show()
   } else {
     alert("Failed to create booking: " + (response.error || "Unknown error"))
   }

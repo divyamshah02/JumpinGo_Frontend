@@ -86,6 +86,8 @@ function redirectBasedOnRole(user_id, role) {
     window.location.href = `/sock_scanner/`
   } else if (role === "pre_booker") {
     window.location.href = `/prebooking/`
+  } else if (role === "invi_pre_booker") {
+    window.location.href = `/invite_prebooking/`
   }
   else {
     // Default redirect for customers
