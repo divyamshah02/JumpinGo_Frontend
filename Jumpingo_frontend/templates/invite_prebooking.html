@@ -310,6 +310,7 @@
     <script src="/static/js/invite_prebooking.js"></script>
 
     <script>
+        toggle_loader()
         // Initialize Pre-Booking Page with API endpoints and CSRF token
         document.addEventListener('DOMContentLoaded', function() {
             const prebookingApiUrl = "{% url 'prebooking-api-list' %}"

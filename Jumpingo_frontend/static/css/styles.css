@@ -164,7 +164,7 @@ td, th {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--text-tertiary);
+  /* color: var(--text-tertiary); */
   margin-bottom: 0.75rem;
 }
 
@@ -172,11 +172,11 @@ td, th {
   font-size: 2.25rem;
   font-weight: 700;
   margin: 0;
-  color: var(--text-primary);
+  /* color: var(--text-primary); */
 }
 
 /* Removed all colored gradients, now using neutral dark/light */
-.bg-primary {
+/* .bg-primary {
   background-color: var(--bg-tertiary) !important;
   color: var(--text-primary) !important;
 }
@@ -199,7 +199,7 @@ td, th {
 .bg-danger {
   background-color: var(--bg-tertiary) !important;
   color: var(--text-primary) !important;
-}
+} */
 
 /* ============================================
    Tabs Styling
@@ -456,7 +456,7 @@ td, th {
    Badges
    ============================================ */
 
-.badge {
+/* .badge {
   padding: 0.4rem 0.9rem;
   border-radius: 16px;
   font-weight: 600;
@@ -464,10 +464,10 @@ td, th {
   letter-spacing: 0.3px;
   font-size: 0.7rem;
   display: inline-block;
-}
+} */
 
 /* All badges now use neutral colors */
-.badge.bg-success {
+/* .badge.bg-success {
   background-color: var(--bg-tertiary) !important;
   color: var(--text-primary);
   border: 1px solid var(--border-color);
@@ -495,7 +495,7 @@ td, th {
   background-color: var(--bg-secondary) !important;
   color: var(--text-primary);
   border: 1px solid var(--border-color);
-}
+} */
 
 /* ============================================
    Modals

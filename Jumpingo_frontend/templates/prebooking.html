@@ -111,7 +111,7 @@
                                     <label class="form-label">Number of People <span class="text-danger">*</span></label>
                                     <input type="number" class="form-control" id="prebookingPeople" min="1" placeholder="Enter number of people" required>
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-3" style="display: none;">
                                     <label class="form-label">Visit Date <span class="text-danger">*</span></label>
                                     <input type="date" class="form-control" id="prebookingVisitDate" required min="2026-02-19" max="2026-03-01">
                                 </div>
@@ -245,6 +245,7 @@
     <script src="/static/js/prebooking.js"></script>
 
     <script>
+        toggle_loader()
         // Initialize Pre-Booking Page with API endpoints and CSRF token
         document.addEventListener('DOMContentLoaded', function() {
             const prebookingApiUrl = "{% url 'prebooking-api-list' %}"

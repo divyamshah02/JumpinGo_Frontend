@@ -141,7 +141,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-3" style="display: none;">
                                     <label class="form-label">Visit Date</label>
                                     <input type="date" class="form-control" id="visitDate" required min="2026-02-19" max="2026-03-01">
                                 </div>
@@ -330,6 +330,7 @@
     <script src="/static/js/theme-toggle.js"></script>
 
     <script>
+        toggle_loader()
         window.onload = async function () {
             await initSellerDashboard(
                 "{% url 'seller-api-list' %}",
@@ -338,6 +339,8 @@
                 "{{ csrf_token }}"
             )
         }
+        // toggle_loader()
+
     </script>
 </body>
 </html>

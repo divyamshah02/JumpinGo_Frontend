@@ -25,10 +25,10 @@ async function initDashboard(api_url, prebooking_url, token) {
   await loadBookings()
   await loadCustomers()
   await loadUsers()
-  await loadSellers()
+  // await loadSellers()
   await loadCashCounters()
-  await loadRides()
-  await loadAddOns()
+  // await loadRides()
+  // await loadAddOns()
   await loadInvitePreBookings()
 }
 
@@ -1272,6 +1272,7 @@ function renderInvitePreBookingsTable(prebookings) {
 
 // Get badge class for approval status
 function getApprovalBadgeClass(status) {
+  console.log("Determining badge class for approval status:", status)
   switch (status) {
     case "approved":
       return "bg-success"
