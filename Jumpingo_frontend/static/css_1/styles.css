@@ -446,11 +446,11 @@ td, th {
   font-weight: 500;
 }
 
-.table-responsive {
+/* .table-responsive {
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--border-color);
-}
+} */
 
 /* ============================================
    Badges
@@ -600,7 +600,7 @@ input[type="password"]:focus {
   }
 
   .tab-content {
-    padding: 1.25rem;
+    padding: 0.25rem;
   }
 
   .table thead th,
@@ -629,9 +629,9 @@ input[type="password"]:focus {
 }
 
 @media (max-width: 576px) {
-  .row {
+  /* .row {
     gap: 1rem;
-  }
+  } */
 
   .col-md-3,
   .col-md-4,

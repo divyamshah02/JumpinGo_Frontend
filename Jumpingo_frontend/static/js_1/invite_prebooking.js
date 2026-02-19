@@ -118,11 +118,11 @@ function renderPrebookingsTable(prebookings) {
         actionButtons = `
           <button class="btn btn-sm btn-success" onclick="openConfirmPrebookingModal(${pb.id}, '${pb.prebooking_id}', '${pb.customer_name}', ${pb.num_people}, '${pb.visit_date}')">
             <i class="fas fa-check me-1"></i>Confirm
-          </button>
-          <button class="btn btn-sm btn-danger" onclick="cancelPrebooking(${pb.id})">
-            <i class="fas fa-times me-1"></i>Cancel
-          </button>
+          </button>        
         `
+        // <button class="btn btn-sm btn-danger" onclick="cancelPrebooking(${pb.id})">
+        //     <i class="fas fa-times me-1"></i>Cancel
+        //   </button>
       }
       // For pending invite pre-bookings, show status view
       else if (pb.is_an_invite && pb.approval_status === "pending") {
@@ -147,15 +147,13 @@ function renderPrebookingsTable(prebookings) {
 
       return `
             <tr>
-                <td><strong>${pb.prebooking_id}</strong></td>
                 <td>${pb.customer_name}</td>
                 <td>${pb.customer_number}</td>
                 <td>${pb.num_people}</td>
                 <td>${new Date(pb.visit_date).toLocaleDateString()}</td>
                 <td><span class="badge bg-${pb.status === "pending" || pb.status === "approved" ? "warning" : pb.status === "confirmed" ? "success" : "danger"}">${pb.status}</span></td>
                 <td><span class="badge bg-${pb.approval_status === "pending" ? "secondary" : pb.approval_status === "approved" ? "success" : "danger"}">${pb.approval_status}</span></td>
-                <td>${pb.approved_amount !== null ? `₹${pb.approved_amount}` : '-'}</td>
-                <td>${new Date(pb.created_at).toLocaleDateString()}</td>
+                <td>${pb.approved_amount !== null ? `₹${pb.approved_amount}` : '-'}</td>                
                 <td>${actionButtons}</td>
             </tr>
         `

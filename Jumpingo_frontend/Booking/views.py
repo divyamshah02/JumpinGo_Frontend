@@ -686,10 +686,12 @@ class PreBookingViewSet(viewsets.ViewSet):
         search_query = request.query_params.get('search', '')
         status_filter = request.query_params.get('status', '')
 
-        if user.role in ["cash_counter", "pre_booker", "invi_pre_booker"]:
+        if user.role in ["cash_counter", "pre_booker"]:
             prebookings = PreBooking.objects.filter(park=user.park)
         elif user.role == "park_admin":
             prebookings = PreBooking.objects.filter(park=user.park)
+        elif user.role == "invi_pre_booker":
+            prebookings = PreBooking.objects.filter(park=user.park, is_an_invite=True)
         else:
             prebookings = PreBooking.objects.all()
 
