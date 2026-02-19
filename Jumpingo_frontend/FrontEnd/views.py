@@ -141,3 +141,15 @@ class InvitePreBookingViewSet(viewsets.ViewSet):
     @check_authentication()
     def list(self, request):
         return render(request, 'invite_prebooking.html')
+
+class LogoutViewSet(viewsets.ViewSet):
+
+    # @handle_exceptions
+    # @check_authentication()
+    def list(self, request):
+        try:
+            logout(request)
+        except Exception as e:
+            # logger.error(f"Error during logout: {str(e)}")
+            pass  # Even if logout fails, we want to redirect to login page
+        return redirect('login-list')

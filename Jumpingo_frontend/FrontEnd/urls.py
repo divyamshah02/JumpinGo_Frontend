@@ -9,7 +9,8 @@ router.register(r'booking', BookingViewSet, basename='booking')
 router.register(r'check-in', CheckInViewSet, basename='check-in')
 router.register(r'account', AccountViewSet, basename='account')
 
-router.register(r'login', LoginViewSet, basename='login')
+router.register(r'login_jo', LoginViewSet, basename='login')
+router.register(r'logout', LogoutViewSet, basename='logout')
 
 router.register(r'security_scanner', SecurityScannerViewSet, basename='security_scanner')
 router.register(r'ride_scanner', RideScannerViewSet, basename='ride_scanner')

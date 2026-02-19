@@ -511,14 +511,18 @@ class UserProfileViewSet(viewsets.ViewSet):
                 "error": "Search query must be at least 2 characters"
             }, status=status.HTTP_400_BAD_REQUEST)
 
+        today = datetime.today()
         # Search by name or phone number
         customers = PreBooking.objects.filter(
             models.Q(customer_name__icontains=search_query) |
-            models.Q(customer_number__icontains=search_query)
-        ).values('id', 'customer_name', 'customer_number', 'num_people', 'visit_date')[:20]
+            models.Q(customer_number__icontains=search_query),
+            visit_date=today,
+            is_an_invite=False,
+            is_booked=False
+        ).values('id', 'customer_name', 'customer_number', 'num_people', 'visit_date')
 
         customers_list = []
-        for customer in customers:            
+        for customer in customers:
             customers_list.append({
                 'id': customer['id'],
                 'name': customer['customer_name'],

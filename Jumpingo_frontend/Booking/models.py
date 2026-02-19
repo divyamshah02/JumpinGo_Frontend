@@ -192,7 +192,7 @@ class PreBooking(models.Model):
     is_an_invite = models.BooleanField(default=False)
     reference = models.CharField(max_length=255, blank=True, null=True, help_text="Reference for invite pre-bookings (e.g. inviter's name or contact)")
     other_reference = models.CharField(max_length=255, blank=True, null=True, help_text="Additional reference info for invite pre-bookings")
-
+    is_booked = models.BooleanField(default=False)  # Indicates if this pre-booking has been converted to a full booking
     # Status tracking
     status = models.CharField(
         max_length=20,

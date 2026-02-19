@@ -101,6 +101,10 @@ class BookingViewSet(viewsets.ViewSet):
             }, status=status.HTTP_400_BAD_REQUEST)
 
         booking = serializer.save()
+        get_pre_booking = PreBooking.objects.filter(customer_number=booking.customer.contact_number, visit_date=booking.visit_date, is_booked=False).first()
+        if get_pre_booking:
+            get_pre_booking.is_booked = True
+            get_pre_booking.save()
         return Response({
             "success": True,
             "user_not_logged_in": False,

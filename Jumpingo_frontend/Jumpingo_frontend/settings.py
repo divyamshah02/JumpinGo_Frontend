@@ -2,7 +2,7 @@ from pathlib import Path
 import os
 import dj_database_url
 
-IS_LOCAL = False
+IS_LOCAL = True
 LOCAL_DB = False
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
