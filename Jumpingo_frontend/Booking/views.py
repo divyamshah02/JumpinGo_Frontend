@@ -685,6 +685,7 @@ class PreBookingViewSet(viewsets.ViewSet):
         user = request.user
         search_query = request.query_params.get('search', '')
         status_filter = request.query_params.get('status', '')
+        invite_only = request.query_params.get('is_invite', False)
 
         if user.role in ["cash_counter", "pre_booker"]:
             prebookings = PreBooking.objects.filter(park=user.park)
@@ -694,6 +695,9 @@ class PreBookingViewSet(viewsets.ViewSet):
             prebookings = PreBooking.objects.filter(park=user.park, is_an_invite=True)
         else:
             prebookings = PreBooking.objects.all()
+        
+        if invite_only:
+            prebookings = prebookings.filter(is_an_invite=True)
 
         # Search by customer name or number
         if search_query:
