@@ -602,6 +602,14 @@ class AdminDashboardViewSet(viewsets.ViewSet):
                 total=models.Sum('total_amount')
             )['total'] or 0
             
+            total_revenue_cash = bookings.filter(payment_status='success', payment_method='cash').aggregate(
+                total=models.Sum('total_amount')
+            )['total'] or 0
+            
+            total_revenue_online = bookings.filter(payment_status='success', payment_method='online').aggregate(
+                total=models.Sum('total_amount')
+            )['total'] or 0
+
             today_bookings = bookings.filter(visit_date=today).count()
             checked_in_today = bookings.filter(
                 visit_date=today, 
@@ -613,6 +621,8 @@ class AdminDashboardViewSet(viewsets.ViewSet):
                 "data": {
                     "total_bookings": total_bookings,
                     "total_revenue": float(total_revenue),
+                    "total_revenue_cash": float(total_revenue_cash),
+                    "total_revenue_online": float(total_revenue_online),
                     "today_bookings": today_bookings,
                     "checked_in_today": checked_in_today,
                 },
@@ -1176,12 +1186,28 @@ class AdminDashboardViewSet(viewsets.ViewSet):
                     total=models.Sum('total_amount')
                 )['total'] or 0
                 
+                total_revenue = bookings.filter(payment_status='success').aggregate(
+                    total=models.Sum('total_amount')
+                )['total'] or 0
+                
+                total_revenue_cash = bookings.filter(payment_status='success', payment_method='cash').aggregate(
+                    total=models.Sum('total_amount')
+                )['total'] or 0
+                
+                total_revenue_online = bookings.filter(payment_status='success', payment_method='online').aggregate(
+                    total=models.Sum('total_amount')
+                )['total'] or 0
+
+                
                 counters_data.append({
                     'id': counter.id,
                     'user_id': counter.user_id,
                     'name': counter.name,
                     'contact_number': counter.contact_number,
                     'total_bookings': bookings.count(),
+                    'total_revenue': float(total_revenue),
+                    'total_revenue_cash': float(total_revenue_cash),
+                    'total_revenue_online': float(total_revenue_online),
                     'total_sales': str(total_sales),
                 })
             

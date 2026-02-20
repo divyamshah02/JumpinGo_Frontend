@@ -25,7 +25,7 @@ async function initDashboard(api_url, prebooking_url, token) {
   await loadBookings()
   await loadCustomers()
   await loadUsers()
-  // await loadSellers()
+  await loadSellers()
   await loadCashCounters()
   // await loadRides()
   // await loadAddOns()
@@ -52,8 +52,10 @@ async function loadDashboardStats() {
     const data = response.data
     document.getElementById("totalBookings").textContent = data.total_bookings
     document.getElementById("totalRevenue").textContent = `₹${data.total_revenue.toFixed(2)}`
-    document.getElementById("todayBookings").textContent = data.today_bookings
-    document.getElementById("checkedInToday").textContent = data.checked_in_today
+    // document.getElementById("todayBookings").textContent = data.today_bookings
+    // document.getElementById("checkedInToday").textContent = data.checked_in_today
+    document.getElementById("todayBookings").textContent = `₹${data.total_revenue_cash.toFixed(2)}`
+    document.getElementById("checkedInToday").textContent = `₹${data.total_revenue_online.toFixed(2)}`
   }
 }
 
@@ -705,7 +707,7 @@ function renderSellerBookingsTable(bookings) {
 }
 
 async function loadCashCounters() {
-  const filterType = document.getElementById("cashCounterFilterType")?.value || "today"
+  const filterType = document.getElementById("cashCounterFilterType")?.value || "custom"
   const today = new Date()
   let startDate, endDate
 
@@ -720,6 +722,8 @@ async function loadCashCounters() {
   } else if (filterType === "custom") {
     startDate = document.getElementById("cashCounterFilterStartDate")?.value
     endDate = document.getElementById("cashCounterFilterEndDate")?.value
+    // startDate = document.getElementById("bookingStartDate").value
+    // endDate = document.getElementById("bookingEndDate").value
   }
 
   let url = `${admin_api_url}cash_counters/`
@@ -758,6 +762,9 @@ function renderCashCountersTable(cashCounters) {
             <td>${counter.name || "N/A"}</td>
             <td>${counter.contact_number}</td>
             <td>${counter.total_bookings || 0}</td>
+            <td>₹${Number.parseFloat(counter.total_revenue || 0).toFixed(2)}</td>
+            <td>₹${Number.parseFloat(counter.total_revenue_cash || 0).toFixed(2)}</td>
+            <td>₹${Number.parseFloat(counter.total_revenue_online || 0).toFixed(2)}</td>
             <td>
                 <button class="btn btn-sm btn-primary" onclick="openCashCounterBookingsModal(${counter.id}, '${counter.name}')">
                     <i class="fas fa-eye me-1"></i>View Sales
@@ -773,9 +780,9 @@ function renderCashCountersTable(cashCounters) {
 function openCashCounterBookingsModal(counterId, counterName) {
   currentCashCounterId = counterId
   document.getElementById("cashCounterBookingsModalTitle").textContent = `${counterName} - Sales`
-  document.getElementById("cashCounterDateFilter").value = "today"
-  document.getElementById("cashCounterStartDateGroup").style.display = "none"
-  document.getElementById("cashCounterEndDateGroup").style.display = "none"
+  // document.getElementById("cashCounterDateFilter").value = "today"
+  // document.getElementById("cashCounterStartDateGroup").style.display = "none"
+  // document.getElementById("cashCounterEndDateGroup").style.display = "none"
 
   const bootstrap = window.bootstrap // Declare bootstrap variable
   const modal = new bootstrap.Modal(document.getElementById("cashCounterBookingsModal"))
@@ -832,6 +839,7 @@ function renderCashCounterBookingsTable(bookings) {
   }
 
   tbody.innerHTML = bookings
+  // <td>${new Date(booking.created_at).toLocaleDateString()}</td>
     .map(
       (booking) => `
         <tr>
@@ -841,7 +849,7 @@ function renderCashCounterBookingsTable(bookings) {
             <td>${booking.visit_date}</td>
             <td>${booking.num_people}</td>
             <td>₹${Number.parseFloat(booking.total_amount).toFixed(2)}</td>
-            <td>${new Date(booking.created_at).toLocaleDateString()}</td>
+            <td>${booking.payment_method}</td>            
             <td>
                 <span class="badge bg-${booking.sale_confirmed ? "success" : "warning"}">
                     ${booking.sale_confirmed ? "Confirmed" : "Pending"}
@@ -1015,8 +1023,8 @@ function toggleCashCounterCustomDates() {
   const endDateGroup = document.getElementById("cashCounterEndDateGroup")
 
   if (filterType === "custom") {
-    startDateGroup.style.display = "block"
-    endDateGroup.style.display = "block"
+    startDateGroup.style.display = ""
+    endDateGroup.style.display = ""
   } else {
     startDateGroup.style.display = "none"
     endDateGroup.style.display = "none"
