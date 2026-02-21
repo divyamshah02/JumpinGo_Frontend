@@ -707,6 +707,8 @@ function renderSellerBookingsTable(bookings) {
 }
 
 async function loadCashCounters() {
+  document.getElementById("cashCountersTableBody").innerHTML =
+      '<tr><td colspan="9" class="text-center text-danger">Loading...</td></tr>'
   const filterType = document.getElementById("cashCounterFilterType")?.value || "custom"
   const today = new Date()
   let startDate, endDate
@@ -792,6 +794,8 @@ function openCashCounterBookingsModal(counterId, counterName) {
 
 // Load Cash Counter Bookings
 async function loadCashCounterBookings() {
+  document.getElementById("cashCounterBookingsTableBody").innerHTML =
+      '<tr><td colspan="9" class="text-center text-danger">Loading...</td></tr>'
   if (!currentCashCounterId) return
 
   const filterType = document.getElementById("cashCounterDateFilter").value
