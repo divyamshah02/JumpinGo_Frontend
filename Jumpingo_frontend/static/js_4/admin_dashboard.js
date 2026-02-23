@@ -20,8 +20,7 @@ async function initDashboard(api_url, prebooking_url, token) {
   document.getElementById("bookingEndDate").value = "2026-03-01";
 
 
-  // Load initial data
-  await loadDashboardStats()
+  // Load initial data  
   await loadBookings()
   await loadCustomers()
   await loadUsers()
@@ -54,13 +53,19 @@ async function loadDashboardStats() {
     document.getElementById("totalRevenue").textContent = `₹${data.total_revenue.toFixed(2)}`
     // document.getElementById("todayBookings").textContent = data.today_bookings
     // document.getElementById("checkedInToday").textContent = data.checked_in_today
-    document.getElementById("todayBookings").textContent = `₹${data.total_revenue_cash.toFixed(2)}`
-    document.getElementById("checkedInToday").textContent = `₹${data.total_revenue_online.toFixed(2)}`
+    document.getElementById("cashBookings").textContent = `₹${data.total_revenue_cash.toFixed(2)}`
+    document.getElementById("onlineBookings").textContent = `₹${data.total_revenue_online.toFixed(2)}`
+    
+    document.getElementById("totalTicket").textContent = data.total_people
+    document.getElementById("cashTicket").textContent = data.total_people_cash
+    document.getElementById("onlineTicket").textContent = data.total_people_online
   }
 }
 
 // Load Bookings with Filters
 async function loadBookings() {
+  toggle_loader()
+  await loadDashboardStats()
   const startDate = document.getElementById("bookingStartDate").value
   const endDate = document.getElementById("bookingEndDate").value
   const paymentStatus = document.getElementById("bookingPaymentStatus").value
@@ -71,7 +76,7 @@ async function loadBookings() {
 
   if (startDate) params.append("start_date", startDate)
   if (endDate) params.append("end_date", endDate)
-  if (paymentStatus) params.append("payment_status", paymentStatus)
+  if (paymentStatus) params.append("payment_method", paymentStatus)
   if (search) params.append("search", search)
 
   if (params.toString()) {
@@ -86,6 +91,7 @@ async function loadBookings() {
     document.getElementById("bookingsTableBody").innerHTML =
       '<tr><td colspan="10" class="text-center text-danger">Failed to load bookings</td></tr>'
   }
+  toggle_loader()
 }
 
 // Render Bookings Table
