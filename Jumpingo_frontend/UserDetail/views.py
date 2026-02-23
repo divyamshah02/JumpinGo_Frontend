@@ -571,7 +571,7 @@ class AdminDashboardViewSet(viewsets.ViewSet):
         """Get dashboard statistics"""
         try:
             park_id = request.query_params.get('park_id')
-            date_filter = request.query_params.get('date_filter', '')
+            date_filter = request.query_params.get('date_filter', 'custom')
             start_date = request.query_params.get('start_date')
             end_date = request.query_params.get('end_date')
             
@@ -580,6 +580,7 @@ class AdminDashboardViewSet(viewsets.ViewSet):
             if park_id:
                 bookings = bookings.filter(park__park_id=park_id)
             
+
             today = timezone.now().date()
             if date_filter == 'today':
                 bookings = bookings.filter(visit_date=today)
@@ -599,16 +600,36 @@ class AdminDashboardViewSet(viewsets.ViewSet):
             # Calculate statistics
             total_bookings = bookings.count()
             total_revenue = bookings.filter(payment_status='success').aggregate(
-                total=models.Sum('total_amount')
-            )['total'] or 0
-            
-            total_revenue_cash = bookings.filter(payment_status='success', payment_method='cash').aggregate(
-                total=models.Sum('total_amount')
-            )['total'] or 0
-            
-            total_revenue_online = bookings.filter(payment_status='success', payment_method='online').aggregate(
-                total=models.Sum('total_amount')
-            )['total'] or 0
+                total=models.Sum('total_amount'),
+                total_people=models.Sum('num_people')
+            )
+
+            total_revenue_amount = total_revenue['total'] or 0
+            total_people = total_revenue['total_people'] or 0
+
+
+            total_revenue_cash = bookings.filter(
+                payment_status='success',
+                payment_method='cash'
+            ).aggregate(
+                total=models.Sum('total_amount'),
+                total_people=models.Sum('num_people')
+            )
+
+            total_revenue_cash_amount = total_revenue_cash['total'] or 0
+            total_people_cash = total_revenue_cash['total_people'] or 0
+
+
+            total_revenue_online = bookings.filter(
+                payment_status='success',
+                payment_method='online'
+            ).aggregate(
+                total=models.Sum('total_amount'),
+                total_people=models.Sum('num_people')
+            )
+
+            total_revenue_online_amount = total_revenue_online['total'] or 0
+            total_people_online = total_revenue_online['total_people'] or 0
 
             today_bookings = bookings.filter(visit_date=today).count()
             checked_in_today = bookings.filter(
@@ -620,9 +641,15 @@ class AdminDashboardViewSet(viewsets.ViewSet):
                 "success": True,
                 "data": {
                     "total_bookings": total_bookings,
-                    "total_revenue": float(total_revenue),
-                    "total_revenue_cash": float(total_revenue_cash),
-                    "total_revenue_online": float(total_revenue_online),
+
+                    "total_revenue": float(total_revenue_amount),
+                    "total_revenue_cash": float(total_revenue_cash_amount),
+                    "total_revenue_online": float(total_revenue_online_amount),
+    
+                    "total_people": total_people,
+                    "total_people_cash": total_people_cash,
+                    "total_people_online": total_people_online,
+
                     "today_bookings": today_bookings,
                     "checked_in_today": checked_in_today,
                 },
@@ -653,9 +680,14 @@ class AdminDashboardViewSet(viewsets.ViewSet):
             end_date = request.query_params.get('end_date')
             search = request.query_params.get('search')
             payment_status = request.query_params.get('payment_status')
+            payment_method = request.query_params.get('payment_method')
             
             # Base queryset
             bookings = Booking.objects.select_related('customer', 'park', 'sold_by').all()
+            
+            # Filter by payment method if provided            
+            if payment_method and payment_method != "all":
+                bookings = bookings.filter(payment_method=payment_method)
             
             # Apply filters
             if park_id:
@@ -690,8 +722,7 @@ class AdminDashboardViewSet(viewsets.ViewSet):
                 )
             
             # Order by created date
-            bookings = bookings.order_by('-created_at')
-            
+            bookings = bookings.order_by('-created_at')            
             bookings_data = []
             for booking in bookings:
                 bookings_data.append({
