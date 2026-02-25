@@ -90,6 +90,10 @@ class BookingViewSet(viewsets.ViewSet):
             data["commission_rate"] = 0
             data["customer"] = user.id
 
+        if str(data["isOffer"]).lower() == "true":
+            data["is_an_offer_booking"] = True
+            # data["offer_info"] = "Buy 2 Get 1 Free"
+        
         serializer = BookingSerializer(data=data)
         if not serializer.is_valid():
             return Response({

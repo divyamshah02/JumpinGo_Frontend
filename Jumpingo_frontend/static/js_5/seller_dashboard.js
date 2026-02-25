@@ -29,6 +29,7 @@ function setupEventListeners() {
   // Booking form
   document.getElementById("bookingForm").addEventListener("submit", createBooking)
   document.getElementById("numPeople").addEventListener("input", calculateTotalAmount)
+  document.getElementById("isOfferBooking").addEventListener("change", calculateTotalAmount)
   
   // Customer search
   document.getElementById("customerName").addEventListener("input", searchCustomers)
@@ -262,7 +263,7 @@ function calculateTotalAmount_flat_rate() {
   document.getElementById("totalAmount").textContent = `₹${total.toFixed(2)}`
 }
 
-function calculateTotalAmount() {
+function calculateTotalAmount_old() {
   const numPeople = parseInt(document.getElementById("numPeople").value) || 1
   const visitDateValue = document.getElementById("visitDate").value
 
@@ -300,6 +301,47 @@ function calculateTotalAmount() {
   document.getElementById("totalAmount").textContent = `₹${total.toFixed(2)}`
 }
 
+function calculateTotalAmount() {
+  const numPeople = parseInt(document.getElementById("numPeople").value) || 1
+  const visitDateValue = document.getElementById("visitDate").value
+
+  if (!visitDateValue) {
+    document.getElementById("totalAmount").textContent = "₹0"
+    return
+  }
+
+  const visitDate = new Date(visitDateValue)
+  const day = visitDate.getDay()
+  const isWeekend = (day === 0 || day === 6)
+
+  const weekdayPrice = 1000
+  const weekendPrice = 1300
+  const basePrice = isWeekend ? weekendPrice : weekdayPrice
+
+  const offerCheckbox = document.getElementById("isOfferBooking")
+  const isOffer = offerCheckbox?.checked
+
+  let total = 0
+
+  if (isOffer) {
+    // Group pricing logic
+    const groupOfThree = Math.floor(numPeople / 3)
+    const remainingTickets = numPeople % 3
+
+    const discountedTotal = groupOfThree * 2100
+    const remainingTotal = remainingTickets * basePrice
+
+    total = discountedTotal + remainingTotal
+  } else {
+    // Normal pricing
+    total = numPeople * basePrice
+  }
+
+  // document.getElementById("totalAmount").textContent =
+  //   `₹${total.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`
+    document.getElementById("totalAmount").textContent = `₹${total.toFixed(2)}`
+}
+
 // Create Booking
 async function createBooking(e) {
   e.preventDefault()
@@ -318,6 +360,9 @@ async function createBooking(e) {
     return
   }
 
+  const offerCheckbox = document.getElementById("isOfferBooking")
+  const isOffer = offerCheckbox?.checked
+
   const bookingData = {
     park: PARK_ID,
     customer_name: customerName,
@@ -327,6 +372,8 @@ async function createBooking(e) {
     num_people: numPeople,
     total_amount: totalAmount,
     payment_method: paymentMethod,
+    isOffer: isOffer,
+    offer_info: isOffer ? `Buy 2 get 1` : null,
     payment_status: "success", // For now static but will be made dynamic when payment gateway is integrated
   }
 
@@ -352,8 +399,8 @@ async function createBooking(e) {
     calculateTotalAmount()
 
     // Refresh bookings and stats
-    await loadDashboardStats()
-    await loadBookings()
+    // await loadDashboardStats()
+    // await loadBookings()
 
     // Switch to bookings tab
     // const bootstrap = window.bootstrap

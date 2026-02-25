@@ -5,7 +5,7 @@ from .models import Booking, BookingRideAccess, AddOn, PreBooking
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
     list_display = (
-        "booking_id", "customer", "park", "visit_date",
+        "booking_id", "customer", "park", "visit_date", "total_amount", 
         "num_people", "payment_status", "payment_method",
         "checked_in", "entered", "is_active_display", "created_at"
     )

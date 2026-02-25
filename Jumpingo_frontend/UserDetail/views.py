@@ -2136,3 +2136,37 @@ class EmailPasswordLoginViewSet(viewsets.ViewSet):
             },
             "error": None
         }, status=status.HTTP_200_OK)
+
+
+class LogInToUserAccount(viewsets.ViewSet):
+    @handle_exceptions
+    @check_authentication(required_role='super_admin')
+    def list(self, request):
+            request_user = request.user
+            user_id = request.GET.get('user_id')
+
+            user = User.objects.get(user_id=user_id)
+
+            if request_user.is_staff:
+                print('Staff')
+                login(request, user)
+                request.session.set_expiry(30 * 24 * 60 * 60)
+
+            redirect_url = "/"
+            if user.role == "super_admin" or user.role == "park_admin":
+                redirect_url = f"/admin_dashboard/"
+            elif user.role == "seller" or user.role == "cash_counter":
+                redirect_url = f"/seller_dashboard/?user_id={user_id}"
+            elif user.role == "security":
+                redirect_url = f"/security_scanner/"
+            elif user.role == "ride_operator":
+                redirect_url = f"/ride_scanner/"
+            elif user.role == "socks_handler":
+                redirect_url = f"/sock_scanner/"
+            elif user.role == "pre_booker":
+                redirect_url = f"/prebooking/"
+            elif user.role == "invi_pre_booker":
+                redirect_url = f"/invite_prebooking/"
+            
+            return redirect(redirect_url)
+            return HttpResponse('DONE')
