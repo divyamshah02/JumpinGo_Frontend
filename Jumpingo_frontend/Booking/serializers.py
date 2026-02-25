@@ -34,7 +34,7 @@ class BookingSerializer(serializers.ModelSerializer):
             "customer", "customer_name", "customer_contact",
             "visit_date", "num_people",
             "total_amount", "payment_status", "payment_method",
-            "sold_from", "sold_by", "commission_rate", "commission_amount",
+            "sold_from", "sold_by", "commission_rate", "commission_amount", "is_an_offer_booking", "offer_info",
             "is_an_invite", "reference", "other_reference",
             "qr_code_path",
             "checked_in", "checkedin_at", "entered", "entered_at",

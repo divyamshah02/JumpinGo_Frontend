@@ -46,6 +46,9 @@ class Booking(models.Model):
     commission_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     commission_paid = models.BooleanField(default=False)
 
+    is_an_offer_booking = models.BooleanField(default=False)
+    offer_info = models.CharField(max_length=255, blank=True, null=True, help_text="Details about the offer applied to this booking (if any)")
+
     # Invite tracking fields
     is_an_invite = models.BooleanField(default=False)
     reference = models.CharField(max_length=255, blank=True, null=True, help_text="Reference for invite bookings (e.g. inviter's name or contact)")
