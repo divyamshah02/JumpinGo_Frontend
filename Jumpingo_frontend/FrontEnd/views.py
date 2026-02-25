@@ -116,14 +116,14 @@ class SocksScannerViewSet(viewsets.ViewSet):
 class AdminDashboardViewSet(viewsets.ViewSet):
 
     @handle_exceptions
-    @check_authentication()
+    @check_authentication(required_role=['super_admin', 'park_admin'])
     def list(self, request):
         return render(request, 'admin_dashboard.html')
 
 class SellerDashboardViewSet(viewsets.ViewSet):
 
     @handle_exceptions
-    @check_authentication()
+    @check_authentication(required_role=['cash_counter'])
     def list(self, request):
         return render(request, 'seller_dashboard.html')
 
@@ -131,14 +131,14 @@ class SellerDashboardViewSet(viewsets.ViewSet):
 class PreBookingViewSet(viewsets.ViewSet):
 
     @handle_exceptions
-    @check_authentication()
+    @check_authentication(required_role=['pre_booker'])
     def list(self, request):
         return render(request, 'prebooking.html')
 
 class InvitePreBookingViewSet(viewsets.ViewSet):
 
     @handle_exceptions
-    @check_authentication()
+    @check_authentication(required_role=['invi_pre_booker'])
     def list(self, request):
         return render(request, 'invite_prebooking.html')
 
