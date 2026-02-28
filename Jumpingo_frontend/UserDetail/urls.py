@@ -15,6 +15,7 @@ router.register(r'seller-api', SellerDashboardViewSet, basename='seller-api')
 router.register(r'account-api', CustomerAccountViewSet, basename='account-api')
 
 router.register(r'admin-other-user-api', LogInToUserAccount, basename='admin-other-user-api')
+router.register(r'db-backup-api', DatabaseBackupViewSet, basename='db-backup-api')
 
 urlpatterns = [
     path('', include(router.urls)),

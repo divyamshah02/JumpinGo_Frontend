@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.hashers import check_password, make_password
 from django.db import models
+from django.core.management import call_command
 
 from .models import *
 from .serializers import *
@@ -20,6 +21,7 @@ from Park.models import Ride
 from Park.serializers import RideSerializer
 
 import random
+from io import StringIO
 from datetime import datetime, timedelta
 
 from utils.decorators import *
@@ -2170,3 +2172,33 @@ class LogInToUserAccount(viewsets.ViewSet):
             
             return redirect(redirect_url)
             return HttpResponse('DONE')
+
+
+class DatabaseBackupViewSet(viewsets.ViewSet):
+
+    @handle_exceptions
+    @check_authentication(required_role='super_admin')
+    def list(self, request):
+        try:
+            out = StringIO()
+            call_command('dumpdata', stdout=out)
+
+            response = HttpResponse(
+                out.getvalue(),
+                content_type="application/json"
+            )
+            response['Content-Disposition'] = 'attachment; filename="database_backup.json"'
+
+            return response
+
+        except Exception as e:
+            return Response(
+                {
+                    "success": False,
+                    "user_not_logged_in": False,
+                    "user_unauthorized": False,
+                    "data": None,
+                    "error": str(e)
+                },
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
