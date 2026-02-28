@@ -324,14 +324,27 @@ function calculateTotalAmount() {
   let total = 0
 
   if (isOffer) {
-    // Group pricing logic
-    const groupOfThree = Math.floor(numPeople / 3)
-    const remainingTickets = numPeople % 3
+    if (isWeekend) {
+      // Group pricing logic
+      const groupOfTwo = Math.floor(numPeople / 2)
+      const remainingTickets = numPeople % 2
 
-    const discountedTotal = groupOfThree * 2100
-    const remainingTotal = remainingTickets * basePrice
+      const discountedTotal = groupOfTwo * 2100
+      const remainingTotal = remainingTickets * basePrice
 
-    total = discountedTotal + remainingTotal
+      total = discountedTotal + remainingTotal
+    }
+    else {
+      // Group pricing logic
+      const groupOfThree = Math.floor(numPeople / 3)
+      const remainingTickets = numPeople % 3
+
+      const discountedTotal = groupOfThree * 2100
+      const remainingTotal = remainingTickets * basePrice
+
+      total = discountedTotal + remainingTotal
+    }
+
   } else {
     // Normal pricing
     total = numPeople * basePrice
@@ -373,7 +386,8 @@ async function createBooking(e) {
     total_amount: totalAmount,
     payment_method: paymentMethod,
     isOffer: isOffer,
-    offer_info: isOffer ? `Buy 2 get 1` : null,
+    offer_info: isOffer ? `Buy 1 get 1` : null,
+    // offer_info: isOffer ? `Buy 2 get 1` : null,
     payment_status: "success", // For now static but will be made dynamic when payment gateway is integrated
   }
 
