@@ -12,6 +12,7 @@ from UserDetail.models import User
 from django.conf import settings
 from django.utils import timezone
 from django.db import models
+from datetime import datetime
 
 import os
 import qrcode
@@ -696,7 +697,8 @@ class PreBookingViewSet(viewsets.ViewSet):
         elif user.role == "park_admin":
             prebookings = PreBooking.objects.filter(park=user.park)
         elif user.role == "invi_pre_booker":
-            prebookings = PreBooking.objects.filter(park=user.park, is_an_invite=True)
+            today = datetime.today()
+            prebookings = PreBooking.objects.filter(park=user.park, is_an_invite=True, visit_date=today)
         else:
             prebookings = PreBooking.objects.all()
         
