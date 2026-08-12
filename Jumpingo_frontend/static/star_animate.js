@@ -20,16 +20,16 @@ class StarParticle {
     createElement() {
         const star = document.createElement("img")
         const logos = [
-            "/static/red_small_logo.png",
-            "/static/blue_small_logo.png",
-            "/static/green_small_logo.png",
-            "/static/small_logo.png"
+            "/static/red_small_logo.webp",
+            "/static/blue_small_logo.webp",
+            "/static/green_small_logo.webp",
+            "/static/small_logo.webp"
         ];
 
         const randomLogo = logos[Math.floor(Math.random() * logos.length)];
 
         star.src = randomLogo;
-        // star.src = "/static/small_logo.png"
+        // star.src = "/static/small_logo.webp"
         star.className = "cursor-star-particle"
         star.style.cssText = `
         position: fixed;

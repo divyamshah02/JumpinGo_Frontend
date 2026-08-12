@@ -145,9 +145,9 @@ def convert_to_webp_and_update_references(
     print("\nDone.")
 
 
-# convert_to_webp_and_update_references(
-#     static_root="static",
-#     templates_root="templates",
-#     quality=80,
-#     delete_original=True
-# )
+convert_to_webp_and_update_references(
+    static_root=r"C:\Users\Divyam Shah\OneDrive\Desktop\Dynamic Labz\Clients\Clients\JumpinGo Amusment park\JumpinGo_Frontend\Jumpingo_frontend\static",
+    templates_root=r"C:\Users\Divyam Shah\OneDrive\Desktop\Dynamic Labz\Clients\Clients\JumpinGo Amusment park\JumpinGo_Frontend\Jumpingo_frontend\templates",
+    quality=80,
+    delete_original=True
+)
