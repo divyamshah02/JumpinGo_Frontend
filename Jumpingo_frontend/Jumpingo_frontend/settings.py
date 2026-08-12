@@ -2,8 +2,8 @@ from pathlib import Path
 import os
 import dj_database_url
 
-IS_LOCAL = False
-LOCAL_DB = False
+IS_LOCAL = True
+LOCAL_DB = True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5g*el)9)p5sl8sg8!khy2nn2!3(i9!xh$8bq!p%maes-xlgptb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 X_FRAME_OPTIONS = 'SAMEORIGIN'

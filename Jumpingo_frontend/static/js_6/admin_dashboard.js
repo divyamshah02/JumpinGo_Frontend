@@ -5,6 +5,7 @@ let csrf_token = null
 const PARK_ID = 1 // Static park ID for now (future multi-park support)
 let currentSellerId = null
 let currentCashCounterId = null
+let bookings_data = null
 
 // Initialize Dashboard
 async function initDashboard(api_url, prebooking_url, token) {
@@ -96,6 +97,7 @@ async function loadBookings() {
 
 // Render Bookings Table
 function renderBookingsTable(bookings) {
+  bookings_data = bookings
   const tbody = document.getElementById("bookingsTableBody")
 
   if (bookings.length === 0) {
@@ -1456,4 +1458,69 @@ async function confirmInvitePreBooking() {
     console.error("[v0] Error confirming invite pre-booking:", error)
     alert("An error occurred while confirming the invite pre-booking")
   }
+}
+
+
+function exportToExcel() {
+  toggle_loader()
+  if (bookings_data.length === 0) {
+    toggle_loader()  
+    alert("No members to export")
+    return
+  }
+
+  // Prepare data for export
+  const exportData = bookings_data.map((booking) => {
+
+    return {
+      "customer_contact": booking.customer_contact || "N/A",
+      "customer_name": booking.customer_name || "N/A",      
+      "num_people": booking.num_people || "N/A",
+      "payment_method": booking.payment_method || "N/A",      
+      "total_amount": booking.total_amount || "N/A",
+      "visit_date": booking.visit_date || "N/A",
+      "is_an_offer_booking": booking.is_an_offer_booking || "N/A",
+      "offer_info": booking.offer_info || "N/A",
+      "is_an_invite": booking.is_an_invite || "N/A",
+      "reference": booking.reference || "N/A",
+      "other_reference": booking.other_reference || "N/A",
+      "sold_by_name": booking.sold_by_name || "N/A",            
+      "booking_id": booking.booking_id || "N/A",      
+      "created_at": booking.created_at || "N/A",
+    }
+  })
+
+  // Create worksheet
+  const ws = XLSX.utils.json_to_sheet(exportData)
+
+  // Set column widths
+  ws["!cols"] = [
+    { wch: 15 }, // TCA Member ID
+    { wch: 20 }, // Member Name
+    { wch: 10 }, // Email
+    { wch: 15 }, // Contact Number
+    { wch: 20 }, // Address
+    { wch: 18 }, // Registration Date
+    { wch: 8 }, // Year
+    { wch: 12 }, // Status    
+    { wch: 12 }, // Balance
+    { wch: 12 }, // Balance
+    { wch: 12 }, // Balance
+    { wch: 12 }, // Balance
+    { wch: 12 }, // Balance
+    { wch: 12 }, // Balance
+  ]
+
+  // Create workbook
+  const wb = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(wb, ws, "Members")
+
+  // Generate filename with current date
+  const today = new Date().toISOString().split("T")[0]
+  const filename = `members_export_${today}.xlsx`
+
+  // Export
+  XLSX.writeFile(wb, filename)
+
+  toggle_loader()
 }

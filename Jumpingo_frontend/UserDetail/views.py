@@ -740,6 +740,11 @@ class AdminDashboardViewSet(viewsets.ViewSet):
                     'sold_from': booking.sold_from,
                     'sold_by_name': booking.sold_by.name if booking.sold_by else None,
                     'sold_by_role': booking.sold_by.role if booking.sold_by else None,
+                    'is_an_offer_booking': "Yes" if booking.is_an_offer_booking else "No",
+                    'offer_info': booking.offer_info if booking.is_an_offer_booking else " - ",
+                    'is_an_invite': "Yes" if booking.is_an_invite else "No",
+                    'reference': booking.reference if booking.is_an_invite else " - ",
+                    'other_reference': booking.other_reference if booking.is_an_invite else " - ",
                     'checked_in': booking.checked_in,
                     'created_at': booking.created_at,
                 })
