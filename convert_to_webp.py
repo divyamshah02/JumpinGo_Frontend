@@ -87,67 +87,67 @@ def convert_to_webp_and_update_references(
     # ---------------------------------
     # Files to scan
     # ---------------------------------
-    files_to_scan = []
+    # files_to_scan = []
 
-    files_to_scan.extend(templates_root.rglob("*.html"))
-    files_to_scan.extend(static_root.rglob("*.css"))
-    files_to_scan.extend(static_root.rglob("*.js"))
+    # files_to_scan.extend(templates_root.rglob("*.html"))
+    # files_to_scan.extend(static_root.rglob("*.css"))
+    # files_to_scan.extend(static_root.rglob("*.js"))
 
-    print(f"Scanning {len(files_to_scan)} files...\n")
+    # print(f"Scanning {len(files_to_scan)} files...\n")
 
-    # ---------------------------------
-    # Update references
-    # ---------------------------------
-    for file_path in files_to_scan:
+    # # ---------------------------------
+    # # Update references
+    # # ---------------------------------
+    # for file_path in files_to_scan:
 
-        try:
-            content = file_path.read_text(
-                encoding="utf-8",
-                errors="ignore"
-            )
+    #     try:
+    #         content = file_path.read_text(
+    #             encoding="utf-8",
+    #             errors="ignore"
+    #         )
 
-            original = content
+    #         original = content
 
-            for old_rel, new_rel in replacements.items():
+    #         for old_rel, new_rel in replacements.items():
 
-                filename_old = Path(old_rel).name
-                filename_new = Path(new_rel).name
+    #             filename_old = Path(old_rel).name
+    #             filename_new = Path(new_rel).name
 
-                # Full relative path replacement
-                content = content.replace(old_rel, new_rel)
+    #             # Full relative path replacement
+    #             content = content.replace(old_rel, new_rel)
 
-                # Filename-only fallback
-                content = content.replace(
-                    f'"{filename_old}"',
-                    f'"{filename_new}"'
-                )
+    #             # Filename-only fallback
+    #             content = content.replace(
+    #                 f'"{filename_old}"',
+    #                 f'"{filename_new}"'
+    #             )
 
-                content = content.replace(
-                    f"'{filename_old}'",
-                    f"'{filename_new}'"
-                )
+    #             content = content.replace(
+    #                 f"'{filename_old}'",
+    #                 f"'{filename_new}'"
+    #             )
 
-                content = content.replace(
-                    f"({filename_old})",
-                    f"({filename_new})"
-                )
+    #             content = content.replace(
+    #                 f"({filename_old})",
+    #                 f"({filename_new})"
+    #             )
 
-            if content != original:
-                file_path.write_text(
-                    content,
-                    encoding="utf-8"
-                )
-                print(f"Updated -> {file_path}")
+    #         if content != original:
+    #             file_path.write_text(
+    #                 content,
+    #                 encoding="utf-8"
+    #             )
+    #             print(f"Updated -> {file_path}")
 
-        except Exception as e:
-            print(f"Failed {file_path}: {e}")
+    #     except Exception as e:
+    #         print(f"Failed {file_path}: {e}")
 
     print("\nDone.")
 
 
 convert_to_webp_and_update_references(
-    static_root=r"C:\Users\Divyam Shah\OneDrive\Desktop\Dynamic Labz\Clients\Clients\JumpinGo Amusment park\JumpinGo_Frontend\Jumpingo_frontend\static",
-    templates_root=r"C:\Users\Divyam Shah\OneDrive\Desktop\Dynamic Labz\Clients\Clients\JumpinGo Amusment park\JumpinGo_Frontend\Jumpingo_frontend\templates",
+    static_root=r"C:\Users\Divyam Shah\Downloads\drive-download-20261124T061816Z-1-001",
+    templates_root=r"C:\Users\Divyam Shah\OneDrive\Desktop\Dynamic Labz\Clients\Clients\JumpinGo Amusment park\JumpinGo_Frontend\Jumpingo_frontend\templates__ddd",
     quality=80,
     delete_original=True
 )
