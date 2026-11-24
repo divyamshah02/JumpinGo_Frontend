@@ -15,6 +15,7 @@ urlpatterns = [
     
     path('', home, name='home'),
     path('about', about, name='about'),
+    path('bulk_booking', bulk_booking, name='bulk_booking'),
     path('attractions', attractions, name='attractions'),
     path('contact', contact, name='contact'),
     path('gallery', gallery, name='gallery'),
@@ -25,5 +26,7 @@ urlpatterns = [
     
     path('send_contact_email_req', send_contact_email_req, name='send_contact_email_req'),
     path('send_booking_email_req', send_booking_email_req, name='send_booking_email_req'),
+
+    path("send_bulk_booking_email_req", send_bulk_booking_email_req, name="send_bulk_booking_email_req"),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

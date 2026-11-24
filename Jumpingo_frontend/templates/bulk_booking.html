@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) --> 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZSFQ9Q638"></script>
+    <script> window.dataLayer = window.dataLayer || []; function
+    gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config',
+    'G-NZSFQ9Q638'); </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j
+    ,f);
+    })(window,document,'script','dataLayer','GTM-M8LFSC8P');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Bulk Booking - JUMPIN GO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/static/contact.css">
+    <link rel="stylesheet" href="/static/ticket.css">
+    <link rel="stylesheet" href="/static/bulk_booking.css">
+
+    <!-- PREVIEW-FALLBACK-START: remove this <style> block once /static/bulk_booking.css is in place -->
+    <style>
+        :root { --bb-ink:#1a0b2e; --bb-yellow:#ffd93b; --bb-orange:#ff5a1f; --bb-soft:#f6f4fb; --bb-line:#e4dff0; }
+        body { font-family:'Raleway',sans-serif; color:var(--bb-ink); margin:0; }
+
+        /* ---------- Intro + 3 alternating sections ---------- */
+        .bb-intro { text-align:center; padding:70px 20px 30px; }
+        .bb-intro h1 { font-family:'Winky Rough',cursive; font-size:clamp(2.2rem,5vw,3.6rem); font-weight:800; margin:0 0 12px; }
+        .bb-intro p { max-width:640px; margin:0 auto; font-size:1.05rem; line-height:1.6; opacity:.8; }
+
+        .bb-section { padding:50px 20px; }
+        .bb-row { margin:0 auto; display:flex; align-items:center; gap:56px; }
+        .bb-row.reverse { flex-direction:row-reverse; }
+        .bb-photo { flex:1 1 50%; }
+        .bb-photo img { width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border-radius:28px; border:3px solid var(--bb-ink); box-shadow:10px 10px 0 var(--bb-ink); }
+        .bb-copy { flex:1 1 50%; }
+        .bb-tag { display:inline-block; background:var(--bb-yellow); color:var(--bb-ink); font-weight:800; font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; padding:6px 14px; border-radius:999px; margin-bottom:14px; }
+        .bb-copy h2 { font-family:'Winky Rough',cursive; font-size:clamp(1.8rem,3.4vw,2.6rem); font-weight:800; margin:0 0 14px; }
+        .bb-copy > p { font-size:1.02rem; line-height:1.65; opacity:.85; margin-bottom:18px; }
+        .bb-list { list-style:none; padding:0; margin:0 0 26px; }
+        .bb-list li { position:relative; padding-left:28px; margin-bottom:10px; font-weight:600; }
+        .bb-list li::before { content:"\f00c"; font-family:"Font Awesome 6 Free"; font-weight:900; position:absolute; left:0; top:1px; color:var(--bb-orange); }
+        /* .btn-login { display:inline-block; background:var(--bb-ink); color:var(--bb-yellow); font-weight:800; border:0; border-radius:14px; padding:14px 34px; text-decoration:none; cursor:pointer; box-shadow:0 5px 0 var(--bb-orange); transition:transform .15s, box-shadow .15s; }
+        .btn-login:hover { transform:translateY(2px); box-shadow:0 3px 0 var(--bb-orange); color:var(--bb-yellow); } */
+
+        /* ---------- Form (same look as contact page form) ---------- */
+        .form-section { padding:60px 20px; }
+        .form-container { max-width:1000px; margin:0 auto; background:#ff6650; border-radius:36px; padding:50px 60px 56px; }
+        .form-title { font-family:'Winky Rough',cursive; font-weight:800; font-size:clamp(1.8rem,3.4vw,2.4rem); color:#fff; text-align:center; margin:0 0 34px; }
+        .form-group { display:flex; flex-direction:column; margin-bottom:22px; }
+        .form-group label { color:#fff; font-weight:700; font-size:1rem; margin-bottom:10px; }
+        .form-group input, .form-group select, .form-group textarea { width:100%; background:transparent; border:2px solid #fff; border-radius:10px; padding:14px 16px; color:#fff; font-family:'Raleway',sans-serif; font-size:.95rem; outline:none; }
+        .form-group input::placeholder { color:rgba(255,255,255,.7); }
+        .form-group input[type="date"] { color-scheme:dark; }
+        .bb-chips { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+        .bb-chip input { position:absolute; opacity:0; pointer-events:none; }
+        .bb-chip span { display:block; text-align:center; border:2px solid #fff; border-radius:10px; padding:13px 8px; color:#fff; font-weight:700; font-size:.92rem; cursor:pointer; transition:.15s; }
+        .bb-chip input:checked + span { background:#fff; color:#ff6650; }
+        .bb-chip input:focus-visible + span { outline:3px solid #fff; outline-offset:3px; }
+        .bb-quick { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:12px; color:#fff; font-size:.85rem; font-weight:600; }
+        .bb-quick button { background:transparent; border:2px solid #fff; color:#fff; border-radius:999px; padding:4px 14px; font-weight:700; font-size:.8rem; cursor:pointer; }
+        .bb-quick button:hover { background:#fff; color:#ff6650; }
+        .submit-btn { display:block; margin:34px auto 0; background:#e8262f; color:#fff; font-family:'Winky Rough',cursive; font-weight:800; font-size:1.05rem; border:0; border-radius:999px; padding:14px 42px; cursor:pointer; box-shadow:4px 5px 0 #8f2a2a; transition:transform .15s, box-shadow .15s; }
+        .submit-btn:hover { transform:translate(2px,2px); box-shadow:2px 3px 0 #8f2a2a; }
+
+        @media (max-width:900px) {
+            .bb-row, .bb-row.reverse { flex-direction:column; gap:30px; }
+            .bb-chips { grid-template-columns:repeat(2,1fr); }
+            .form-container { padding:36px 24px 40px; }
+        }
+    </style>
+    <!-- PREVIEW-FALLBACK-END -->
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-M8LFSC8P"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Header -->
+    {% include 'header.html' %}
+
+    <!-- Intro -->
+    <section class="bb-intro">
+        <h1>Bulk Booking</h1>
+        <p>Planning something big? Bring your team, family or whole school to JUMPIN Go with private slots, custom layouts, and group rates.</p>
+    </section>
+
+    <!-- 3. School, College & Mega Events: photo left, content right -->
+    <section class="bb-section">
+        <div class="bb-row">
+            <div class="bb-photo">
+                <img src="/static/bulk/school-college-event.png" alt="Students playing on giant inflatable slides at a school and college event">
+            </div>
+            <div class="bb-copy">
+                <span class="bb-tag">700+ Attendees</span>
+                <h2>School, College &amp; Mega Events</h2>
+                <p>High-capacity daytime outings engineered for seamless crowd flow and strict supervision. Give students and faculty an unforgettable active day out with dedicated hydration zone, first-aid support, and special institutional pricing.</p>
+                <ul class="bb-list">
+                    <li>Special Bulk Student &amp; Faculty Pricing</li>
+                    <li>Exclusive Morning & Afternoon Group Slots </li>
+                    <li>First-Aid Stations</li>
+                    <li>Exclusive Pre Launch Day Booking</li>
+                </ul>
+                <a href="#bulkForm" class="btn-login" data-category="School / College">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. Corporate & Team Offsites: photo left, content right -->
+    <section class="bb-section">
+        <div class="bb-row">            
+            <div class="bb-copy">
+                <span class="bb-tag">100 – 500+ EMPLOYEES</span>
+                <h2>Corporate &amp; Team Offsites</h2>
+                <p>Trade stiff conference rooms for high-energy inflatable obstacle relays, team leaderboard battles, and pure stress relief. We handle everything from live emcees and co-branded banners to custom corporate buffets.</p>
+                <ul class="bb-list">
+                    <li>Facilitated Team-Building Obstacle Relays</li>
+                    <li>Private Arena Buyout &amp; Co-Branded Banners</li>
+                    <li>Music</li>
+                    <li>Private Venue Timing</li>
+                </ul>
+                <a href="#bulkForm" class="btn-login" data-category="Corporate Booking">Book Now</a>
+            </div>
+            <div class="bb-photo">
+                <img src="/static/bulk/corporate-offsite.png" alt="Colleagues racing through an inflatable obstacle course during a team offsite">
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Birthday & Private Parties: content left, photo right -->
+    <section class="bb-section">
+        <div class="bb-row reverse">            
+            <div class="bb-copy">
+                <span class="bb-tag">100+ Guests</span>
+                <h2>Birthday &amp; Private Parties</h2>
+                <p>Throw the most talked-about celebration in town without lifting a finger. From kids' milestone birthdays to glow-in-the-dark adult bounce bashes, enjoy reserved VIP lounges, dedicated party hosts, and zero cleanup.</p>
+                <ul class="bb-list">
+                    <li>Reserved Private Time Party &amp; Cake Cutting Space</li>
+                    <li>Arena-Wide Birthday Shoutouts &amp; Music</li>
+                    <li>Music Available on Demand</li>
+                    <li>Food Available on Demand</li>
+                    <!-- <li>Dedicated Party Host + Kids &amp; Adult Combos</li> -->
+                    <!-- <li>Custom Theme Decor &amp; Kid-Friendly Feast</li> -->
+                </ul>
+                <a href="#bulkForm" class="btn-login" data-category="Party & Event Booking">Book Now</a>
+            </div>
+            <div class="bb-photo">
+                <img src="/static/bulk/birthday-party.png" alt="Kids celebrating a birthday on a bouncy castle">
+            </div>
+        </div>
+    </section>
+
+    <section class="bb-section">
+        <div class="bb-row">
+            <div class="bb-copy">
+                <span class="bb-tag">150+ TICKETS</span>
+                <h2>Exclusive Bulk Booking</h2>
+                <p>Planning a big day out with a large group? Get exclusive bulk booking benefits for 150+ tickets. Whether it's a corporate gathering, a community outing, or a large group celebration, we make group bookings seamless with dedicated assistance and a hassle-free experience.</p>
+
+                <ul class="bb-list">
+                    <li>Special Bulk Booking Rates</li>
+                    <li>Dedicated Booking Assistance</li>
+                    <li>Flexible Group Entry Coordination</li>
+                    <li>Customised Packages for Large Groups</li>
+                </ul>
+
+                <a href="#bulkForm" class="btn-login" data-category="Exclusive Bulk Booking">Book Now</a>
+            </div>
+
+            <div class="bb-photo">
+                <img src="/static/gallery-5.webp"
+                    alt="Large group enjoying an exclusive bulk booking experience">
+            </div>
+        </div>
+    </section>
+
+    <!-- Bulk Quote Form -->
+    <section class="form-section" id="bulkForm">
+        <div class="form-container">
+            <h2 class="form-title">Get Your Custom Bulk Quote</h2>
+            <form class="contact-form" id="bulkBookingForm">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Booking Category</label>
+                    <div class="bb-chips">
+                        <label class="bb-chip"><input type="radio" name="category" value="Bulk Booking" checked><span>Bulk Booking</span></label>
+                        <label class="bb-chip"><input type="radio" name="category" value="Corporate Booking" checked><span>Corporate Booking</span></label>
+                        <label class="bb-chip"><input type="radio" name="category" value="Party & Event Booking"><span>Party & Event Booking</span></label>
+                        <!-- <label class="bb-chip"><input type="radio" name="category" value="Party Booking"><span>Party Booking</span></label> -->
+                        <label class="bb-chip"><input type="radio" name="category" value="School / College"><span>School / College</span></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="bbName">Name</label>
+                    <input type="text" name="bbName" id="bbName" placeholder="John Smith" required>
+                </div>
+                <div class="form-group">
+                    <label for="bbOrg">Company / Organization Name</label>
+                    <input type="text" name="bbOrg" id="bbOrg" placeholder="Jumpin Go Pvt Ltd" required>
+                </div>
+                <div class="form-group">
+                    <label for="bbEmail">Email</label>
+                    <input type="email" name="bbEmail" id="bbEmail" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="bbNumber">Number</label>
+                    <input type="tel" name="bbNumber" id="bbNumber" placeholder="+91-1234567890" required>
+                </div>
+                <div class="form-group">
+                    <label for="bbDate">Preferred Event Date</label>
+                    <input type="date" name="bbDate" id="bbDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="bbGuests">Estimated Guests (Min 100)</label>
+                    <input type="number" name="bbGuests" id="bbGuests" min="100" placeholder="100" required>
+                    <div class="bb-quick">
+                        <span>Quick Select:</span>
+                        <!-- <button type="button" data-guests="35">20-50 Guests</button>
+                        <button type="button" data-guests="75">50-100 Guests</button> -->
+                        <button type="button" data-guests="175">100-250 Guests</button>
+                        <button type="button" data-guests="350">250-500 Guests</button>
+                        <button type="button" data-guests="500">500+ Guests</button>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Experience The Rides (same as ticket page) -->
+    <section class="rides-polaroid-section">
+        <div class="container">
+            <h2 class="section-title-red text-center mb-5">Experience The Rides</h2>
+            <p class="section-subtitle-dark text-center mb-5">Snapshots of the fun waiting for you!</p>
+            
+            <div class="polaroid-grid">
+                
+                <div class="polaroid-card vertical-ride">
+                    <div class="polaroid-img-wrapper">
+                        <img src="/static/Sky Slide/Sky Slide_1.webp" alt="Sky Slide">
+                    </div>
+                    <div class="polaroid-caption">
+                        <h3>Sky Slide</h3>
+                        <p>Climb high & zoom down! The ultimate inflatable rush.</p>
+                    </div>
+                </div>
+
+                <div class="polaroid-card">
+                    <div class="polaroid-img-wrapper">
+                        <img src="/static/The Castle/The Castle_1.webp" alt="The Castle">
+                    </div>
+                    <div class="polaroid-caption">
+                        <h3>The Castle</h3>
+                        <p>Bounce, tumble, and feel like royalty in our fortress.</p>
+                    </div>
+                </div>
+
+                <div class="polaroid-card vertical-ride">
+                    <div class="polaroid-img-wrapper">
+                        <img src="/static/JUMP X/JUMP X_1.webp" alt="JUMP X">
+                    </div>
+                    <div class="polaroid-caption">
+                        <h3>JUMP X</h3>
+                        <p>Extreme airtime arena for freestyle bouncing moves.</p>
+                    </div>
+                </div>
+
+                <div class="polaroid-card">
+                    <div class="polaroid-img-wrapper">
+                        <img src="/static/A-Maze/A-Maze_1.webp" alt="A-Maze">
+                    </div>
+                    <div class="polaroid-caption">
+                        <h3>A-Maze</h3>
+                        <p>Get lost in colorful twists, turns & surprise obstacles.</p>
+                    </div>
+                </div>
+
+                <div class="polaroid-card vertical-ride">
+                    <div class="polaroid-img-wrapper">
+                        <img src="/static/Turbo Trail/Turbo Trail_1.webp" alt="Turbo Trail">
+                    </div>
+                    <div class="polaroid-caption">
+                        <h3>Turbo Trail</h3>
+                        <p>Ready, set, GO! A high-speed obstacle race track.</p>
+                    </div>
+                </div>
+
+                <div class="polaroid-card">
+                    <div class="polaroid-img-wrapper">
+                        <img src="/static/The HIVE/The HIVE_1.webp" alt="The HIVE">
+                    </div>
+                    <div class="polaroid-caption">
+                        <h3>The HIVE</h3>
+                        <p>A buzzing network of connected bounce chambers.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="gallery-title">Gallery</h2>
+
+            <div class="gallery-grid">
+                <div class="gallery-item gallery-large">
+                    <img src="/static/ticket_2.webp" alt="Sky Swing Gallery 1">
+                </div>
+                <div class="gallery-item gallery-small">
+                    <img src="/static/ticket_3.webp" alt="Gallery 2">
+                </div>
+                <div class="gallery-item gallery-small">
+                    <img src="/static/ticket_4.webp" alt="Gallery 3">
+                </div>
+                <div class="gallery-item gallery-small">
+                    <img src="/static/ticket_5.webp" alt="Gallery 4">
+                </div>
+                <div class="gallery-item gallery-small">
+                    <img src="/static/ticket_6.webp" alt="Gallery 5">
+                </div>
+                <div class="gallery-item gallery-small">
+                    <img src="/static/ticket_7.webp" alt="Gallery 6">
+                </div>
+                <div class="gallery-item gallery-small">
+                    <img src="/static/ticket_8.webp" alt="Gallery 7">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Banner Section -->
+    <section class="bottom-banner-section">
+        <div class="bottom-diagonal-banner">
+            <div class="banner-text-scroll-bottom text-center">
+                <span> JUMP - LAUGH - BOND - REPEAT</span>
+                <span> JUMP - LAUGH - BOND - REPEAT</span>
+                <span> JUMP - LAUGH - BOND - REPEAT</span>
+                <span> JUMP - LAUGH - BOND - REPEAT</span>
+                <span> JUMP - LAUGH - BOND - REPEAT</span>
+            </div>
+        </div>
+
+        <section class="testimonials-section">
+            <div class="testimonials-container">
+                <h2 class="testimonials-title">What Our Jumpmates Are Saying</h2>
+                <p class="testimonials-subtitle">Real stories. Real energy. Real jumps. <br>Hear from the ones who took the leap before you!</p>
+
+                <div class="testimonials-carousel">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar"></div>
+                            <div class="testimonial-info">
+                                <h4 class="testimonial-name">Rujvi Shah</h4>
+                            </div>
+                            <div class="testimonial-rating">4.5</div>
+                        </div>
+                        <p class="testimonial-text">Super smooth experience from entry to exit. Kids were safe, engaged, and happily tired by the end of the day – exactly what we wanted from the event.</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar"></div>
+                            <div class="testimonial-info">
+                                <h4 class="testimonial-name">Vijay Patel</h4>
+                            </div>
+                            <div class="testimonial-rating">4.0</div>
+                        </div>
+                        <p class="testimonial-text">JUMPINGO completely surprised our group in Ahmedabad – the giant slides and obstacle runs felt like a mini adventure park. The constant bouncing, racing, and friendly challenges gave everyone a solid adrenaline rush and a full‑body workout in the best way.</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar"></div>
+                            <div class="testimonial-info">
+                                <h4 class="testimonial-name">Harsh</h4>
+                            </div>
+                            <div class="testimonial-rating">4.5</div>
+                        </div>
+                        <p class="testimonial-text">JUMPINGO turned our regular gathering into an insane high‑energy session. Sprinting through inflatables, timing our runs, and competing with friends had us shouting, laughing, and sweating like we were on an adventure trail, not just at an event ground.</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar"></div>
+                            <div class="testimonial-info">
+                                <h4 class="testimonial-name">Rujvi Shah</h4>
+                            </div>
+                            <div class="testimonial-rating">4.5</div>
+                        </div>
+                        <p class="testimonial-text">Super smooth experience from entry to exit. Kids were safe, engaged, and happily tired by the end of the day – exactly what we wanted from the event.</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar"></div>
+                            <div class="testimonial-info">
+                                <h4 class="testimonial-name">Vijay Patel</h4>
+                            </div>
+                            <div class="testimonial-rating">4.0</div>
+                        </div>
+                        <p class="testimonial-text">JUMPINGO completely surprised our group in Ahmedabad – the giant slides and obstacle runs felt like a mini adventure park. The constant bouncing, racing, and friendly challenges gave everyone a solid adrenaline rush and a full‑body workout in the best way.</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar"></div>
+                            <div class="testimonial-info">
+                                <h4 class="testimonial-name">Harsh</h4>
+                            </div>
+                            <div class="testimonial-rating">4.5</div>
+                        </div>
+                        <p class="testimonial-text">JUMPINGO turned our regular gathering into an insane high‑energy session. Sprinting through inflatables, timing our runs, and competing with friends had us shouting, laughing, and sweating like we were on an adventure trail, not just at an event ground.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-controls">
+                    <div class="carousel-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <div class="carousel-arrows">
+                        <button class="arrow-btn prev">&#8592;</button>
+                        <button class="arrow-btn next">&#8594;</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    
+    <section class="faq-section">
+    <div class="container">
+        <h2 class="section-title-red">Frequently Asked Questions</h2>
+
+        <div class="row">
+            <!-- LEFT COLUMN -->
+            <div class="col-12">
+
+                <!-- 1 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What is the minimum group size required for a Bulk Booking?</span>
+                        <div class="faq-icon-wrapper"><i class="fas fa-chevron-down"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Bulk rates and group packages start at 100+ guests for corporate offsites and private parties, and 500+ students for school or college excursions. For groups larger than 500 + guests, we offer full-arena private buyouts.</p>
+                    </div>
+                </div>
+
+                <!-- 2 (HIDE ON MOBILE) -->
+                <div class="faq-item d-none d-md-block">
+                    <button class="faq-question">
+                        <span>Can we book an exclusive morning or afternoon slot for our group?</span>
+                        <div class="faq-icon-wrapper"><i class="fas fa-chevron-down"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Schools, colleges, and corporate teams can reserve exclusive private slots during morning or afternoon hours so your group enjoys unrestricted access to all inflatable zones without public queues.</p>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Where are JUMPIN GO bulk events hosted? Can you set up at our venue?</span>
+                        <div class="faq-icon-wrapper"><i class="fas fa-chevron-down"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You can host your group at any of our active festival grounds across Gujarat (including Ahmedabad, Surat, and Mehsana). For large corporate family days, society carnivals, or college fests, we also offer custom on-site inflatable setups at your private venue.</p>
+                    </div>
+                </div>
+
+                <!-- 4 (HIDE ON MOBILE) -->
+                <div class="faq-item d-none d-md-block">
+                    <button class="faq-question">
+                        <span>Do you provide GST invoices and corporate vendor documentation?</span>
+                        <div class="faq-icon-wrapper"><i class="fas fa-chevron-down"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. All corporate and institutional bookings include 100% GST-compliant invoicing, along with any required vendor onboarding documents, safety certifications, and formal quotations for internal approvals.</p>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is food and catering included in bulk packages?</span>
+                        <div class="faq-icon-wrapper"><i class="fas fa-chevron-down"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We offer flexible F&B add-ons ranging from boxed kid-friendly snack combos and hydration stations to full multi-course corporate buffets. Outside catering is not permitted inside.</p>
+                    </div>
+                </div>
+
+                <!-- 6 (HIDE ON MOBILE) -->
+                <div class="faq-item d-none d-md-block">
+                    <button class="faq-question">
+                        <span>How does JUMPIN Go ensure safety for large groups and school children?</span>
+                        <div class="faq-icon-wrapper"><i class="fas fa-chevron-down"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Safety is our top priority. Every bulk booking includes age-segregated play zones, mandatory grip socks for all participants, an on-site first-aid station, and a strict, trained Safety Marshals monitoring all inflatables at all times.</p>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What is your rescheduling or cancellation policy for group bookings?</span>
+                        <div class="faq-icon-wrapper"><i class="fas fa-chevron-down"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We understand group headcounts can fluctuate. You can confirm your final guest count up to 72 hours before your event, and bookings can be rescheduled once free of charge if notified at least 7 days in advance (or in the event of severe weather conditions).</p>
+                    </div>
+                </div>
+
+            </div>        
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="mx-2 mx-md-5">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="/static/logo.webp" alt="JUMPIN GO" class="footer-logo">
+                    <p>Let's Be Ultimate Buddies!</p>
+                    <p>Stay in the loop for upcoming events, early bird offers, and behind-the-scenes fun.
+                        Follow us, tag us, and keep bouncing with the JumpFam!</p>
+                    <div class="social-icons">
+                        <a target="_blank" href="https://www.facebook.com/profile.php?id=61581200615232"><i class="fab fa-facebook-f"></i></a>
+                        <a target="_blank" href="https://www.instagram.com/jumpingoofficial/"><i class="fab fa-instagram"></i></a>
+                        <a target="_blank" href="https://www.linkedin.com/company/jumpingo/"><i class="fab fa-linkedin"></i></a>
+                        <a target="_blank" href="https://www.youtube.com/@jumpingoofficial"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'about' %}">About Us</a></li>
+                            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                            <li><a href="{% url 'attractions' %}">Attractions</a></li>
+                            <li><a href="{% url 'ticket' %}">Tickets</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Get in touch</h4>
+                        <ul>
+                            <li><a href="{% url 'contact' %}">Contact us</a></li>
+                            <li><a href="{% url 'get_in_touch' %}">Volunteers</a></li>
+                            <li><a href="{% url 'get_in_touch' %}">Food Vendors</a></li>
+                            <li><a href="{% url 'get_in_touch' %}">We’re Hiring</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Socials</h4>
+                        <ul>
+                            <li><a target="_blank" href="https://www.instagram.com/jumpingoofficial/">Instagram</a></li>
+                            <li><a target="_blank" href="https://www.facebook.com/profile.php?id=61581200615232">Facebook</a></li>
+                            <li><a target="_blank" href="https://www.linkedin.com/company/jumpingo/">LinkedIn</a></li>
+                            <li><a target="_blank" href="https://www.youtube.com/@jumpingoofficial">YouTube</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© JUMPINGO LLP All Rights Reserved.</p>
+                <p><a target="_blank" href="https://www.virtuelance.com/" class="text-white" style="text-decoration: none;">Developed by VIRTUELANCE</a></p>
+                <div class="footer-bottom-links">
+                    <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
+                    <a href="{% url 'privacy_policy' %}">Terms & Condition</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="/static/api_caller.js"></script> -->
+    <script src="/static/ticket.js"></script>
+
+    <script>
+
+        function bulkFormGuard(markSubmitted) {
+            const KEY = "bulk_form_submitted";
+            if (markSubmitted) {
+                document.cookie = KEY + "=1; max-age=" + 60 * 60 * 24 + "; path=/; SameSite=Lax";
+                sessionStorage.setItem(KEY, "1");
+            }
+            const done = sessionStorage.getItem(KEY) === "1" || document.cookie.split("; ").includes(KEY + "=1");
+            const btn = document.querySelector("#bulkBookingForm .submit-btn");
+            if (done && btn) {
+                btn.disabled = true;
+                btn.textContent = "Submitted";
+                btn.style.opacity = ".6";
+                btn.style.cursor = "not-allowed";
+            }
+            return done;
+        }
+
+        bulkFormGuard()
+
+
+        function toggle_loader() {
+    let existingLoader = document.getElementById('dynamic-page-loader');
+
+    if (existingLoader) {
+        // If loader exists, remove it
+        existingLoader.remove();
+    } else {
+        // Create loader container
+        const loader = document.createElement('div');
+        loader.id = 'dynamic-page-loader';
+        loader.style.position = 'fixed';
+        loader.style.top = 0;
+        loader.style.left = 0;
+        loader.style.width = '100%';
+        loader.style.height = '100%';
+        loader.style.background = 'rgba(255, 255, 255, 0.7)';
+        loader.style.display = 'flex';
+        loader.style.justifyContent = 'center';
+        loader.style.alignItems = 'center';
+        loader.style.zIndex = 9999;
+
+        // Create spinner
+        const spinner = document.createElement('div');
+        spinner.style.width = '3rem';
+        spinner.style.height = '3rem';
+        spinner.style.border = '6px solid #ccc';
+        spinner.style.borderTop = '6px solid #8b6f47';
+        spinner.style.borderRadius = '50%';
+        spinner.style.animation = 'spin 1s linear infinite';
+
+        // Inject keyframe animation (once)
+        if (!document.getElementById('loader-spin-style')) {
+            const style = document.createElement('style');
+            style.id = 'loader-spin-style';
+            style.innerHTML = `
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        loader.appendChild(spinner);
+        document.body.appendChild(loader);
+    }
+}
+
+        </script>
+    <script>
+        const bulkForm = document.getElementById("bulkBookingForm");
+        const dateInput = document.getElementById("bbDate");
+        const guestsInput = document.getElementById("bbGuests");
+
+        dateInput.min = new Date().toISOString().split("T")[0];
+
+        // "Book Now" CTAs: preselect the category, then smooth-scroll to the form
+        document.querySelectorAll(".btn-login").forEach(function (cta) {
+            cta.addEventListener("click", function (e) {
+                e.preventDefault();
+                const radio = bulkForm.querySelector('input[name="category"][value="' + cta.dataset.category + '"]');
+                if (radio) radio.checked = true;
+                document.getElementById("bulkForm").scrollIntoView({ behavior: "smooth" });
+            });
+        });
+
+        document.querySelectorAll(".bb-quick button").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                guestsInput.value = btn.dataset.guests;
+            });
+        });
+
+        bulkForm.addEventListener("submit", async function (e) {
+            console.log("[v0] Bulk booking form submitted");
+            e.preventDefault();
+            if (parseInt(guestsInput.value, 10) < 20) {
+                alert("Minimum 20 guests required for bulk booking.");
+                return;
+            }
+            toggle_loader()
+           
+            const formData = new FormData(this);   // includes csrfmiddlewaretoken automatically
+
+            const response = await fetch("/send_bulk_booking_email_req", {
+                method: "POST",
+                body: formData
+            });
+            const data = await response.json();
+
+            if (data.success) {
+                bulkFormGuard(true)
+                toggle_loader()
+                alert("Quote request submitted!\n\nOur Group Events Specialist will reach out within 2 business hours.");
+                this.reset();
+            } else {
+                toggle_loader()
+                alert("Something went wrong.");
+            }
+        });
+
+
+    </script>
+
+    <script>
+          const faqQuestions = document.querySelectorAll(".faq-question")
+        console.log("[v0] FAQ questions found:", faqQuestions.length)
+
+        faqQuestions.forEach((question, index) => {
+            question.addEventListener("click", function (e) {
+            e.preventDefault()
+            console.log("[v0] FAQ question clicked:", index)
+
+            const faqItem = this.parentElement
+            const isActive = faqItem.classList.contains("active")
+
+            console.log("[v0] FAQ item active state before toggle:", isActive)
+
+            // Close all other FAQ items
+            document.querySelectorAll(".faq-item").forEach((item) => {
+                if (item !== faqItem) {
+                item.classList.remove("active")
+                }
+            })
+
+            // Toggle current item
+            faqItem.classList.toggle("active")
+
+            console.log("[v0] FAQ item active state after toggle:", faqItem.classList.contains("active"))
+            })
+        })
+    </script>
+</body>
+</html>

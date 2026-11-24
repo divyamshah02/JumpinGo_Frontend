@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .send_email import *
+from utils.encrypt_decrypt import base64_to_text
 
 def home(request):
     return render(request, 'index.html')
@@ -12,6 +13,9 @@ def about(request):
 
 def attractions(request):
     return render(request, 'attractions.html')
+
+def bulk_booking(request):
+    return render(request, 'bulk_booking.html')
 
 
 def contact(request):
@@ -61,3 +65,53 @@ def send_booking_email_req(request):
             date=date            
         )
         return JsonResponse({'success': True})
+
+
+import resend
+from django.views.decorators.http import require_POST
+
+resend.api_key = base64_to_text("cmVfWnJERkxkS0dfOUdHekJUR2tRbWt0Q2ljWkFZUHdVM3Vr")
+
+IGNORED_FIELDS = {"csrfmiddlewaretoken", "reason"}
+
+
+def _label(key):
+    return key.replace("_", " ").replace("-", " ").strip().title()
+
+
+@require_POST
+def send_bulk_booking_email_req(request):    
+    data = {
+        key: ", ".join(v.strip() for v in request.POST.getlist(key) if v.strip())
+        for key in request.POST
+        if key not in IGNORED_FIELDS
+    }
+    data = {k: v for k, v in data.items() if v}
+
+    if not data:
+        return JsonResponse({"success": False, "error": "Empty form"}, status=400)
+
+    lines = ["New Bulk Booking Enquiry", "-" * 28]
+    lines += [f"{_label(k)}: {v}" for k, v in data.items()]
+    body = "\n".join(lines)
+
+    category = data.get("category", "General")
+    name = data.get("full_name", "Unknown")
+    subject = f"Bulk Booking - {category} - {name}".replace("\n", " ").replace("\r", " ")[:150]
+
+    payload = {
+        "from": "onboarding@resend.dev",
+        "to": ["virtuelancedevops@gmail.com"],
+        "subject": subject,
+        "text": body,
+    }
+    if data.get("email"):
+        payload["reply_to"] = data["email"]
+
+    try:
+        resend.Emails.send(payload)
+    except Exception as exc:
+        print("Resend error:", exc)
+        return JsonResponse({"success": False}, status=500)
+
+    return JsonResponse({"success": True})

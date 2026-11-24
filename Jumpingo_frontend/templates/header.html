@@ -1,4 +1,28 @@
-    <header class="header pt-0">
+<style>
+    .btn-book-now {
+  background: #bd3257;
+  color: white;
+  border: none;
+  padding: 16px;
+  width: 100%;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(189, 50, 87, 0.3);
+  font-family: "Raleway", sans-serif;
+}
+
+.btn-book-now:hover {
+  background: #a02847;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(189, 50, 87, 0.4);
+}
+
+</style>
+<header class="header pt-0">
         <div class="container-fluid px-4">
             <nav class="navbar navbar-expand-md py-0">
 
@@ -48,9 +72,9 @@
                             <a class="nav-link" href="{% url 'attractions' %}">Attractions</a>
                         </li>
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="{% url 'about' %}">About Us</a>
-                        </li>
+                        </li> -->
 
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
@@ -67,6 +91,13 @@
                             <a target="_blank" href="https://www.youtube.com/@jumpingoofficial"><i class="fab fa-youtube"></i></a>
                         </li>
                         <!-- Mobile Book Button -->
+                        <li class="nav-item">
+                            <button class="btn-book-now" 
+                                onclick="window.open(`/bulk_booking`, `_blank`)">
+                                Bulk Booking
+                            </button>
+                        </li>
+                        
                         <li class="nav-item">
                             <button class="btn-login" 
                                 onclick="window.open(`https://link.district.in/DSTRKT/3x6ett8o`, `_blank`)">
