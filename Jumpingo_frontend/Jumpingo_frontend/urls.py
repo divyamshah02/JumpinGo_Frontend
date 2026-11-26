@@ -24,9 +24,10 @@ urlpatterns = [
     path('privacy_policy', privacy_policy, name='privacy_policy'),
     path('', include('FrontEnd.urls')),
     
-    path('send_contact_email_req', send_contact_email_req, name='send_contact_email_req'),
+    # path('send_contact_email_req', send_contact_email_req, name='send_contact_email_req'),
+    path('send_contact_email_req', send_resend_contact_email_req, name='send_contact_email_req'),
     path('send_booking_email_req', send_booking_email_req, name='send_booking_email_req'),
 
-    path("send_bulk_booking_email_req", send_bulk_booking_email_req, name="send_bulk_booking_email_req"),
+    path("send_bulk_booking_email_req", send_bulk_booking_email_req, name="send_bulk_booking_email_req"),    
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

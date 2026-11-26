@@ -255,6 +255,76 @@
 
 
     <script>
+
+        function bulkFormGuard(markSubmitted) {
+            const KEY = "contact_form_submitted";
+            if (markSubmitted) {
+                document.cookie = KEY + "=1; max-age=" + 60 * 60 * 24 + "; path=/; SameSite=Lax";
+                sessionStorage.setItem(KEY, "1");
+            }
+            const done = sessionStorage.getItem(KEY) === "1" || document.cookie.split("; ").includes(KEY + "=1");
+            const btn = document.querySelector("#contactForm .submit-btn");
+            if (done && btn) {
+                btn.disabled = true;
+                btn.textContent = "Submitted";
+                btn.style.opacity = ".6";
+                btn.style.cursor = "not-allowed";
+            }
+            return done;
+        }
+
+        bulkFormGuard()
+
+
+                function toggle_loader() {
+    let existingLoader = document.getElementById('dynamic-page-loader');
+
+    if (existingLoader) {
+        // If loader exists, remove it
+        existingLoader.remove();
+    } else {
+        // Create loader container
+        const loader = document.createElement('div');
+        loader.id = 'dynamic-page-loader';
+        loader.style.position = 'fixed';
+        loader.style.top = 0;
+        loader.style.left = 0;
+        loader.style.width = '100%';
+        loader.style.height = '100%';
+        loader.style.background = 'rgba(255, 255, 255, 0.7)';
+        loader.style.display = 'flex';
+        loader.style.justifyContent = 'center';
+        loader.style.alignItems = 'center';
+        loader.style.zIndex = 9999;
+
+        // Create spinner
+        const spinner = document.createElement('div');
+        spinner.style.width = '3rem';
+        spinner.style.height = '3rem';
+        spinner.style.border = '6px solid #ccc';
+        spinner.style.borderTop = '6px solid #8b6f47';
+        spinner.style.borderRadius = '50%';
+        spinner.style.animation = 'spin 1s linear infinite';
+
+        // Inject keyframe animation (once)
+        if (!document.getElementById('loader-spin-style')) {
+            const style = document.createElement('style');
+            style.id = 'loader-spin-style';
+            style.innerHTML = `
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        loader.appendChild(spinner);
+        document.body.appendChild(loader);
+    }
+}
+
+
         document.getElementById("contactForm").addEventListener("submit", async function (e) {
             e.preventDefault();
             toggle_loader()
@@ -273,6 +343,7 @@
             const data = await response.json();
 
             if (data.success) {
+                bulkFormGuard(true)
                 toggle_loader()
                 alert("Contact form submitted successfully!");
                 this.reset(); // optional: clears form
